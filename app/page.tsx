@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import Taxi from "@/assets/images/18078f287ce75878d1858ab43d7607e2.jpg"
+import Taxi from "@/assets/images/pay.jpg"
 import Button from "@/components/common/Button";
 import Link from "next/link";
 import { motion } from "framer-motion"
