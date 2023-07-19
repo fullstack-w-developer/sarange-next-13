@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import Taxi from "@/assets/images/taxi.jpg"
+import Taxi from "@/assets/images/18078f287ce75878d1858ab43d7607e2.jpg"
 import Button from "@/components/common/Button";
 import Link from "next/link";
 import { motion } from "framer-motion"
@@ -24,9 +24,9 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.8, }}
           animate={{ opacity: 1, scale: 1, }}
           transition={{ duration: 1.2, delay: 1.4 }}
-          className={`flex flex-col gap-4 justify-center items-center flex-1 ${isVisible ? "block" : "hidden"}`}
+          className={`flex flex-col gap-8 justify-center items-center flex-1 ${isVisible ? "block" : "hidden"}`}
         >
-          <Image src={Logo} alt="logo"/>
+          <Image src={Logo} alt="logo" />
           <motion.h1 className={`font-artin-black text-black text-2xl text-center  `}>به آپلیکیشن سارنگ خوش آمدید</motion.h1>
         </motion.div>
         <motion.div
@@ -35,7 +35,7 @@ export default function Home() {
           transition={{ duration: 1.2, delay: 4.1 }}
           className={`justify-center items-center flex-1 ${isVisible ? "hidden" : "flex"}`}
         >
-          <Image className="" src={Taxi} alt="" />
+          <Image width={900} src={Taxi} alt="" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 900 }}
