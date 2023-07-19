@@ -44,7 +44,7 @@ export default function Home() {
           className="mb-8">
           <Button name="بزن بریم" />
           <div className="flex items-center mt-5 justify-center font-estedad-medium text-[14px] w-full">
-            <Link className="flex gap-1 items-center" href="#">آیا  راننده تاکسی هستید؟ <span className="border-b border-blue-600 text-blue-600">ورود به عنوان راننده</span></Link>
+            <Link className="flex gap-1 items-center" href="#">آیا  راننده تاکسی هستید؟ <span className="border-b font-artin-regular border-blue-600 text-blue-600">ورود به عنوان راننده</span></Link>
           </div>
         </motion.div>
       </div>
