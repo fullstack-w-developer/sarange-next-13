@@ -5,7 +5,7 @@ interface Props{
 }
 const Button = ({name}:Props) => {
     return (
-        <ButtonMui variant="contained" className='h-[48px] text-[16px] font-artin-bold w-full !bg-orange  !shadow-shadowBtn'>{name}</ButtonMui>
+        <ButtonMui variant="contained" className='h-[48px] text-[16px] font-artin-regular w-full !bg-orange !shadow-none'>{name}</ButtonMui>
     )
 }
 
