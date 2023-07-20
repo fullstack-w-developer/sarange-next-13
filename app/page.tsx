@@ -41,12 +41,14 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.8, y: 900 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.9, delay: 4.5 }}
-          className="mb-8">
+          className="mb-5">
           <Link href="/auth/signin">
             <Button name="بزن بریم" />
           </Link>
-          <div className="flex items-center mt-5 justify-center font-estedad-medium text-[14px] w-full">
-            <Link className="flex gap-1 items-center" href="/auth/signin">آیا  راننده تاکسی هستید؟ <span className="border-b font-estedad-medium border-blue-600 text-blue-600">ورود به عنوان راننده</span></Link>
+          <p className="border-b mt-6 border-dashed border-[#e4e4e4]"></p>
+          <div className="flex mt-3 gap-1 text-gray-400 font-artin-bold text-[15px] justify-center  items-center">
+            <p className="text-gray-500">آماده ای برای کسب درآمد؟</p>
+            ورود راننده
           </div>
         </motion.div>
       </div>
