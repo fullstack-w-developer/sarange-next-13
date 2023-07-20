@@ -1,6 +1,5 @@
 import { toFarsiNumber } from "@/helper/utils/toFarsiNumber";
 import React from "react";
-import {motion} from "framer-motion"
 interface Props {
     icon?: JSX.Element;
     placeholder?: string;
@@ -15,10 +14,8 @@ interface Props {
 }
 const Input = ({ icon, placeholder, classInput, ltr, label, classInputTag, name, formik, type }: Props) => {
     return (
-        <motion.div
-        initial={{x:500,opacity:0.5}}
-        animate={{opacity:1,x:0}}
-        transition={{duration:0.6}}
+        <div
+    
         >
             {label && <label className="font-artin-regular block mb-1 pr-1 text-[#2F2F2F]">{label}</label>}
             <div
@@ -42,7 +39,7 @@ const Input = ({ icon, placeholder, classInput, ltr, label, classInputTag, name,
             <span className="block font-artin-light mt-[1px] text-[11px] pt-[2px] text-[#E40000] pr-1">
                 {formik.touched[name!] && formik.errors[name!] ? formik.errors[name!] : null}
             </span>
-        </motion.div>
+        </div>
     );
 };
 
