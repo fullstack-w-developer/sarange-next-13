@@ -32,7 +32,7 @@ const Login = () => {
             <Getotp isPass isLogin formik={formik} text="برای ورود لطفا شماره تلفن همراه خود و پسورد  را وارد کنید" />
 
 
-            <div className="flex flex-col mb-5 w-[90%] mx-auto">
+            <div className="flex flex-col mb-4 w-90">
                 <Button onClick={formik.handleSubmit} className="!bg-gray_black" name="ورود" />
                 <p className="border-b mt-6 mb-3 border-dashed border-[#e4e4e4]"></p>
                 <Link href="/auth/signup">
