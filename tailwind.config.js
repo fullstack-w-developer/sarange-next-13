@@ -8,10 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        orange: "#F67D14"
+        orange: "#F67D14",
+        gray_black:"#464646"
       },
       boxShadow: {
         shadowBtn: "0px 10px 24px 0px rgba(238, 117, 106, 0.47)",
+
       },
       fontFamily: {
         "artin-bold": "artin-bold",
