@@ -1,12 +1,8 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
 import Logo from "@/assets/images/logo_white.svg";
 import { BsArrowLeftShort } from "react-icons/bs";
-// import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/global/icons";
 import Button from "@/components/common/Button";
-// import VerifyOtpCom from "@/components/auth/VerifyOtp";
-// import Timer from "@/components/common/Timer";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import { initialValuesCheckCode } from "@/helper/utils/initialValues";
@@ -14,33 +10,26 @@ import { validationSchemaCheckCode } from "@/helper/utils/validation/auth";
 import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/icons";
 import Timer from "./Timer";
 import Otp from "./Otp";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { animationsScreens } from "@/theme/animations";
-// import { initialValuesCheckCode } from "@/helpers/utils/initialValues";
-// import { validationSchemaCheckCode } from "@/helpers/utils/validation/auth";
-// import useAuthStore from "@/stores/auth-store";
-// import { toEnglishNumber } from "@/helpers/utils/toFarsiNumber";
-// import useVerifyCodeLoginMutation from "@/hooks/mutation/auth/useVerifyCodeLoginMutation copy";
+import useVerifyCode from "@/hooks/mutation/auth/useVerifyCode";
+import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
+import useAuthStore from "@/stores/auth-store";
+
 const VerifyOtp = () => {
-    // const { phone } = useAuthStore();
-    // const { mutate, isError, error, isLoading } = useVerifyCodeLoginMutation();
+    const { user } = useAuthStore();
+    const { mutate, isError, error, isLoading } = useVerifyCode();
     const router = useRouter();
     const formik = useFormik({
         initialValues: initialValuesCheckCode,
         validationSchema: validationSchemaCheckCode,
         onSubmit: (values) => {
-            // mutate({ Code: Number(values.Code), Phone: toEnglishNumber(phone)! });
+            mutate({ Code: Number(values.Code), Phone: toEnglishNumber(user?.phone!)! });
         },
     });
 
-    // useEffect(() => {
-    //     if (!phone) return router.back();
-    // }, []);
-
     return (
-        <motion.div
-            {...animationsScreens}
-            className="flex flex-col justify-between h-screen">
+        <motion.div {...animationsScreens} className="flex flex-col justify-between h-screen">
             <div className="bg_header text-white rounded-b-[26px] overflow-hidden container_header_signup">
                 <div className=" py-14 flex  w-90  items-center justify-between">
                     <div className="flex z-50 gap-3 items-center justify-between">
@@ -69,22 +58,17 @@ const VerifyOtp = () => {
                     </div>
                 </div>
             </div>
-            {false && (
+            {isError && (
                 <div className="flex justify-center items-center flex-col">
-                    <Warr_iocn fill="#" />
+                    <Warr_iocn fill="#F67D14" />
                     {/* @ts-ignore */}
-                    <p className="text-red-500 font-artin-regular">{error.response?.data?.Message}</p>
+                    <p className="text-orange font-artin-regular">{error.response?.data?.Message}</p>
                 </div>
             )}
 
             <span></span>
             <div className="w-90 mb-4">
-                <Button
-                    isLoading={false}
-                    onClick={formik.handleSubmit}
-                    className=" !bg-[#464646]"
-                    name="تائید کد"
-                />
+                <Button isLoading={isLoading} onClick={formik.handleSubmit} className=" !bg-[#464646]" name="تائید کد" />
             </div>
         </motion.div>
     );

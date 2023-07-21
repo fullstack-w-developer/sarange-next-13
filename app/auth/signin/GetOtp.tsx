@@ -28,8 +28,8 @@ const Getotp = ({ text, formik, isLogin, isPass }: Props) => {
                         <h5 className="font-artin-black text-3xl -mt-1">خوش اومدین</h5>
                         <div className="mt-8 flex flex-col  gap-4 w-full">
                             {text && <p className="font-artin-regular pb-3">{text}</p>}
-                            <input type="text" id="xusername" style={{ display: 'none' }} autoComplete="username" />
-                            <input type="password" id="xpassword" style={{ display: 'none' }} autoComplete="current-password" />
+                            <input type="text" id="xusername" style={{ display: "none" }} autoComplete="username" />
+                            <input type="password" id="xpassword" style={{ display: "none" }} autoComplete="current-password" />
                             <Input
                                 formik={formik}
                                 name="phone"
@@ -57,7 +57,7 @@ const Getotp = ({ text, formik, isLogin, isPass }: Props) => {
                 </div>
                 {isPass && (
                     <Link
-                        href={pathname.startsWith("/driver") ? "/user/auth/driver/forgetpass" : "/auth/user/forgetpass"}
+                        href={"/auth/forget"}
                         className="text-black w-[90%] mx-auto flex justify-end cursor-pointer  relative !z-[9999] font-artin-bold px-4 pt-3"
                     >
                         فراموشی رمزعبور؟

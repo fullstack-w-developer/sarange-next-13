@@ -14,9 +14,7 @@ interface Props {
 }
 const Input = ({ icon, placeholder, classInput, ltr, label, classInputTag, name, formik, type }: Props) => {
     return (
-        <div
-    
-        >
+        <div>
             {label && <label className="font-artin-regular block mb-1 pr-1 text-[#2F2F2F]">{label}</label>}
             <div
                 className={`flex gap-1 w-full h-[52px] border bg-[#EFF2F6]  rounded-lg px-2 items-center ${

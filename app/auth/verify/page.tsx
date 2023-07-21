@@ -1,12 +1,8 @@
-import React from 'react'
-import VerifyOtp from './VerifyOtp'
+import React from "react";
+import VerifyOtp from "./VerifyOtp";
 
 const Verify = () => {
-    return (
-    
-            <VerifyOtp />
-        
-    )
-}
+    return <VerifyOtp />;
+};
 
-export default Verify
+export default Verify;
