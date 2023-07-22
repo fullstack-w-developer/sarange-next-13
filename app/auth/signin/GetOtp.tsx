@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/logo_white.svg";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { BsFillLockFill, BsPhone } from "react-icons/bs";
 import Input from "@/components/common/Input";
 interface Props {
@@ -12,7 +11,6 @@ interface Props {
     isPass?: boolean;
 }
 const Getotp = ({ text, formik, isLogin, isPass }: Props) => {
-    const pathname = usePathname();
     return (
         <div>
             <div className="rounded-b-[26px] z-30  shadow-md text-white bg_header bg_line h-fit flex flex-col py-5 justify-center items-center">
