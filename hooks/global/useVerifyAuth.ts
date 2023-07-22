@@ -5,10 +5,11 @@ import { useCookies } from "react-cookie";
 const useVerifyAuth = () => {
     const [cookies] = useCookies(["token"]);
     function disableBackButton() {
+        window.history.pushState(null, document.title, window.location.href);
         window.addEventListener('popstate', function (event) {
-            event.preventDefault();
-          });
-      }
+            window.history.pushState(null, document.title, window.location.href);
+        });
+    }
     const checkToken = async () => {
         if (cookies.token) {
             axios.defaults.headers.common["x-access-token"] = `${cookies.token}`;
