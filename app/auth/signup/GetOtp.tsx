@@ -2,17 +2,16 @@
 import Link from "next/link";
 import React from "react";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
 import { initialValuesGetOtp } from "@/helper/utils/initialValues";
 import { validationSchemaGetOtp } from "@/helper/utils/validation/auth";
 import Getotp from "../signin/GetOtp";
-import { Warr_iocn } from "@/components/icons";
 import Button from "@/components/common/Button";
 import { motion } from "framer-motion";
 import { animationsScreens } from "@/theme/animations";
 import useGetCodeActivationQuery from "@/hooks/query/auth/useGetCodeActivationQuery";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import useAuthStore from "@/stores/auth-store";
+import { Warr_iocn } from "@/components/icons/icons";
 const GetOtp = () => {
     const { setUser } = useAuthStore();
     const formik = useFormik({
