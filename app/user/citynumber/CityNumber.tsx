@@ -29,7 +29,6 @@ const CityNumber = ({ user }: Props) => {
     return (
         <div className="h-screen flex flex-col justify-between bg-white">
             <div>
-                <ProfileInfo user={user} />
                 <div className="w-90 mt-10">
                     <Info />
                     <Input formik={formik} type="tel" classInputTag="text-center" label="کد راننده" name="code" />

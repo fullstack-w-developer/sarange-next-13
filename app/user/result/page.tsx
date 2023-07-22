@@ -3,10 +3,11 @@ import Button from "@/components/common/Button";
 import { Check_iocn } from "@/components/icons/icons";
 import Image from "next/image";
 import React from "react";
-import Logo from "@/assets/images/logo_white.svg";
 import ResultImage from "@/assets/images/result.svg";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 const Result = () => {
+    const router = useRouter()
     return (
         <div className="h-screen bg-white flex relative flex-col justify-between">
             <motion.div
@@ -31,7 +32,7 @@ const Result = () => {
             </motion.div>
 
             <motion.div initial={{ x: 500 }} animate={{ x: 0 }} transition={{ duration: 1 }} className="w-90 mb-4">
-                <Button className="!bg-[#464646]" name="بازگشت به صحفه اصلی" />
+                <Button onClick={()=>router.push("/user")} className="!bg-[#464646]" name="بازگشت به صحفه اصلی" />
             </motion.div>
         </div>
     );
