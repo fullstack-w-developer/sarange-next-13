@@ -1,14 +1,13 @@
 "use client";
-import React from 'react'
-import ScanComponent from './ScanComponent'
+import React from "react";
+import ScanComponent from "./ScanComponent";
 
 const Scan = () => {
-
     return (
         <div>
-            <ScanComponent/>
+            <ScanComponent />
         </div>
-    )
-}
+    );
+};
 
-export default Scan
+export default Scan;

@@ -1,23 +1,21 @@
-import Input from '@/components/common/Input'
-import React from 'react'
+import Input from "@/components/common/Input";
+import React from "react";
 
-const CostTaxiInsetMoney = () => {
+const CostTaxiInsetMoney = ({formik}:any) => {
     return (
         <div>
             <div className="mt-10">
-                <input
-                />
-                {/* <Input
+                <Input
                     ltr
                     label="هزینه تاکسی"
                     placeholder="هزینه تاکسی را به تومان وارد کنید"
                     classInput=""
                     formik={formik}
                     name="amount"
-                /> */}
+                />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default CostTaxiInsetMoney
+export default CostTaxiInsetMoney;

@@ -9,7 +9,7 @@ import { AiFillCar } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 const SectionUserPage = () => {
-    const router = useRouter()
+    const router = useRouter();
     return (
         <div className="w-90 h-[70vh] flex justify-center items-center overflow-hidden">
             <div className="flex flex-col gap-14">

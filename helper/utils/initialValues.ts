@@ -21,6 +21,8 @@ export const initialValueLogin = {
 
 export const initialValuesFare = {
     amount: "",
+    numberOfPassenger:1,
+    password:""
 };
 
 export const initialValuesPayWithCode = {

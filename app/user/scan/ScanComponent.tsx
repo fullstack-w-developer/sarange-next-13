@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useEffect, useRef } from "react";
 import { Html5Qrcode } from "html5-qrcode";
@@ -30,9 +29,6 @@ const ScanComponent = () => {
         await html5QrCode.start({ facingMode: "environment" }, qrConfig, qrCodeSuccessCallback);
     };
 
-
-
-
     const handleStop = () => {
         try {
             html5QrCode
@@ -40,7 +36,7 @@ const ScanComponent = () => {
                 .then(() => {
                     html5QrCode.clear();
                 })
-                .catch((err: any) => { });
+                .catch((err: any) => {});
         } catch (err) {
             console.log(err);
         }
@@ -52,14 +48,12 @@ const ScanComponent = () => {
     };
 
     const onResult = () => {
-        router.push(`/user/inquiry?code=${23456}&type=${PaymentTypeEnum.USER_SCAN_QR_CODE}`)
+        router.push(`/user/inquiry?code=${23456}&type=${PaymentTypeEnum.USER_SCAN_QR_CODE}`);
     };
 
-
-
     useEffect(() => {
-        handleClickAdvanced()
-    }, [])
+        handleClickAdvanced();
+    }, []);
     return (
         <div className="relative h-screen bg-white">
             <div id="reader" className="w-full" />

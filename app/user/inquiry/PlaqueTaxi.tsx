@@ -3,11 +3,10 @@ import React from "react";
 import { AiFillCar } from "react-icons/ai";
 import Flag_iran from "@/assets/images/flag_iran.png";
 import { Driver } from "@/types/Driver";
-interface Props{
-    driver:Driver
+interface Props {
+    driver: Driver;
 }
-const PlaqueTaxi = ({driver}:Props) => {
-
+const PlaqueTaxi = ({ driver }: Props) => {
     return (
         <div className="mt-8">
             <div className="flex gap-2 font-artin-bold">
