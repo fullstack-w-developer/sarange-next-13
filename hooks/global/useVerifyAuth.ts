@@ -5,10 +5,9 @@ import { useCookies } from "react-cookie";
 const useVerifyAuth = () => {
     const [cookies] = useCookies(["token"]);
     function disableBackButton() {
-        window.history.pushState(null, document.title, window.location.href);
-        window.addEventListener('popstate', function(event) {
-          window.history.pushState(null, document.title, window.location.href);
-        });
+        window.addEventListener('popstate', function (event) {
+            event.preventDefault();
+          });
       }
     const checkToken = async () => {
         if (cookies.token) {
