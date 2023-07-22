@@ -1,11 +1,11 @@
-import { getUser } from '@/services/user';
+import { getUser } from "@/services/user";
 import { useMutation } from "react-query";
 import { editUserInfo, forgetPass, loginUser } from "@/services/auth";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/stores/auth-store";
 import { EditUser } from "@/types/User";
 import { AxiosError } from "axios";
-import { errorToast, successToast } from '@/helper/utils/error';
+import { errorToast, successToast } from "@/helper/utils/error";
 
 const useEditUserMutation = () => {
     const router = useRouter();

@@ -1,5 +1,5 @@
 "use client";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import Getotp from "./GetOtp";
 import { useFormik } from "formik";
 import { initialValueLogin } from "@/helper/utils/initialValues";
@@ -15,7 +15,6 @@ import { Warr_iocn } from "@/components/icons";
 import useAuthStore from "@/stores/auth-store";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import useGlobalStore from "@/stores/global-store";
-
 
 const Login = () => {
     const router = useRouter();
@@ -37,10 +36,10 @@ const Login = () => {
         router.push("/auth/signup");
     };
 
-    useEffect(()=>{
-        setIsSignupUser(false)
-        setIsDriver(false)
-    },[])
+    useEffect(() => {
+        setIsSignupUser(false);
+        setIsDriver(false);
+    }, []);
 
     return (
         <motion.div className="overflow-hidden min-h-screen flex flex-col gap-20 justify-between" {...animationsScreens}>
