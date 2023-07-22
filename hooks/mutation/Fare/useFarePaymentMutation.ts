@@ -12,8 +12,7 @@ const useFarePaymentMutation = ({ url }: { url: string }) => {
             await telegramAudioRef.current?.play();
             router.push(url);
         },
-        onError: async function (error) {
-        },
+        onError: async function (error) {},
     });
 };
 

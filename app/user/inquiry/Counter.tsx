@@ -3,17 +3,17 @@ import Button from "@/components/common/Button";
 import { Driver } from "@/types/Driver";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 interface Props {
-  formik:any,
-  driver:Driver
+    formik: any;
+    driver: Driver;
 }
-const Counter = ({ driver ,formik}: Props) => {
+const Counter = ({ driver, formik }: Props) => {
     const increment = () => {
         if (Number(formik.values.numberOfPassenger) === 4) return;
-        formik.setFieldValue("numberOfPassenger", Number(formik.values.numberOfPassenger + 1))
+        formik.setFieldValue("numberOfPassenger", Number(formik.values.numberOfPassenger + 1));
     };
     const decrement = () => {
         if (Number(formik.values.numberOfPassenger) === 1) return;
-        formik.setFieldValue("numberOfPassenger", Number(formik.values.numberOfPassenger - 1))
+        formik.setFieldValue("numberOfPassenger", Number(formik.values.numberOfPassenger - 1));
     };
     return (
         <>
@@ -41,12 +41,15 @@ const Counter = ({ driver ,formik}: Props) => {
 
                 <div className="flex justify-between items-center mt-4">
                     <p className="font-artin-bold">
-                        تعداد نفر : <span className="font-artin-black text-xl text-orange_light mx-1">{formik.values.numberOfPassenger}</span>
+                        تعداد نفر :{" "}
+                        <span className="font-artin-black text-xl text-orange_light mx-1">{formik.values.numberOfPassenger}</span>
                         نفر
                     </p>
                     <p className="font-artin-bold">
                         کرایه:{" "}
-                        <span className="font-artin-black text-xl text-orange_light mx-1">{Number(formik.values.numberOfPassenger) * driver?.CarRoute.Cost!}</span>
+                        <span className="font-artin-black text-xl text-orange_light mx-1">
+                            {Number(formik.values.numberOfPassenger) * driver?.CarRoute.Cost!}
+                        </span>
                         تومان
                     </p>
                 </div>

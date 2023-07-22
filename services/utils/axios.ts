@@ -2,13 +2,13 @@ import { mainUrl } from "@/helper/constants/env-variables";
 import { logRequestedUrl } from "@/helper/utils/services";
 import _axios from "axios";
 
-const headers = { 
-    "Content-Type": "application/json" };
+const headers = {
+    "Content-Type": "application/json",
+};
 
 const axios = _axios.create({
     headers,
     baseURL: mainUrl,
-
 });
 
 axios.interceptors.request.use(

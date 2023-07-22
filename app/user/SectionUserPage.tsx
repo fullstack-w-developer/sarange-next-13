@@ -25,7 +25,7 @@ const SectionUserPage = () => {
                     <Link className="!flex-1 !block !min-w-[40%]" href="/user/scan">
                         <Button icon={<BsQrCode size={18} />} name="پرداخت با اسکن" />
                     </Link>
-                    <Link className="!flex-1 !block !min-w-[40%]" href="/user/scan">
+                    <Link className="!flex-1 !block !min-w-[40%]" href="/user/citynumber">
                         <Button
                             className="!bg-transparent custom_btn !text-black"
                             icon={<AiFillCar size={22} />}

@@ -2,7 +2,6 @@ import axios from "../../services/utils/axios";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 
-
 const useVerifyAuth = () => {
     const [cookies] = useCookies(["token"]);
 

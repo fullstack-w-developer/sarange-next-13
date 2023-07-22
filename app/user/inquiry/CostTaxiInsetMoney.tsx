@@ -1,7 +1,7 @@
 import Input from "@/components/common/Input";
 import React from "react";
 
-const CostTaxiInsetMoney = ({formik}:any) => {
+const CostTaxiInsetMoney = ({ formik }: any) => {
     return (
         <div>
             <div className="mt-10">
