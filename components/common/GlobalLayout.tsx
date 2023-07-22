@@ -1,9 +1,9 @@
-"use client"
-import { User } from '@/types/User'
-import React from 'react'
+"use client";
+import { User } from "@/types/User";
+import React from "react";
 interface Props {
-    user: User
-    children: React.ReactNode
+    user: User;
+    children: React.ReactNode;
 }
 const GlobalLayout = ({ user, children }: Props) => {
     return (
@@ -11,7 +11,7 @@ const GlobalLayout = ({ user, children }: Props) => {
             {/* <ProfileInfo user={user}/> */}
             {children}
         </>
-    )
-}
+    );
+};
 
-export default GlobalLayout
+export default GlobalLayout;

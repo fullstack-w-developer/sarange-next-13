@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
 import { BiLogoTelegram, BiSupport } from "react-icons/bi";
 import { BsDiscord, BsFillCreditCardFill, BsTwitter } from "react-icons/bs";
@@ -14,8 +14,6 @@ export const sexPerson = [
         label: "زن",
     },
 ];
-
-
 
 export const menuUser = [
     {

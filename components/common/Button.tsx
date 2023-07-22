@@ -1,13 +1,13 @@
 import React from "react";
 import ButtonMui from "@mui/material/Button";
 interface Props {
-    name: string;
+    name?: string;
     onClick?: () => void;
     isLoading?: boolean;
     className?: string;
-    icon?:any
+    icon?: any;
 }
-const Button = ({ name, onClick,icon, isLoading, className = "!bg-orange" }: Props) => {
+const Button = ({ name, onClick, icon, isLoading, className = "!bg-orange" }: Props) => {
     return (
         <ButtonMui
             disabled={isLoading}

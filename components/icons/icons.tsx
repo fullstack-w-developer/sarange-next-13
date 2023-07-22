@@ -84,7 +84,7 @@ export const Phone_check_icon = ({ fill }: Props) => (
     </svg>
 );
 
-export const User_icon = ({ fill, size,className }: Props) => (
+export const User_icon = ({ fill, size, className }: Props) => (
     <svg className={className} width={size} height={size} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M8.00008 8.49967C5.88675 8.49967 4.16675 6.77967 4.16675 4.66634C4.16675 2.55301 5.88675 0.833008 8.00008 0.833008C10.1134 0.833008 11.8334 2.55301 11.8334 4.66634C11.8334 6.77967 10.1134 8.49967 8.00008 8.49967ZM8.00008 1.83301C6.44008 1.83301 5.16675 3.10634 5.16675 4.66634C5.16675 6.22634 6.44008 7.49967 8.00008 7.49967C9.56008 7.49967 10.8334 6.22634 10.8334 4.66634C10.8334 3.10634 9.56008 1.83301 8.00008 1.83301Z"
