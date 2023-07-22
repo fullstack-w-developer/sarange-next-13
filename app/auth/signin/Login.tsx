@@ -11,10 +11,10 @@ import Button from "@/components/common/Button";
 import { animationsScreens } from "@/theme/animations";
 import { useRouter } from "next/navigation";
 import useLoginMuation from "@/hooks/mutation/auth/useLoginMuation";
-import { Warr_iocn } from "@/components/icons";
 import useAuthStore from "@/stores/auth-store";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import useGlobalStore from "@/stores/global-store";
+import { Warr_iocn } from "@/components/icons/icons";
 
 const Login = () => {
     const router = useRouter();
