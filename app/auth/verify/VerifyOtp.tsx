@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import { initialValuesCheckCode } from "@/helper/utils/initialValues";
 import { validationSchemaCheckCode } from "@/helper/utils/validation/auth";
-import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/icons";
 import Timer from "./Timer";
 import Otp from "./Otp";
 import { motion } from "framer-motion";
@@ -15,6 +14,7 @@ import { animationsScreens } from "@/theme/animations";
 import useVerifyCode from "@/hooks/mutation/auth/useVerifyCode";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import useAuthStore from "@/stores/auth-store";
+import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/icons/icons";
 
 const VerifyOtp = () => {
     const { user } = useAuthStore();

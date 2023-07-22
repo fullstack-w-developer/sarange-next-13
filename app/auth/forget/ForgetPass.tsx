@@ -8,11 +8,11 @@ import Input from "@/components/common/Input";
 import Button from "@/components/common/Button";
 import { validationSchemaForgetPass } from "@/helper/utils/validation/auth";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
-import { Warr_iocn } from "@/components/icons";
 import { motion } from "framer-motion";
 import { animationsScreens } from "@/theme/animations";
 import useForgetPassMutation from "@/hooks/mutation/auth/useForgetPassMutation";
 import { useEffect } from "react";
+import { Warr_iocn } from "@/components/icons/icons";
 
 const Forgetpass = () => {
     const { mutate, isError, isSuccess, data, error, isLoading } = useForgetPassMutation();
