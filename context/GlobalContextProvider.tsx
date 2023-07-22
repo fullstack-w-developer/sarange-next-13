@@ -6,6 +6,7 @@ import useConfigureQueryClient from "@/hooks/common/useConfigureQueryClient";
 import { MuiRtl } from "@/theme/RtlProvider";
 import useHandleCookies from "@/hooks/common/useHandleCookies";
 import useVerifyAuth from "@/hooks/global/useVerifyAuth";
+import useAndroidBackButton from "@/hooks/common/useAndroidBackButton";
 interface GlobalContextProviderProps {
     children?: ReactNode;
 }
@@ -14,6 +15,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
     const queryClient = useConfigureQueryClient();
     useHandleCookies();
     useVerifyAuth();
+    useAndroidBackButton(true);
     return (
         <QueryClientProvider client={queryClient}>
             <MuiRtl>{children}</MuiRtl>
