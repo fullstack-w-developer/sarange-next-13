@@ -10,7 +10,9 @@
 
 body {
   direction: rtl;
-  overscroll-behavior: none
+  overscroll-behavior: none;
+  touch-action: manipulation;
+
 }
 
 
