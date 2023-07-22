@@ -7,7 +7,8 @@ const useVerifyAuth = () => {
     function disableBackButton() {
         window.history.pushState(null, document.title, window.location.href);
         window.addEventListener('popstate', function (event) {
-            window.history.pushState(null, document.title, window.location.href);
+            event.preventDefault();
+            window.history.forward();
         });
     }
     const checkToken = async () => {
