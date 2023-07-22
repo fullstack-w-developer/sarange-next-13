@@ -45,7 +45,7 @@ const Login = () => {
         <motion.div className="overflow-hidden min-h-screen flex flex-col gap-20 justify-between" {...animationsScreens}>
             <Getotp isPass isLogin formik={formik} text="برای ورود لطفا شماره تلفن همراه خود و پسورد  را وارد کنید" />
             {isError && (
-                <div className="flex flex-col gap-3 items-center justify-center">
+                <div className="flex flex-col -mt-5 gap-3 items-center justify-center">
                     <Warr_iocn />
                     {/* @ts-ignore */}
                     <p className="text-center text-orange font-artin-light">{error?.response?.data?.Message}</p>

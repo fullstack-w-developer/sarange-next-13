@@ -28,7 +28,7 @@ export default function Home() {
     };
     return (
         <div className="bg-gray-50/30">
-            <div className="layout ">
+            <div className="layout overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
