@@ -86,3 +86,8 @@ body {
   height: 3px;
   background: linear-gradient(90deg, rgba(246, 125, 20, 0.00) 0%, #F67D14 52.72%, rgba(246, 125, 20, 0.00) 100%);
 }
+
+
+.bg_profile{
+  background: radial-gradient(24.89% 56.63% at 63.61% -3.44%, #E73913 0%, #F5620F 51.56%, #F57D0E 100%);
+}

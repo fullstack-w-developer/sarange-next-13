@@ -17,7 +17,6 @@ const Transactions = async () => {
                     ))
                 }
             </div>
-            <Menu menu={menuUser}/>
         </>
     )
 }

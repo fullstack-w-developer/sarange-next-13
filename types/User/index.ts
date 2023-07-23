@@ -11,6 +11,7 @@ export type User = {
     Sex: string;
     Shaba: string;
     State: string;
+    Phone:string;
     userRole: "Driver" | "Customer";
 };
 

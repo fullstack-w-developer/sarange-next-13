@@ -13,9 +13,9 @@ const SectionUserPage = () => {
     return (
         <div className="w-90 h-[70vh] flex justify-center items-center overflow-hidden">
             <div className="flex flex-col gap-14">
-                <motion.div initial={{ y: -500, scale: 0 }} animate={{ y: 0, scale: 1 }} transition={{ duration: 1 }}>
+                <div>
                     <Lottie animationData={Car} />
-                </motion.div>
+                </div>
                 <motion.div
                     className="flex w-full items-center gap-10"
                     initial={{ scale: 0, opacity: 0 }}

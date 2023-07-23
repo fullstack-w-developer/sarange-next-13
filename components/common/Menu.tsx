@@ -13,11 +13,11 @@ interface Props {
 const Menu = ({ menu }: Props) => {
     const pathname = usePathname();
     return (
-        <div className="flex items-center rounded-t-[24px] justify-center  fixed w-full bottom-0 h-[80px] menu">
+        <div className="flex items-center rounded-t-[24px] justify-center  fixed w-full bottom-0 h-[65px] menu">
             {menu.map((menu, i) => (
                 <Link
                     href={menu.url}
-                    className={`flex relative flex-1 h-full flex-col items-center justify-center gap-2`}
+                    className={`flex relative flex-1 h-full flex-col items-center justify-center gap-1`}
                     key={i}
                 >
                     <menu.icon fill={pathname === menu.url ? "#F67D14" : "#9FA8B1"} size="27" />
