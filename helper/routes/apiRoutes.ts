@@ -21,7 +21,8 @@ const apiRoutes = {
         trip: "/trips/user",
         my_transactions: "/user/transactions",
         me:"/user",
-        rate:"/driver"
+        rate:"/driver",
+        my_cards:"/Cards/myCards?skip=0&limit=10"
     },
 };
 

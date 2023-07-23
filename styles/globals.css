@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +48,7 @@ body {
 
 @import "./font.css";
 @import "./auth.css";
+@import "./loading.css";
 
 
 /* 
@@ -71,7 +71,7 @@ body {
 }
  */
 
-.custom_btn{
+.custom_btn {
   border: 1px solid #eee !important;
   color: #222 !important;
   font-size: 14px !important;
@@ -81,13 +81,16 @@ body {
 
 
 
-.active-menu{
+.active-menu {
   width: 100%;
   height: 3px;
   background: linear-gradient(90deg, rgba(246, 125, 20, 0.00) 0%, #F67D14 52.72%, rgba(246, 125, 20, 0.00) 100%);
 }
 
 
-.bg_profile{
+.bg_profile {
   background: radial-gradient(24.89% 56.63% at 63.61% -3.44%, #E73913 0%, #F5620F 51.56%, #F57D0E 100%);
 }
+
+.bg_cards {
+  background-image: radial-gradient( circle 827px at 47.3% 48%,  rgba(255,255,255,1) 0%, rgba(138,192,216,1) 90% );}

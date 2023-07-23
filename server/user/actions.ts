@@ -59,3 +59,16 @@ export const getTrasactions = async () => {
         return transaction;
     }
 };
+export const getCards = async () => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.user.my_cards}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+        });
+        const cards = await data.json();
+        return cards;
+    }
+};

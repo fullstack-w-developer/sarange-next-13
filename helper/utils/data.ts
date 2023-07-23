@@ -63,9 +63,9 @@ export const PaymentTypeEnum = {
 
 export const moreMenuUser = [
     {
-        name: "تنظمات مالی و کارت",
+        name: "کارت‌ها",
         icon: BsFillCreditCardFill,
-        url: "/user/settings",
+        url: "/user/cards",
     },
     {
         name: "سفر‌ها",
