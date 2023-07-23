@@ -4,6 +4,7 @@ import { Html5Qrcode } from "html5-qrcode";
 import { useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
 import { PaymentTypeEnum } from "@/helper/utils/data";
+import Link from "next/link";
 
 let html5QrCode: any;
 const qrConfig = {
@@ -43,7 +44,6 @@ const ScanComponent = () => {
     };
 
     const backScreen = () => {
-        router.back();
         return handleStop();
     };
 
@@ -58,7 +58,9 @@ const ScanComponent = () => {
         <div className="relative h-screen bg-white">
             <div id="reader" className="w-full" />
             <div className="absolute w-[90%] left-1/2 -translate-x-1/2 bottom-10">
-                <Button onClick={backScreen} className="!shadow-shadowBtn !bg-orange " name="بازگشت" />
+                <Link href="/user" onClick={backScreen} className="!shadow-shadowBtn w-full h-[48px] flex justify-center items-center text-white font-artin-bold rounded-lg  !bg-orange ">
+                    بازگشت
+                </Link>
             </div>
         </div>
     );
