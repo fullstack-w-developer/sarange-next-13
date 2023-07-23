@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image'
 import React from 'react'
 import Logo from "@/assets/images/logo_white.svg"
@@ -6,19 +7,25 @@ import { menuUser, moreMenuUser } from '@/helper/utils/data'
 import SocialMedia from '@/components/common/SocialMedia'
 import { Logout_iocn } from '@/components/icons/icons'
 import Menu from '@/components/common/Menu'
-import InfoUser from '@/components/common/InfoUser'
+import dynamic from 'next/dynamic'
+// import InfoUser from '@/components/common/InfoUser';
+import useAuthStore from '@/stores/auth-store';
+import Logout from '@/components/common/Logout';
+const InfoUser = dynamic(()=> import("@/components/common/InfoUser"),{ssr:false})
 const Profile = () => {
+    const { toggleLogout } = useAuthStore()
     return (
+        <>
         <div className='@bg-[#f8f8f8] min-h-screen'>
             <div className="bg_profile pb-10 pt-8 flex justify-center items-center">
                 <Image alt="" src={Logo} />
             </div>
             <div className="bg-white min-h-screen px-4 rounded-t-[28px] -mt-6">
-                <InfoUser  />
+                <InfoUser />
                 <MoreMenu list={moreMenuUser} />
                 <SocialMedia />
                 <button
-                    // onClick={setLogoutDialog}
+                    onClick={toggleLogout}
                     className="w-full px-2 mt-7 flex items-center gap-2 py-4 rounded-lg text-[#DF2040] bg-[#FCE9EC]"
                 >
                     <Logout_iocn />
@@ -27,6 +34,8 @@ const Profile = () => {
             </div>
             <Menu menu={menuUser} />
         </div>
+        <Logout/>
+        </>
     )
 }
 
