@@ -19,7 +19,7 @@ interface Props {
     paymentType: string | any;
 }
 const InformationDriver = ({ driver, paymentType }: Props) => {
-    const { mutate, isLoading } = useFarePaymentMutation({ url: "/user/result" });
+    const { mutate, isLoading } = useFarePaymentMutation({ url: `/user/result?id=${driver.AuthId}`});
     const formik = useFormik({
         initialValues: initialValuesFare,
         validationSchema: variantSchemaFare,

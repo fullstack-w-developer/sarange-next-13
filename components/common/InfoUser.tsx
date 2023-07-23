@@ -33,7 +33,7 @@ const InfoUser = () => {
                     <p className="font-artin-regular text-[#626262]">موجودی کیف پول شما</p>
                 </div>
                 <p className="font-artin-bold text-orange text-xl">
-                    {user?.Balance.toLocaleString()} <span className="text-[#626262] text-sm">تومان</span>
+                    {user?.Balance?.toLocaleString()} <span className="text-[#626262] text-sm">تومان</span>
                 </p>
             </div>
         </div>

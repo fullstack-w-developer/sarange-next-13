@@ -17,3 +17,7 @@ export const getMyTransactions = async () => {
     const url = getRoute({ route: `${routes.user.my_transactions}` });
     return await client<Transaction[]>({ url, method: "GET" });
 };
+export const rateToDriver = async (data:{star:number},id:string) => {
+    const url = getRoute({ route: `${routes.user.rate}/${id}/rate` });
+    return await client<Transaction[]>({ url, method: "POST",data });
+};

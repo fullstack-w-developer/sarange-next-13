@@ -14,6 +14,7 @@ import Logout from '@/components/common/Logout';
 const InfoUser = dynamic(()=> import("@/components/common/InfoUser"),{ssr:false})
 const Profile = () => {
     const { toggleLogout } = useAuthStore()
+    
     return (
         <>
         <div className='@bg-[#f8f8f8] min-h-screen'>

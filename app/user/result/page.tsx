@@ -6,9 +6,11 @@ import React from "react";
 import ResultImage from "@/assets/images/result.svg";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Rate from "@/components/common/Rate";
 const Result = () => {
     const router = useRouter()
     return (
+        <>
         <div className="h-screen bg-white flex relative flex-col justify-between">
             <motion.div
                 initial={{ height: 240, opacity: 0 }}
@@ -35,6 +37,8 @@ const Result = () => {
                 <Button onClick={()=>router.push("/user")} className="!bg-[#464646]" name="بازگشت به صحفه اصلی" />
             </motion.div>
         </div>
+        <Rate/>
+        </>
     );
 };
 

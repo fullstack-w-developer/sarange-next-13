@@ -13,9 +13,9 @@ const Logout = () => {
     const logout = () => {
         delete axios.defaults.headers.common["x-access-token"];
         removeCookies("token", { path: "/" });
+        router.push("/");
         removeUser();
         toggleLogout();
-        router.push("/");
     };
     return (
         <Dialog fullWidth open={openLogout}>
