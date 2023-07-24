@@ -30,3 +30,10 @@ export type EditUser = {
         Sex: string;
     };
 };
+
+
+export type TypeTransferMoney = {
+    "to": string,
+    "Amount": number,
+    "password": string
+}

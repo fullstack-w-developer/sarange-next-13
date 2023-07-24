@@ -68,7 +68,12 @@ export const moreMenuUser = [
         url: "/user/cards",
     },
     {
-        name: "سفر‌ها",
+        name: "انتفال وجه",
+        icon: BsFillCreditCardFill,
+        url: "/user/moneytransfer/1",
+    },
+    {
+        name: "سفر‌های من",
         icon: FaCar,
         url: "/user/trip",
     },

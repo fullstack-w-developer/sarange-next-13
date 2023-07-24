@@ -13,7 +13,7 @@ const Button = ({ name, onClick, icon, isLoading, className = "!bg-orange" }: Pr
             disabled={isLoading}
             onClick={onClick}
             variant="contained"
-            className={`h-[48px] gap-2 text-[16px]   !font-artin-bold w-full  !shadow-none ${className}`}
+            className={`h-[48px] gap-2 text-[16px]   !font-artin-bold w-full  !shadow-none ${className ? className :"!text-white"}`}
         >
             {icon}
             {isLoading ? "در حال بررسی" : name}

@@ -12,7 +12,7 @@ interface Props {
 const GlobalLayout = ({ user, children }: Props) => {
     const { setUser, user: userInfo } = useAuthStore()
     const pathname = usePathname();
-    const isUserPage = pathname === "/user" || pathname === "/user/transactions";
+    const isUserPage = pathname === "/user" || pathname === "/user/transactions" || pathname.startsWith("/moneytransfer");
     useEffect(() => {
         if (!userInfo?.phone) {
             setUser({ user })
@@ -25,6 +25,9 @@ const GlobalLayout = ({ user, children }: Props) => {
                 <ProfileInfo user={user} />
             }
             {children}
+
+          
+
         </>
     );
 };

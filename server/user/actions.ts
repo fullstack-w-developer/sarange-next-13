@@ -3,6 +3,7 @@
 import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes"
 import axios from "@/services/utils/axios";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export const getUser = async () => {
@@ -64,11 +65,54 @@ export const getCards = async () => {
     const token = cookieStore.get("token")?.value;
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.user.my_cards}`, {
+            next: {
+                tags: ["cards"]
+            },
+            
             headers: {
                 "x-Access-Token": token!,
             },
-        });
+        }
+        );
         const cards = await data.json();
         return cards;
     }
 };
+
+
+
+export const deActiveCard = async (id: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.user.deActiveCard}/${id}/status`, {
+            method: "PATCH",
+            headers: {
+                "x-Access-Token": token!,
+            },
+        }
+        );
+        revalidateTag("cards")
+    }
+    
+}
+
+export const getDetaisUserBySerialCard = async (id:string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.user.getDetilsByCard}/${id}`, {
+            next: {
+                tags: ["cards"]
+            },
+            
+            headers: {
+                "x-Access-Token": token!,
+            },
+        }
+    
+        );
+        const deatils = await data.json();
+        return deatils[0];
+    }
+}

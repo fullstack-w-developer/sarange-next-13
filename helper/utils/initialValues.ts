@@ -1,3 +1,5 @@
+import { number, string } from "yup";
+
 export const initialValuesSignUpUser = {
     password: "",
     repPassword: "",
@@ -33,4 +35,16 @@ export const initialValuesEditProfile = {
     FileName: "",
     LastName: "",
     Sex: "",
+};
+export const initialValuesMoneyTransfoer = {
+    to: "",
+    Amount: "",
+    password: "",
+    serial:""
+
+};
+export const initialValuesMoneyTransfoerVerify = {
+
+    password: "",
+
 };
