@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Taxi from "@/assets/images/pay.jpg";
+// import Taxi from "@/assets/images/pay.jpg";
 import Button from "@/components/common/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -46,7 +46,7 @@ export default function Home() {
                     transition={{ duration: 1.2, delay: 4.1 }}
                     className={`justify-center items-center flex-1 ${isVisible ? "hidden" : "flex"}`}
                 >
-                    <Image width={900} src={Taxi} alt="" />
+                    {/* <Image width={900} src={Taxi} alt="" /> */}
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8, y: 900 }}
