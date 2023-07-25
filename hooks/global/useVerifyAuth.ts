@@ -18,7 +18,7 @@ const useVerifyAuth = () => {
     };
     useEffect(() => {
         checkToken();
-        // disableBackButton();
+        disableBackButton();
     }, [cookies.token]);
 };
 
