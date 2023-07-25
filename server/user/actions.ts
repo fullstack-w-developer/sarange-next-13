@@ -9,7 +9,6 @@ import { cookies } from "next/headers";
 export const getUser = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
-
     if (token) {
         axios.defaults.headers.common["x-access-token"] = `${token}`;
         const data: any = await fetch(`${mainUrl}${route.user.me}`, {

@@ -2,7 +2,8 @@ import React from "react";
 
 const Loadidng = () => {
     return (
-        <div className="container">
+        <div className="min-h-screen bg-white">
+        <div className="container ">
             <div className="contact-card">
                 <div className="avatar"></div>
                 <div className="text"></div>
@@ -18,6 +19,8 @@ const Loadidng = () => {
                 </div>
             </div>
         </div>
+        </div>
+
     );
 };
 
