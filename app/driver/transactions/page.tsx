@@ -1,4 +1,6 @@
 import CardTransaction from "@/components/common/CardTransaction";
+import Menu from "@/components/common/Menu";
+import { menuDriver } from "@/helper/utils/data";
 import { getTrasactions } from "@/server/common/action";
 import { Transaction } from "@/types/User";
 import React from "react";
@@ -13,6 +15,7 @@ const Transactions = async () => {
                     <CardTransaction transaction={transaction} key={index} />
                 ))}
             </div>
+            <Menu menu={menuDriver}/>
         </>
     );
 };
