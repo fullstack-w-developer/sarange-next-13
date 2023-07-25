@@ -58,7 +58,11 @@ const ScanComponent = () => {
         <div className="relative h-screen bg-white">
             <div id="reader" className="w-full" />
             <div className="absolute w-[90%] left-1/2 -translate-x-1/2 bottom-10">
-                <Link href="/user" onClick={backScreen} className="!shadow-shadowBtn w-full h-[48px] flex justify-center items-center text-white font-artin-bold rounded-lg  !bg-orange ">
+                <Link
+                    href="/user"
+                    onClick={backScreen}
+                    className="!shadow-shadowBtn w-full h-[48px] flex justify-center items-center text-white font-artin-bold rounded-lg  !bg-orange "
+                >
                     بازگشت
                 </Link>
             </div>

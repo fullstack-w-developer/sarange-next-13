@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 const Logout = () => {
     const [cookies, _, removeCookies] = useCookies(["token"]);
     const router = useRouter();
-    const {removeUser,toggleLogout,openLogout} = useAuthStore();
+    const { removeUser, toggleLogout, openLogout } = useAuthStore();
     const logout = () => {
         delete axios.defaults.headers.common["x-access-token"];
         removeCookies("token", { path: "/" });

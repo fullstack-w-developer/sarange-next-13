@@ -10,24 +10,18 @@ interface Props {
     children: React.ReactNode;
 }
 const GlobalLayout = ({ user, children }: Props) => {
-    const { setUser, user: userInfo } = useAuthStore()
+    const { setUser, user: userInfo } = useAuthStore();
     const pathname = usePathname();
     const isUserPage = pathname === "/user" || pathname === "/user/transactions" || pathname.startsWith("/moneytransfer");
     useEffect(() => {
         if (!userInfo?.phone) {
-            setUser({ user })
+            setUser({ user });
         }
-    }, [pathname])
+    }, [pathname]);
     return (
         <>
-            {
-                isUserPage &&
-                <ProfileInfo user={user} />
-            }
+            {isUserPage && <ProfileInfo user={user} />}
             {children}
-
-          
-
         </>
     );
 };

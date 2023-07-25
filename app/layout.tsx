@@ -47,8 +47,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <meta property="og:url" content="https://yourdomain.com" />
                 <meta property="og:image" content="https://yourdomain.com/icons/apple-touch-icon.png" />
                 <meta
-                    name='viewport'
-                    content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
                 />
                 <link rel="apple-touch-startup-image" href="/images/apple_splash_2048.png" sizes="2048x2732" />
                 <link rel="apple-touch-startup-image" href="/images/apple_splash_1668.png" sizes="1668x2224" />

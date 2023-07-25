@@ -8,8 +8,8 @@ interface Props {
 }
 const CardTrip = ({ trip }: Props) => {
     const options = {
-        hour: '2-digit',
-        minute: '2-digit',
+        hour: "2-digit",
+        minute: "2-digit",
         hour12: false,
     };
 
@@ -18,7 +18,7 @@ const CardTrip = ({ trip }: Props) => {
     const hour = date.getHours();
     const minute = date.getMinutes();
     return (
-        <div className=" w-90 bg-white shadow rounded-lg p-2">
+        <div className="  bg-white shadow rounded-lg p-2">
             <div className="flex items-center justify-between border-b border-gray-200 pb-2">
                 <div className="flex items-center gap-2 text-gray-600">
                     <FaCar size={24} />
@@ -27,7 +27,9 @@ const CardTrip = ({ trip }: Props) => {
                 </div>
                 <p className="font-estedad-bold text-[12px] flex items-center gap-2 text-gray-600">
                     {/* @ts-ignore */}
-                   <span className="font-estedad-bold">{toFarsiNumber(`${hour + ":" + `${minute < 10 ? `0${minute}` : minute }`}`)}</span>
+                    <span className="font-estedad-bold">
+                        {toFarsiNumber(`${hour + ":" + `${minute < 10 ? `0${minute}` : minute}`}`)}
+                    </span>
                     {new Date(trip.CreatedAt).toLocaleDateString("fa-IR")}
                     <Calender_icon />
                 </p>
@@ -39,7 +41,8 @@ const CardTrip = ({ trip }: Props) => {
                     تعداد نفر : <span className="text-orange font-artin-regular">{trip.NumberOfPassengers}</span>
                 </p>
                 <p className="font-artin-black text-gray-600 flex gap-1">
-                    مبلغ پرداختی : <span className="text-orange font-artin-regular"> {trip.UserTransaction.Amount.toLocaleString()} </span>
+                    مبلغ پرداختی :{" "}
+                    <span className="text-orange font-artin-regular"> {trip.UserTransaction.Amount.toLocaleString()} </span>
                 </p>
             </div>
 
@@ -48,7 +51,7 @@ const CardTrip = ({ trip }: Props) => {
                 روش پرداخت : <span className="text-orange font-artin-regular">{trip.PaymentType}</span>
             </p>
             <div className="flex items-center gap-1 mt-2">
-                <Location_icon  />
+                <Location_icon />
                 <p className="font-estedad-medium text-xs text-gray-600">{trip.Route.Name}</p>
             </div>
         </div>

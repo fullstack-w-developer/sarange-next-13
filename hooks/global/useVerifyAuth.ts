@@ -6,7 +6,7 @@ const useVerifyAuth = () => {
     const [cookies] = useCookies(["token"]);
     function disableBackButton() {
         window.history.replaceState(null, document.title, window.location.href);
-        window.addEventListener('popstate', function (event) {
+        window.addEventListener("popstate", function (event) {
             event.preventDefault();
             window.history.forward();
         });
@@ -18,8 +18,7 @@ const useVerifyAuth = () => {
     };
     useEffect(() => {
         checkToken();
-        disableBackButton()
-
+        disableBackButton();
     }, [cookies.token]);
 };
 

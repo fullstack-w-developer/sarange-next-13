@@ -6,14 +6,14 @@ interface UseAuthStore {
     user: User | null;
     setUser: ({ user }: { user: User | any }) => void;
     removeUser: () => void;
-    openLogout:boolean;
-    toggleLogout:()=>void;
+    openLogout: boolean;
+    toggleLogout: () => void;
 }
 const useAuthStore = create<UseAuthStore>()(
     devtools(
         immer((set) => ({
             user: null,
-            openLogout:false,
+            openLogout: false,
             setUser: ({ user }: { user: User | any }) => {
                 set((state) => {
                     state.user = { ...state.user, ...user };

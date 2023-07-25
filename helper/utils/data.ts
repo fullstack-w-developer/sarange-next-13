@@ -51,7 +51,6 @@ export const MenuItemDriver = [
     },
 ];
 
-
 export const PaymentTypeEnum = {
     USER_SCAN_QR_CODE: "اسکن QR کد",
     USER_SCAN_QR_PAYMENT_GATEWAY: "اسکن QR کد و پرداخت از طریق درگاه پرداخت",

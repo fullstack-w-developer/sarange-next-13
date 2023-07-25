@@ -7,14 +7,11 @@ import Loadidng from "@/components/common/Loadidng";
 
 const User = async () => {
     const user = await getUser();
-    console.log(user)
     return (
-        <GlobalLayout user={user}>
-            <main>
-                <SectionUserPage />
-                <Menu menu={menuUser} />
-            </main>
-        </GlobalLayout>
+        <main>
+            <SectionUserPage />
+            <Menu menu={menuUser} />
+        </main>
     );
 };
 

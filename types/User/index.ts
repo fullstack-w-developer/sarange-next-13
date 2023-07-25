@@ -11,7 +11,7 @@ export type User = {
     Sex: string;
     Shaba: string;
     State: string;
-    Phone:string;
+    Phone: string;
     userRole: "Driver" | "Customer";
 };
 
@@ -31,9 +31,8 @@ export type EditUser = {
     };
 };
 
-
 export type TypeTransferMoney = {
-    "to": string,
-    "Amount": number,
-    "password": string
-}
+    to: string;
+    Amount: number;
+    password: string;
+};

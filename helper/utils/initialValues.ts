@@ -40,11 +40,8 @@ export const initialValuesMoneyTransfoer = {
     to: "",
     Amount: "",
     password: "",
-    serial:""
-
+    serial: "",
 };
 export const initialValuesMoneyTransfoerVerify = {
-
     password: "",
-
 };

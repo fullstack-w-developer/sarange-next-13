@@ -1,8 +1,8 @@
-import Menu from '@/components/common/Menu'
-import { menuUser } from '@/helper/utils/data'
-import React from 'react'
+import Menu from "@/components/common/Menu";
+import { menuUser } from "@/helper/utils/data";
+import React from "react";
 interface Props {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 const Layout = ({ children }: Props) => {
     return (
@@ -10,7 +10,7 @@ const Layout = ({ children }: Props) => {
             {children}
             <Menu menu={menuUser} />
         </>
-    )
-}
+    );
+};
 
-export default Layout
+export default Layout;

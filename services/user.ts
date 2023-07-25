@@ -26,8 +26,7 @@ export const deActiveCard = async (id: string) => {
     return await client<any>({ url, method: "PATCH" });
 };
 
-
 export const transferMoney = async (data: TypeTransferMoney) => {
     const url = getRoute({ route: `${routes.user.transferMoney}` });
-    return await client<any>({ url, method: "POST",data });
+    return await client<any>({ url, method: "POST", data });
 };

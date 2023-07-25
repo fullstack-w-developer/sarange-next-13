@@ -1,8 +1,8 @@
-import React from 'react'
-import Profile from './Profile'
+import React from "react";
+import Profile from "./Profile";
 
 const InformationUser = async () => {
-    return <Profile />
-}
+    return <Profile />;
+};
 
-export default InformationUser
+export default InformationUser;

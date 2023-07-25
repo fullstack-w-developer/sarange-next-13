@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Loadidng = () => {
     return (
@@ -18,7 +18,7 @@ const Loadidng = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Loadidng
+export default Loadidng;

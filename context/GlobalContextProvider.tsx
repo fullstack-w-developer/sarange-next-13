@@ -11,9 +11,6 @@ interface GlobalContextProviderProps {
     children?: ReactNode;
 }
 
-
-
-
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
     const queryClient = useConfigureQueryClient();
     useHandleCookies();

@@ -17,15 +17,15 @@ const SectionUserPage = () => {
                     <Lottie animationData={Car} />
                 </div>
                 <motion.div
-                    className="flex w-full items-center gap-10"
+                    className="flex w-full items-center gap-5"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1 }}
                 >
-                    <Link className="!flex-1 !block !min-w-[40%]" href="/user/scan">
+                    <Link className="!flex-1 !block" href="/user/scan">
                         <Button icon={<BsQrCode size={18} />} name="پرداخت با اسکن" />
                     </Link>
-                    <Link className="!flex-1 !block !min-w-[40%]" href="/user/citynumber">
+                    <Link className="!flex-1 !block" href="/user/citynumber">
                         <Button
                             className="!bg-transparent custom_btn !text-black"
                             icon={<AiFillCar size={22} />}
