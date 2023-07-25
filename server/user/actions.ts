@@ -12,6 +12,7 @@ export const getUser = async () => {
     if (token) {
         axios.defaults.headers.common["x-access-token"] = `${token}`;
         const data: any = await fetch(`${mainUrl}${route.user.me}`, {
+            cache: "no-store",
             headers: {
                 "x-Access-Token": token!,
             },
@@ -38,6 +39,7 @@ export const getTrip = async () => {
     const token = cookieStore.get("token")?.value;
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.user.trip}`, {
+            cache: "no-store",
             headers: {
                 "x-Access-Token": token!,
             },
@@ -51,6 +53,7 @@ export const getTrasactions = async () => {
     const token = cookieStore.get("token")?.value;
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.user.my_transactions}`, {
+            cache: "no-store",
             headers: {
                 "x-Access-Token": token!,
             },
@@ -67,7 +70,7 @@ export const getCards = async () => {
             next: {
                 tags: ["cards"],
             },
-
+            cache: "no-store",
             headers: {
                 "x-Access-Token": token!,
             },
@@ -99,7 +102,7 @@ export const getDetaisUserBySerialCard = async (id: string) => {
             next: {
                 tags: ["cards"],
             },
-
+            cache:"no-store",
             headers: {
                 "x-Access-Token": token!,
             },

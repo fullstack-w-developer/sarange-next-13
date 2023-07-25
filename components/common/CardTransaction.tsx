@@ -1,9 +1,6 @@
 import { Transaction } from "@/types/User";
 import React from "react";
-import { PiCoins } from "react-icons/pi";
-import { GiPayMoney } from "react-icons/gi";
 import { toFarsiNumber } from "@/helper/utils/toFarsiNumber";
-import { Calender_icon } from "../icons/icons";
 
 interface Props {
     transaction: Transaction;
@@ -19,7 +16,7 @@ const CardTransaction = ({ transaction }: Props) => {
     return (
         <div className="border-b bprder-gray-200 pb-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
-                <div className={`w-14 h-14 flex justify-center rounded-full items-center ${isPay ? "bg-[#FF1212]" : "bg-[#19B500]"}`}>
+                <div className={`w-12 h-12 flex justify-center rounded-full items-center ${isPay ? "bg-[#FF1212]" : "bg-[#19B500]"}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 17 17" fill="none">
                         <path d="M8.97187 11.1719H7.67938C6.76501 11.1719 6.01562 10.4019 6.01562 9.45316C6.01562 9.17129 6.24938 8.93754 6.53125 8.93754C6.81313 8.93754 7.04688 9.17129 7.04688 9.45316C7.04688 9.83129 7.32876 10.1407 7.67938 10.1407H8.97187C9.23999 10.1407 9.45312 9.90004 9.45312 9.60441C9.45312 9.23316 9.35001 9.17816 9.11626 9.09566L7.04688 8.37378C6.60688 8.21566 6.01562 7.89941 6.01562 6.88879C6.01562 6.02941 6.69626 5.32129 7.52813 5.32129H8.82062C9.73499 5.32129 10.4844 6.09129 10.4844 7.04004C10.4844 7.32191 10.2506 7.55566 9.96875 7.55566C9.68688 7.55566 9.45312 7.32191 9.45312 7.04004C9.45312 6.66191 9.17124 6.35254 8.82062 6.35254H7.52813C7.26001 6.35254 7.04688 6.59316 7.04688 6.88879C7.04688 7.26004 7.14999 7.31503 7.38374 7.39753L9.45312 8.11941C9.89313 8.27753 10.4844 8.59379 10.4844 9.60441C10.4844 10.4707 9.80374 11.1719 8.97187 11.1719Z" fill="white" />
                         <path d="M8.25 11.8594C7.96813 11.8594 7.73438 11.6256 7.73438 11.3438V5.15625C7.73438 4.87438 7.96813 4.64062 8.25 4.64062C8.53188 4.64062 8.76562 4.87438 8.76562 5.15625V11.3438C8.76562 11.6256 8.53188 11.8594 8.25 11.8594Z" fill="white" />
