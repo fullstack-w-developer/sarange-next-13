@@ -33,7 +33,7 @@ export const menuUser = [
     },
 ];
 
-export const MenuItemDriver = [
+export const menuDriver = [
     {
         name: "پروفایل",
         icon: User_icon,

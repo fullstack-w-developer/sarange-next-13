@@ -26,7 +26,7 @@ const ScanComponent = () => {
             handleStop();
         };
 
-        await html5QrCode.start({ facingMode: "environment" }, qrConfig, qrCodeSuccessCallback);
+        await html5QrCode.start({ facingMode: "user" }, qrConfig, qrCodeSuccessCallback);
     };
 
     const handleStop = () => {
@@ -36,7 +36,7 @@ const ScanComponent = () => {
                 .then(() => {
                     html5QrCode.clear();
                 })
-                .catch((err: any) => { });
+                .catch((err: any) => {});
         } catch (err) {
             console.log(err);
         }
@@ -47,7 +47,7 @@ const ScanComponent = () => {
     };
 
     const onResult = () => {
-        router.push(`/user/inquiry?code=${23456}&type=${PaymentTypeEnum.USER_SCAN_QR_CODE}`);
+        router.push(`/driver/inquiry?serial=${"64b61e3449917959a31ade53"}&type=${PaymentTypeEnum.DRIVER_SCAN_USER_CARD}`);
         return handleStop();
     };
 
@@ -61,7 +61,7 @@ const ScanComponent = () => {
                 <Link
                     href="/user"
                     onClick={backScreen}
-                    className="!shadow-shadowBtn w-full h-[48px] flex justify-center items-center text-white font-artin-bold rounded-lg  !bg-orange "
+                    className="!shadow-shadowBtn w-full h-[50px] flex justify-center items-center text-white font-artin-bold rounded-lg  !bg-orange "
                 >
                     بازگشت
                 </Link>

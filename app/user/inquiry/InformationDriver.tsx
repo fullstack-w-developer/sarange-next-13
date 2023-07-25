@@ -1,8 +1,6 @@
 "use client";
 import InfoDriverProfile from "./DriverInfoProfile";
 import PlaqueTaxi from "./PlaqueTaxi";
-import CostTaxiInsetMoney from "./CostTaxiInsetMoney";
-import Counter from "./Counter";
 import { Driver } from "@/types/Driver";
 import Button from "@/components/common/Button";
 import { GoArrowRight } from "react-icons/go";
@@ -14,6 +12,8 @@ import useFarePaymentMutation from "@/hooks/mutation/Fare/useFarePaymentMutation
 import { motion } from "framer-motion";
 import { animationsScreens } from "@/theme/animations";
 import Link from "next/link";
+import Counter from "@/components/common/Counter";
+import CostTaxiInsetMoney from "@/components/common/CostTaxiInsetMoney";
 interface Props {
     driver: Driver;
     paymentType: string | any;

@@ -48,7 +48,7 @@ const Counter = ({ driver, formik }: Props) => {
                     <p className="font-artin-bold">
                         کرایه:{" "}
                         <span className="font-artin-black text-xl text-orange_light mx-1">
-                            {Number(formik.values.numberOfPassenger) * driver?.CarRoute.Cost!}
+                            {(Number(formik.values.numberOfPassenger) * driver?.CarRoute.Cost!).toLocaleString()}
                         </span>
                         تومان
                     </p>

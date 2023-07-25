@@ -14,16 +14,14 @@ import { useRouter } from "next/navigation";
 import { PaymentTypeEnum } from "@/helper/utils/data";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import Link from "next/link";
-interface Props {
-    user: User;
-}
-const CityNumber = () => {
+
+const UserInfoForm = () => {
     const router = useRouter();
     const formik = useFormik({
         initialValues: initialValuesPayWithCode,
         validationSchema: validationSchemaPayWitCode,
         onSubmit: async (values) => {
-            router.push(`/user/inquiry?code=${Number(toEnglishNumber(values.code))}&type=${PaymentTypeEnum.USER_DRIVER_CODE}`);
+            router.push(`/driver/inquiry?phone=${Number(toEnglishNumber(values.code))}&type=${PaymentTypeEnum.DRIVER_USER_CODE}`);
         },
     });
     return (
@@ -31,17 +29,11 @@ const CityNumber = () => {
             <div>
                 <div className="w-90 mt-10">
                     <Info />
-                    <Input formik={formik} type="tel" classInputTag="text-center" label="کد راننده" name="code" />
+                    <Input formik={formik} type="tel" classInputTag="text-center" label="شماره تلفن همراه" name="code" />
                 </div>
             </div>
 
-            {false && (
-                <div className="flex flex-col gap-3 items-center justify-center">
-                    <Warr_iocn />
-                    {/* @ts-ignore */}
-                    <p className="text-center text-orange_light font-artin-light">{error?.response?.data?.Message}</p>
-                </div>
-            )}
+
             <div className="w-90 pb-6 flex gap-4 items-center">
                 <Link href="/user">
                     <Button
@@ -56,4 +48,4 @@ const CityNumber = () => {
     );
 };
 
-export default CityNumber;
+export default UserInfoForm;
