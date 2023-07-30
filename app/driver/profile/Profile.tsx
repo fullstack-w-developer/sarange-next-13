@@ -17,7 +17,6 @@ const Profile = () => {
 
     return (
         <>
-
             <div className="bg-[#f8f8f8] min-h-screen">
                 <div className="bg_profile pb-10 pt-8 flex justify-center items-center">
                     <Image alt="" src={Logo} />

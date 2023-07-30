@@ -8,7 +8,6 @@ const Driver = async () => {
         <main>
             <SectionAdminPage />
             <Menu menu={menuDriver} />
-
         </main>
     )
 }
