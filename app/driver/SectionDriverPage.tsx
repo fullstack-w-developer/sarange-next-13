@@ -5,7 +5,6 @@ import Car from "@/assets/images/car.json";
 import Button from "@/components/common/Button";
 import { motion } from "framer-motion";
 import { BsQrCode } from "react-icons/bs";
-import { AiFillCar } from "react-icons/ai";
 import Link from "next/link";
 import { BiUser } from "react-icons/bi";
 const SectionDriverPage = () => {

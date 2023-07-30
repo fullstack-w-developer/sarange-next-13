@@ -15,6 +15,7 @@ import useVerifyCode from "@/hooks/mutation/auth/useVerifyCode";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import useAuthStore from "@/stores/auth-store";
 import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/icons/icons";
+import Link from "next/link";
 
 const VerifyOtp = () => {
     const { user } = useAuthStore();
@@ -51,10 +52,10 @@ const VerifyOtp = () => {
                     <Otp formik={formik} />
                     <div className="flex justify-between items-center mt-8">
                         <Timer />
-                        <div className="flex items-center gap-1" onClick={() => router.back()}>
+                        <Link href="/auth/signin" className="flex items-center gap-1">
                             <Edit_icon fill="#F67D14" />
                             <p className="font-artin-regular text-[12px] text-orange">تغیر شماره تلفن</p>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -50,6 +50,23 @@ export const menuDriver = [
         url: "/driver/transactions",
     },
 ];
+export const counterList = [
+    {
+        name: "پروفایل",
+        icon: User_icon,
+        url: "/counter/profile",
+    },
+    {
+        name: "خانه",
+        icon: Home_icons,
+        url: "/counter",
+    },
+    {
+        name: "تراکنش",
+        icon: Wallet_icon,
+        url: "/counter/transactions",
+    },
+];
 
 export const PaymentTypeEnum = {
     USER_SCAN_QR_CODE: "اسکن QR کد",
@@ -104,6 +121,7 @@ export const MoreMenuDriver = [
         url: "/driver/checkout/recently",
     },
 ];
+
 
 export const social_media = [
     {

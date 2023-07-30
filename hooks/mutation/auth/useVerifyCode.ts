@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import axios from "@/services/utils/axios";
 import { useCookies } from "react-cookie";
 import useGlobalStore from "@/stores/global-store";
+import jwt_decode from "jwt-decode";
+
 
 const useVerifyCode = () => {
-    const { isDriver, isSignupUser } = useGlobalStore();
+    const { isSignupUser } = useGlobalStore();
     const [, setCookies] = useCookies(["token"]);
     const router = useRouter();
     return useMutation(async (data: CheckCode) => (isSignupUser ? checkCodeSignup(data) : checkCodeLogin(data)), {
@@ -15,16 +17,21 @@ const useVerifyCode = () => {
             if (isSignupUser) {
                 router.push("/auth/signup/information");
             } else {
+                const decoded: any = await jwt_decode(data.token);
                 setCookies("token", data.token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
                 axios.defaults.headers.common["x-access-token"] = `${data.token}`;
-                if (isDriver) {
+                if (decoded.UserRole === "Driver") {
                     router.push("/driver");
-                } else {
+                } else if (decoded.UserRole === "Customer") {
                     router.push("/user");
+                } else if (decoded.UserRole === "Counter") {
+                    router.push("/counter");
+                } else {
+                    router.push("/admin");
                 }
             }
         },
-        onError: async function (error) {},
+        onError: async function (error) { },
     });
 };
 

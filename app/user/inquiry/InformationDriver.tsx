@@ -22,7 +22,6 @@ const InformationDriver = ({ driver, paymentType }: Props) => {
     const { mutate, isLoading } = useFarePaymentMutation({ url: `/user/result?id=${driver.AuthId}` });
     const formik = useFormik({
         initialValues: initialValuesFare,
-        validationSchema: variantSchemaFare,
         onSubmit: (values) => {
             const data = {
                 car: driver?.Car._id!,

@@ -3,11 +3,7 @@ import React from "react";
 import ScanComponent from "./ScanComponent";
 
 const Scan = () => {
-    return (
-        <div>
-            <ScanComponent />
-        </div>
-    );
+    return <ScanComponent />
 };
 
 export default Scan;
