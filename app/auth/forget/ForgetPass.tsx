@@ -13,6 +13,7 @@ import { animationsScreens } from "@/theme/animations";
 import useForgetPassMutation from "@/hooks/mutation/auth/useForgetPassMutation";
 import { useEffect } from "react";
 import { Warr_iocn } from "@/components/icons/icons";
+import Link from "next/link";
 
 const Forgetpass = () => {
     const { mutate, isError, isSuccess, data, error, isLoading } = useForgetPassMutation();
@@ -42,9 +43,9 @@ const Forgetpass = () => {
                             <Image className="w-12 h-12" src={Logo} alt="" />
                             <p className="font-artin-regular text-xl">سارنگ</p>
                         </div>
-                        <button className="z-[9999]" onClick={() => router.back()}>
-                            <BsArrowLeftShort size={34} />
-                        </button>
+                       <Link className="z-[9999]" href={"/auth/signin"}>
+                       <BsArrowLeftShort size={34} />
+                       </Link>
                     </div>
                 </div>
 

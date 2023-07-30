@@ -20,13 +20,15 @@ const VerifyPay = ({ formik, open, setOpen, isLoading }: Props) => {
         <Dialog
             open={open}
             fullScreen
+            
         >
             <motion.div
-                {...animationsScreens}
+
+                { ...open && animationsScreens}
             >
                 <motion.div
                     variants={variants}
-                    className="flex w-90 flex-col justify-between min-h-screen">
+                    className="flex w-90 flex-col justify-between min-h-[99.5vh]">
                     <div className="">
                         <h1 className="text-center font-artin-black py-3 border-b border-gray-200 text-xl">وارد کردن رمز مسافر</h1>
                         <div className="flex justify-center mt-10 text-green-600">

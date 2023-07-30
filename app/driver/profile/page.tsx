@@ -1,13 +1,9 @@
-import Menu from '@/components/common/Menu'
-import { menuDriver } from '@/helper/utils/data'
-import React from 'react'
 
-const Profile = () => {
-  return (
-    <div>
-        <Menu menu={menuDriver}/>
-    </div>
-  )
+import React from 'react'
+import Profile from './Profile'
+
+const Index = () => {
+  return <Profile/>
 }
 
-export default Profile
+export default Index

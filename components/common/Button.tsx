@@ -12,9 +12,9 @@ const Button = ({ name, onClick, icon, isLoading, className = "!bg-orange" }: Pr
         <ButtonMui
             disabled={isLoading}
             onClick={onClick}
-            variant="contained"
+            variant="text"
             sx={{height:50}}
-            className={` gap-2 text-[16px]  whitespace-nowrap !font-artin-bold w-full  !shadow-none ${
+            className={` gap-2 text-[16px] !text-white  whitespace-nowrap !font-artin-bold w-full  !shadow-none ${
                 className ? className : "!text-white"
             }`}
         >

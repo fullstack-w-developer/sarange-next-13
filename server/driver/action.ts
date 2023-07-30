@@ -50,4 +50,18 @@ export const getUserInfoByPhone = async (phone:string) => {
         return userInfo;
     }
 };
-;
+export const getHistoryCheckoutDriver = async () => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        axios.defaults.headers.common["x-access-token"] = `${token}`;
+        const data: any = await fetch(`${mainUrl}${route.driver.history_request_checkout}`, {
+            cache: "no-store",
+            headers: {
+                "x-Access-Token": token!,
+            },
+        });
+        const history = await data.json();
+        return history;
+    }
+};

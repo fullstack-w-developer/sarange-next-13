@@ -84,20 +84,25 @@ export const moreMenuUser = [
 ];
 export const MoreMenuDriver = [
     {
-        name: "تنظمات مالی و کارت",
-        icon: BsFillCreditCardFill,
-        url: "/driver/settings",
-    },
-    {
         name: "سفر‌ها",
         icon: FaCar,
         url: "/driver/trip",
     },
-    // {
-    //     name: "پشتیبانی",
-    //     icon: BiSupport,
-    //     url: "/user/support",
-    // },
+    {
+        name: "تسویه",
+        icon: FaCar,
+        url: "/driver/checkout",
+    },
+    {
+        name: "تسویه حساب ها اخیر",
+        icon: FaCar,
+        url: "/driver/checkout/recently",
+    },
+    {
+        name: "امتیاز‌ها",
+        icon: FaCar,
+        url: "/driver/checkout/recently",
+    },
 ];
 
 export const social_media = [
@@ -118,3 +123,12 @@ export const social_media = [
         color: "#626262",
     },
 ];
+
+
+
+
+export const withdrawalRequestStatusEnum  = {
+    WAITING: "درحال انتظار",
+    SUCCESS: "تسویه شده",
+    FAILED: "ناموفق"
+};

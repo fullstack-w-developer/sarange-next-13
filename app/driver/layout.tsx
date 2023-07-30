@@ -6,6 +6,7 @@ interface Props {
 }
 const Layout = async ({ children }: Props) => {
     const driver = await getDriver()
+    console.log(driver)
     return <DriverLayout user={driver}>
         {children}
     </DriverLayout>;

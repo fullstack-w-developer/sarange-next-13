@@ -26,7 +26,7 @@ const UserInfo = ({ userInfo, paymentType, cardId }: Props) => {
     const { isLoading, mutate } = useFarePaymentMutation({ url: "/driver/result" })
     const formik = useFormik({
         initialValues: initialValuesFare,
-        validationSchema: variantSchemaFare,
+        validationSchema: open && variantSchemaFare,
         onSubmit: (values) => {
             const data = {
                 customer: userInfo.user.AuthId!,

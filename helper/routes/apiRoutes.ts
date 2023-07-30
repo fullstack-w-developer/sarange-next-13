@@ -15,6 +15,8 @@ const apiRoutes = {
         get_userInfo_by_phone: "/drivers/users",
         user_userInfo_by_cardId: "/drivers/users/cards",
         trip: "/trips/driver",
+        request_checkout:"/withdrawals",
+        history_request_checkout:"/withdrawals/me"
     },
     fare: "/fares",
     user: {
