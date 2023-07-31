@@ -51,25 +51,25 @@ body {
 @import "./loading.css";
 
 
-/* 
 
-.MuiFormControlLabel-root,
+
+.form_signup .MuiFormControlLabel-root,
 .MuiButtonBase-root {
     @apply !m-0 !p-0
 }
 
-.MuiFormGroup-root {
+.form_signup .MuiFormGroup-root {
     display: -webkit-box !important;
 }
 
-.MuiFormControlLabel-root {
+.form_signup .MuiFormControlLabel-root {
     @apply !ml-4 gap-2
 }
 
-.MuiSelect-select {
+.form_signup .MuiSelect-select {
     @apply !font-artin-regular !py-[0.9rem] !bg-[#EFF2F6]
 }
- */
+
 
 .custom_btn {
   border: 1px solid #eee !important;
@@ -94,3 +94,8 @@ body {
 
 .bg_cards {
   background-image: radial-gradient( circle 827px at 47.3% 48%,  rgba(255,255,255,1) 0%, rgba(138,192,216,1) 90% );}
+
+
+  .rtl{
+    direction: rtl !important;
+  }

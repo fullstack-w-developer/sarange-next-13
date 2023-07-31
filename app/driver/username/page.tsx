@@ -1,8 +1,8 @@
-import React from 'react'
-import UserInfoForm from './UserInfoForm'
+import React from "react";
+import UserInfoForm from "./UserInfoForm";
 
 const UserName = () => {
-  return <UserInfoForm/>
-}
+    return <UserInfoForm />;
+};
 
-export default UserName
+export default UserName;

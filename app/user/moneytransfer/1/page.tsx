@@ -10,7 +10,7 @@ import { validationSchemaMoneyTransfoerStep1 } from "@/helper/utils/validation/m
 import { useRouter } from "next/navigation";
 import useUserStore from "@/stores/user-store";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import { animationsScreens, variants } from "@/theme/animations";
 import BackHeader from "@/components/common/BackHeader";
 const Step1 = () => {
@@ -25,13 +25,10 @@ const Step1 = () => {
         },
     });
     return (
-        <motion.div
-        {...animationsScreens}
-        >
+        <motion.div {...animationsScreens}>
             <motion.div variants={variants} className="w-90 h-screen flex flex-col justify-between">
-                
                 <div>
-                    <BackHeader url="/user/profile" name="انتقال وجه"/>
+                    <BackHeader url="/user/profile" name="انتقال وجه" />
                     <div>
                         <Image src={ImageTransform} alt="" />
                     </div>

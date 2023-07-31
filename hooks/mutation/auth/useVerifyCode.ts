@@ -7,7 +7,6 @@ import { useCookies } from "react-cookie";
 import useGlobalStore from "@/stores/global-store";
 import jwt_decode from "jwt-decode";
 
-
 const useVerifyCode = () => {
     const { isSignupUser } = useGlobalStore();
     const [, setCookies] = useCookies(["token"]);
@@ -31,7 +30,7 @@ const useVerifyCode = () => {
                 }
             }
         },
-        onError: async function (error) { },
+        onError: async function (error) {},
     });
 };
 

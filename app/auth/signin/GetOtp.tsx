@@ -54,14 +54,14 @@ const Getotp = ({ text, formik, isLogin, isPass }: Props) => {
                     </div>
                 </div>
                 {isPass && (
-                   <div className="w-90">
-                     <Link
-                        href={"/auth/forget"}
-                        className="text-black w-fit mr-auto  flex justify-end cursor-pointer  relative !z-[9999] font-artin-bold px-4 pt-3"
-                    >
-                        فراموشی رمزعبور؟
-                    </Link>
-                   </div>
+                    <div className="w-90">
+                        <Link
+                            href={"/auth/forget"}
+                            className="text-black w-fit mr-auto  flex justify-end cursor-pointer  relative !z-[9999] font-artin-bold px-4 pt-3"
+                        >
+                            فراموشی رمزعبور؟
+                        </Link>
+                    </div>
                 )}
             </div>
         </div>

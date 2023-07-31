@@ -17,7 +17,7 @@ const DriverLayout = ({ user, children }: Props) => {
         if (!userInfo?.phone) {
             setUser({ user });
         }
-    }, [pathname,userInfo?.phone]);
+    }, [pathname, userInfo?.phone]);
     return (
         <>
             {isUserPage && <ProfileInfo user={user} />}

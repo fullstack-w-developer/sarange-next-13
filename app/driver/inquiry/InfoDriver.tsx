@@ -4,10 +4,10 @@ import User from "@/assets/images/user.png";
 import { usePathname } from "next/navigation";
 import { Location_icon } from "@/components/icons/icons";
 import { Driver } from "@/types/Driver";
-interface Props{
-    driver:Driver
+interface Props {
+    driver: Driver;
 }
-const InfoDriver = ({driver}:Props) => {
+const InfoDriver = ({ driver }: Props) => {
     const pathname = usePathname();
 
     return (

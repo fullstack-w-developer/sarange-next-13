@@ -1,9 +1,8 @@
-
-import React from 'react'
-import Profile from './Profile'
+import React from "react";
+import Profile from "./Profile";
 
 const Index = () => {
-  return <Profile/>
-}
+    return <Profile />;
+};
 
-export default Index
+export default Index;

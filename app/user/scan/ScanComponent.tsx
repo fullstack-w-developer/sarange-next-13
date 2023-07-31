@@ -36,7 +36,7 @@ const ScanComponent = () => {
                 .then(() => {
                     html5QrCode.clear();
                 })
-                .catch((err: any) => { });
+                .catch((err: any) => {});
         } catch (err) {
             console.log(err);
         }
@@ -58,7 +58,6 @@ const ScanComponent = () => {
         <div className="relative h-screen bg-white">
             <div id="reader" className="w-full" />
 
-            
             <div className="absolute w-[90%] left-1/2 -translate-x-1/2 bottom-10">
                 <Link
                     href="/user"

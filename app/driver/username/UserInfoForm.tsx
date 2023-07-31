@@ -33,7 +33,6 @@ const UserInfoForm = () => {
                 </div>
             </div>
 
-
             <div className="w-90 pb-6 flex gap-4 items-center">
                 <Link href="/user">
                     <Button

@@ -7,10 +7,7 @@ interface Props {
 const Layout = async ({ children }: Props) => {
     // const user = await getUser();
     // return <UserLayout user={user}>{children}</UserLayout>;
-    return <div>
-        {children}
-        
-    </div>
+    return <div>{children}</div>;
 };
 
 export default Layout;

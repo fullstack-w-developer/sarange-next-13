@@ -43,9 +43,9 @@ const Forgetpass = () => {
                             <Image className="w-12 h-12" src={Logo} alt="" />
                             <p className="font-artin-regular text-xl">سارنگ</p>
                         </div>
-                       <Link className="z-[9999]" href={"/auth/signin"}>
-                       <BsArrowLeftShort size={34} />
-                       </Link>
+                        <Link className="z-[9999]" href={"/auth/signin"}>
+                            <BsArrowLeftShort size={34} />
+                        </Link>
                     </div>
                 </div>
 

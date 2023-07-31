@@ -5,7 +5,6 @@ import { getTrasactions } from "@/server/common/action";
 import { Transaction } from "@/types/User";
 import React from "react";
 
-
 const Transactions = async () => {
     const transactions: Transaction[] = await getTrasactions();
     return (
@@ -15,7 +14,7 @@ const Transactions = async () => {
                     <CardTransaction transaction={transaction} key={index} />
                 ))}
             </div>
-            <Menu menu={menuDriver}/>
+            <Menu menu={menuDriver} />
         </>
     );
 };

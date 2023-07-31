@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import EmptyImage from "@/assets/images/paymeny_card.jpg";
 
-const Empty = ({name}:{name:string}) => {
+const Empty = ({ name }: { name: string }) => {
     return (
         <div className="mt-14">
             <Image src={EmptyImage} alt="" />

@@ -45,7 +45,7 @@ const Tabs = ({ cards, deActiveCard }: Props) => {
                     </div>
                     {select === 0 ? (
                         isActiveCardFilter.length === 0 ? (
-                            <Empty name="کارت فعالی وجود ندارد"/>
+                            <Empty name="کارت فعالی وجود ندارد" />
                         ) : (
                             <div className="flex flex-col gap-5 mt-10">
                                 {isActiveCardFilter.map((card, index) => (

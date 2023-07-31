@@ -23,6 +23,12 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "hooks/mutation/checkout/useWithdrawalsByDriverMutation"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "hooks/mutation/checkout/useWithdrawalsByDriverMutation"
+    ],
     "exclude": ["node_modules"]
 }

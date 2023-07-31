@@ -1,16 +1,11 @@
 "use client";
 import useDeActiveCardMutation from "@/hooks/mutation/user/useDeActiveCardMutation";
+import { TypeCardBank } from "@/types/Card";
 import { Switch } from "@mui/material";
 import React from "react";
 interface Props {
-    card: {
-        Status: boolean;
-        Serial: string;
-        CreatedAt: string;
-        Balance: number;
-        _id: string;
-    };
-    disabled: boolean;
+    card: TypeCardBank;
+    disabled?: boolean;
     deActiveCard?: (id: string) => void;
 }
 
@@ -22,15 +17,24 @@ const CardBank = ({ card, disabled, deActiveCard }: Props) => {
         if (deActiveCard) {
             deActiveCard(card._id!);
         }
-        // mutate(card._id)
+        mutate(card._id)
     };
 
     return (
         <div className=" w-full h-[180px] flex flex-col justify-between bg_cards p-2 rounded-lg">
-            <div className="flex items-center justify-between">
-                <span className="font-artin-regular">آیا میخواهید کارت را غیر فعال کنید؟</span>
-                <Switch onChange={handleChange} disabled={disabled} checked={checked} color="warning" />
-            </div>
+            {deActiveCard ? (
+                <div className="flex items-center justify-between">
+                    <span className="font-artin-regular">آیا میخواهید کارت را غیر فعال کنید؟</span>
+                    <Switch onChange={handleChange} disabled={disabled} checked={checked} color="warning" />
+                </div>
+            ) : (
+                <div className="flex items-center justify-between">
+                    <p className="font-artin-bold text-[#626262] pl-2">نام و نام خانوادگی: </p>
+                    <p className="font-artin-bold text-md text-[#222]">
+                        {card.FirstName} {card.LastName}
+                    </p>
+                </div>
+            )}
             <div className="flex items-center justify-between ">
                 <p className="font-artin-bold text-[#626262] pl-2 ">موجودی کارت</p>
 

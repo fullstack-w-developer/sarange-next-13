@@ -3,24 +3,23 @@ import React from "react";
 const Loadidng = () => {
     return (
         <div className="min-h-screen bg-white">
-        <div className="container ">
-            <div className="contact-card">
-                <div className="avatar"></div>
-                <div className="text"></div>
-            </div>
-            <div className="contact-card">
-                <div className="avatar"></div>
-                <div className="text"></div>
-            </div>
-            <div id="magnifying-glass">
-                <div id="glass"></div>
-                <div id="handle">
-                    <div id="handle-inner"></div>
+            <div className="container ">
+                <div className="contact-card">
+                    <div className="avatar"></div>
+                    <div className="text"></div>
+                </div>
+                <div className="contact-card">
+                    <div className="avatar"></div>
+                    <div className="text"></div>
+                </div>
+                <div id="magnifying-glass">
+                    <div id="glass"></div>
+                    <div id="handle">
+                        <div id="handle-inner"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-
     );
 };
 

@@ -122,7 +122,6 @@ export const MoreMenuDriver = [
     },
 ];
 
-
 export const social_media = [
     {
         icon: BiLogoTelegram,
@@ -142,11 +141,8 @@ export const social_media = [
     },
 ];
 
-
-
-
-export const withdrawalRequestStatusEnum  = {
+export const withdrawalRequestStatusEnum = {
     WAITING: "درحال انتظار",
     SUCCESS: "تسویه شده",
-    FAILED: "ناموفق"
+    FAILED: "ناموفق",
 };

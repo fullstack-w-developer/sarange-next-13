@@ -47,7 +47,7 @@ export const getTrip = async () => {
         const trip = await data.json();
         return trip;
     }
-}
+};
 export const getCards = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -88,7 +88,7 @@ export const getDetaisUserBySerialCard = async (id: string) => {
             next: {
                 tags: ["cards"],
             },
-            cache:"no-store",
+            cache: "no-store",
             headers: {
                 "x-Access-Token": token!,
             },

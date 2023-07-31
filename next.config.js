@@ -6,7 +6,7 @@ const nextConfig = withPWA({
     experimental: {
         serverActions: true,
     },
-    output: 'standalone',
+    output: "standalone",
     webpack(config, options) {
         const { isServer } = options;
         config.module.rules.push({

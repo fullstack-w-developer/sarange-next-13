@@ -18,9 +18,7 @@ type Props = {
 };
 const Step2 = async ({ searchParams }: Props) => {
     const details: any = await getDetaisUserBySerialCard(searchParams?.id!);
-    return  <Form details={details} />
-   
-    
+    return <Form details={details} />;
 };
 
 export default Step2;

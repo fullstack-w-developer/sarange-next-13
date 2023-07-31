@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Lottie from "lottie-react";
 import Car from "@/assets/images/car.json";

@@ -18,7 +18,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
     useAndroidBackButton(true);
     return (
         <QueryClientProvider client={queryClient}>
-                {children}
+            {children}
             <ToastContainer delay={8000} position="top-right" />
         </QueryClientProvider>
     );

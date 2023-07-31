@@ -13,7 +13,7 @@ const Button = ({ name, onClick, icon, isLoading, className = "!bg-orange" }: Pr
             disabled={isLoading}
             onClick={onClick}
             variant="text"
-            sx={{height:50}}
+            sx={{ height: 50 }}
             className={` gap-2 text-[16px] !text-white  whitespace-nowrap !font-artin-bold w-full  !shadow-none ${
                 className ? className : "!text-white"
             }`}

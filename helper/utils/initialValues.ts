@@ -26,6 +26,9 @@ export const initialValuesFare = {
     numberOfPassenger: 1,
     password: "",
 };
+export const initialValuesSharge = {
+    amount: "",
+};
 
 export const initialValuesPayWithCode = {
     code: "",

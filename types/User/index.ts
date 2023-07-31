@@ -1,5 +1,4 @@
-
-type NumberRate = { OneStar: number, TwoStar: number, ThreeStar: number, FourStar: number, FiveStar: number }
+type NumberRate = { OneStar: number; TwoStar: number; ThreeStar: number; FourStar: number; FiveStar: number };
 
 export type User = {
     AccountNumber: string;
@@ -16,7 +15,7 @@ export type User = {
     State: string;
     Phone: string;
     userRole: "Driver" | "Customer";
-    Rates:NumberRate;
+    Rates: NumberRate;
     TotalNumberOfRate: number;
 };
 

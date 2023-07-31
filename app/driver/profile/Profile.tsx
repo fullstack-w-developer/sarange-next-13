@@ -1,16 +1,15 @@
-'use client';
-import InfoUser from '@/components/common/InfoUser'
-import Logout from '@/components/common/Logout'
-import Menu from '@/components/common/Menu'
-import MoreMenu from '@/components/common/MoreMenu'
-import SocialMedia from '@/components/common/SocialMedia'
-import { Logout_iocn } from '@/components/icons/icons'
-import { MoreMenuDriver, menuDriver } from '@/helper/utils/data'
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import InfoUser from "@/components/common/InfoUser";
+import Logout from "@/components/common/Logout";
+import Menu from "@/components/common/Menu";
+import MoreMenu from "@/components/common/MoreMenu";
+import SocialMedia from "@/components/common/SocialMedia";
+import { Logout_iocn } from "@/components/icons/icons";
+import { MoreMenuDriver, menuDriver } from "@/helper/utils/data";
+import Image from "next/image";
+import React from "react";
 import Logo from "@/assets/images/logo_white.svg";
-import useAuthStore from '@/stores/auth-store'
-
+import useAuthStore from "@/stores/auth-store";
 
 const Profile = () => {
     const { toggleLogout } = useAuthStore();
@@ -36,9 +35,8 @@ const Profile = () => {
                 <Menu menu={menuDriver} />
             </div>
             <Logout />
-
         </>
-    )
-}
+    );
+};
 
-export default Profile
+export default Profile;

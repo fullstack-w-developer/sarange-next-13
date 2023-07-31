@@ -15,8 +15,8 @@ const apiRoutes = {
         get_userInfo_by_phone: "/drivers/users",
         user_userInfo_by_cardId: "/drivers/users/cards",
         trip: "/trips/driver",
-        request_checkout:"/withdrawals",
-        history_request_checkout:"/withdrawals/me"
+        request_checkout: "/withdrawals",
+        history_request_checkout: "/withdrawals/me",
     },
     fare: "/fares",
     user: {
@@ -28,6 +28,12 @@ const apiRoutes = {
         deActiveCard: "/Cards/myCards",
         getDetilsByCard: "/cards",
         transferMoney: "/Cards/TransferMoney",
+    },
+    counter: {
+        user_userInfo_by_cardId: "/cards",
+        sharge: "/counter/cards/balance",
+        get_code: "/counters/users/ActivationCode",
+        assign_card_user: "/counters/cards",
     },
 };
 

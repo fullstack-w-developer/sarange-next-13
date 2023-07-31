@@ -27,14 +27,10 @@ const InfoUser = () => {
                     <Link href="/user/profile/edit">
                         <Edit_iocn />
                     </Link>
-                    {
-                        user?.Rates &&
-                      <p className="font-artin-regular">امتیاز شما : {rateToDriver(user?.Rates,user?.TotalNumberOfRate)}</p>
-                    }
-
+                    {user?.Rates && (
+                        <p className="font-artin-regular">امتیاز شما : {rateToDriver(user?.Rates, user?.TotalNumberOfRate)}</p>
+                    )}
                 </div>
-
-
             </div>
             <div className="flex items-center justify-between ">
                 <div className="flex items-center gap-2">

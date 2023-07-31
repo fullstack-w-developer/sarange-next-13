@@ -20,7 +20,7 @@ export const getDriver = async () => {
         return userDriver;
     }
 };
-export const getUserInfoBySerialCard = async (id:string) => {
+export const getUserInfoBySerialCard = async (id: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
@@ -35,7 +35,7 @@ export const getUserInfoBySerialCard = async (id:string) => {
         return userInfo;
     }
 };
-export const getUserInfoByPhone = async (phone:string) => {
+export const getUserInfoByPhone = async (phone: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
