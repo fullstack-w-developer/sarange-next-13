@@ -20,3 +20,19 @@ export const getUserInfoBySerialCardCounter = async (id: string) => {
         return userInfo;
     }
 };
+
+export const getBalanceByCounter = async (id: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        axios.defaults.headers.common["x-access-token"] = `${token}`;
+        const data: any = await fetch(`${mainUrl}${route.counter.get_balance_by_counter}/${id}/balance`, {
+            cache: "no-store",
+            headers: {
+                "x-Access-Token": token!,
+            },
+        });
+        const userInfo = await data.json();
+        return userInfo;
+    }
+};

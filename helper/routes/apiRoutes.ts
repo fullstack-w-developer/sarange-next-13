@@ -34,6 +34,7 @@ const apiRoutes = {
         sharge: "/counter/cards/balance",
         get_code: "/counters/users/ActivationCode",
         assign_card_user: "/counters/cards",
+        get_balance_by_counter: "/counter/Cards", 
     },
 };
 
