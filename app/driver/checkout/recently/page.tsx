@@ -27,9 +27,10 @@ const Recently = async () => {
                                 <span>شماره شبا: </span>
                                 {item.WithdrawalTo}
                             </p>
-                            {/* @ts-ignore */}
                             <p>
                                 <span>تاریخ تسویه: </span>
+                                
+                            {/* @ts-ignore */}
                                 {new Date(item.createdAt).toLocaleDateString("fa-IR", options)}
                             </p>
                         </div>
