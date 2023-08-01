@@ -6,15 +6,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { animationsScreens, variants } from "@/theme/animations";
 import Empty from "./Empty";
+import { TypeCardBank } from "@/types/Card";
 
 interface Props {
-    cards: {
-        Status: boolean;
-        Serial: string;
-        CreatedAt: string;
-        Balance: number;
-        _id: string;
-    }[];
+    cards: TypeCardBank[]
     deActiveCard: (id: string) => void;
 }
 const Tabs = ({ cards, deActiveCard }: Props) => {
