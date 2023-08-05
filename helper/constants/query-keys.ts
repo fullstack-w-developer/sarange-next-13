@@ -13,3 +13,8 @@ export const USER = {
     GET_USER_TRIP: "get-user-trip",
     GET_MY_TRANSACTIONS: "get-my-transactions",
 };
+
+
+export const COUNTER = {
+    GET_ACTIVE_CARD:"get_active_card_user",
+}

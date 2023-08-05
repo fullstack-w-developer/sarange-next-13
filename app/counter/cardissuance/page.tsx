@@ -5,6 +5,7 @@ import GetCode from "./GetCode";
 import VerifyCode from "./VerifyCode";
 import Information from "./Information";
 import useCounterStore from "@/stores/counter-store";
+import CardUser from "./CardUser";
 
 const CardIssuance = () => {
     const { step } = useCounterStore();
@@ -14,6 +15,7 @@ const CardIssuance = () => {
             {step === 1 && <VerifyCode />}
             {step === 2 && <ScanComponent />}
             {step === 3 && <Information />}
+            {step === 4 && <CardUser />}
         </div>
     );
 };

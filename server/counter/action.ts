@@ -36,3 +36,18 @@ export const getBalanceByCounter = async (id: string) => {
         return userInfo;
     }
 };
+export const getCounter = async () => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        axios.defaults.headers.common["x-access-token"] = `${token}`;
+        const data: any = await fetch(`${mainUrl}${route.counter.me}`, {
+            cache: "no-store",
+            headers: {
+                "x-Access-Token": token!,
+            },
+        });
+        const user = await data.json();
+        return {...user.Owner,Balance:user.Balance,Address:user.Address,Name:user.Name};
+    }
+};

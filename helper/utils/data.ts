@@ -52,11 +52,6 @@ export const menuDriver = [
 ];
 export const counterList = [
     {
-        name: "پروفایل",
-        icon: User_icon,
-        url: "/counter/profile",
-    },
-    {
         name: "خانه",
         icon: Home_icons,
         url: "/counter",
@@ -146,3 +141,34 @@ export const withdrawalRequestStatusEnum = {
     SUCCESS: "تسویه شده",
     FAILED: "ناموفق",
 };
+
+
+
+
+export const linksCounter = [
+    {
+        name:"شارژ با اسکن",
+        url:"",
+        icon:""
+    },
+    {
+        name:"شارژ با شماره سریال",
+        url:"",
+        icon:""
+    },
+    {
+        name:"مسدودی کارت",
+        url:"",
+        icon:""
+    },
+    {
+        name:"موجودی کاربر",
+        url:"",
+        icon:""
+    },
+    {
+        name:"کارت جدید",
+        url:"",
+        icon:""
+    },
+]

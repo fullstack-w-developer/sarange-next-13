@@ -1,13 +1,13 @@
+import CounterLayout from "@/components/counter/CounterLayout";
 import UserLayout from "@/components/user/UserLayout";
-import { getUser } from "@/server/user/actions";
+import { getCounter } from "@/server/counter/action";
 import React from "react";
 interface Props {
     children: React.ReactNode;
 }
 const Layout = async ({ children }: Props) => {
-    // const user = await getUser();
-    // return <UserLayout user={user}>{children}</UserLayout>;
-    return <div>{children}</div>;
+    const user = await getCounter();
+    return <CounterLayout user={user}>{children}</CounterLayout>;
 };
 
 export default Layout;

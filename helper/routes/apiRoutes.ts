@@ -35,6 +35,9 @@ const apiRoutes = {
         get_code: "/counters/users/ActivationCode",
         assign_card_user: "/counters/cards",
         get_balance_by_counter: "/counter/Cards", 
+        get_user_active_card:"/counters/users",
+        deactive_card_user:"/counters/cards",
+        me:"/counters/me"
     },
 };
 
