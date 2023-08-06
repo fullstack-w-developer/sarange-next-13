@@ -1,5 +1,6 @@
 "use client";
-import { Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
+import Home from "@/app/page";
+import { Dash, Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
 import { BiLogoTelegram, BiSupport } from "react-icons/bi";
 import { BsDiscord, BsFillCreditCardFill, BsTwitter } from "react-icons/bs";
 import { FaCar } from "react-icons/fa";
@@ -172,3 +173,56 @@ export const linksCounter = [
         icon:""
     },
 ]
+
+
+export const headerTableUser = [
+    "نام",
+    "خانوادگی",
+    "شماره تلفن",
+    "تاریخ عضویت",
+    "جنسیت",
+    "موجودی",
+]
+
+
+
+export const headerMenu = [
+    {
+        title: "صفحه اصلی",
+        url: "",
+    },
+    {
+        title: "آشنایی با پارک",
+        url: "",
+    },
+    {
+        title: "کنسرسیوم‌ها",
+        url: "",
+    },
+    {
+        title: "مراکز وابسته",
+        url: "",
+    },
+    {
+        title: "معرفی شرکت‌ها",
+        url: "",
+    },
+    {
+        title: "اطلاع رسانی‌ها",
+        url: "",
+    },
+    {
+        title: "فرم‌ها و آیین نامه",
+        url: "",
+    },
+    {
+        title: "سامانه ها",
+        url: "",
+    },
+    {
+        title: "ارتباط با ما",
+        url: "",
+    },
+];
+
+

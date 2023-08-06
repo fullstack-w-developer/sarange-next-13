@@ -11,6 +11,7 @@ body {
   direction: rtl;
   overscroll-behavior: none;
   touch-action: manipulation;
+  overflow-x: hidden;
 
 }
 
@@ -98,4 +99,9 @@ body {
 
   .rtl{
     direction: rtl !important;
+  }
+
+
+  .MuiPagination-ul{
+    flex-direction: row-reverse !important;
   }

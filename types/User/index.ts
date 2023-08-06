@@ -17,6 +17,7 @@ export type User = {
     userRole: "Driver" | "Customer";
     Rates: NumberRate;
     TotalNumberOfRate: number;
+    createdAt:string
 };
 
 export type Transaction = {

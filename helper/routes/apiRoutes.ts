@@ -39,6 +39,10 @@ const apiRoutes = {
         deactive_card_user:"/counters/cards",
         me:"/counters/me"
     },
+    admin:{
+      users:"/admin/users?limit=10",
+      get_permissions:"/ac/permissions/resources/64bbaaf326645b2aec7a3086/users"
+    }
 };
 
 export default apiRoutes;
