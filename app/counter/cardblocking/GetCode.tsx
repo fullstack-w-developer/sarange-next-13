@@ -12,7 +12,7 @@ import useCounterStore from "@/stores/counter-store";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 
 const GetCode = () => {
-    const { setCardblocking,cardblocking } = useCounterStore();
+    const { setCardblocking, cardblocking } = useCounterStore();
     const { isLoading, mutate, isError, error } = useGetActivationCode();
     const formik = useFormik({
         initialValues: cardblocking,

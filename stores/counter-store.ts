@@ -3,7 +3,7 @@ import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
 
 interface UseCounterStore {
-    stepCardblocking:number;
+    stepCardblocking: number;
     step: number;
     information: {
         phone: string;
@@ -14,7 +14,7 @@ interface UseCounterStore {
         cardPassword: string;
         IsNewUser: null | boolean;
         cardId: string;
-        hasUserActiveCard:boolean | null
+        hasUserActiveCard: boolean | null;
     };
     cardblocking: {
         phone: string;
@@ -25,17 +25,16 @@ interface UseCounterStore {
     setCardblocking: (info: any) => void;
     setStep: (step: number) => void;
     setStepCardblocking: (step: number) => void;
-
 }
 const useCounterStore = create<UseCounterStore>()(
     devtools(
         immer((set) => ({
             step: 0,
-            stepCardblocking:0,
+            stepCardblocking: 0,
             cardblocking: {
                 cardId: "",
                 code: "",
-                phone: ""
+                phone: "",
             },
             setStep: (step: number) => {
                 set((state) => {
@@ -56,7 +55,7 @@ const useCounterStore = create<UseCounterStore>()(
                 phone: "",
                 IsNewUser: null,
                 cardId: "",
-                hasUserActiveCard:null
+                hasUserActiveCard: null,
             },
             setInformation: (info) => {
                 set((state) => {

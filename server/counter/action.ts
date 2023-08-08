@@ -48,6 +48,6 @@ export const getCounter = async () => {
             },
         });
         const user = await data.json();
-        return {...user.Owner,Balance:user.Balance,Address:user.Address,Name:user.Name};
+        return { ...user.Owner, Balance: user.Balance, Address: user.Address, Name: user.Name };
     }
 };

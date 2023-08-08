@@ -2,7 +2,7 @@
 import { TableRow, styled } from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
-export const StyledTableRow:any = styled(TableRow)(() => ({
+export const StyledTableRow: any = styled(TableRow)(() => ({
     position: "relative",
     "&:nth-of-type(odd)": {
         backgroundColor: "#f7f7f7",

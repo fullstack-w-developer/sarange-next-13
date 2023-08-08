@@ -12,14 +12,12 @@ import { GoArrowRight } from "react-icons/go";
 import ReactInputVerificationCode from "react-input-verification-code";
 
 const VerifyCode = () => {
-
     const { cardblocking, setStep } = useCounterStore();
     const { mutate, isError, error, isLoading } = useVerifyCodeMutation();
     const formik = useFormik({
         initialValues: initialValuesCheckCode,
         validationSchema: validationSchemaCheckCode,
         onSubmit: (values) => {
-            console.log(cardblocking)
             mutate({ Code: Number(values.Code), Phone: toEnglishNumber(cardblocking?.phone!)! });
         },
     });

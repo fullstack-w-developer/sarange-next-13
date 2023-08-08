@@ -42,7 +42,6 @@ export default function HeaderTop() {
                             ۰۶۱-۳۸۵۰
                             <Image alt="" src={Vector} />
                         </p>
-                        
                     </div>
                 </div>
             </div>

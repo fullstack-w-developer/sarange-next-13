@@ -17,7 +17,7 @@ const CardBank = ({ card, disabled, deActiveCard }: Props) => {
         if (deActiveCard) {
             deActiveCard(card._id!);
         }
-        mutate(card._id)
+        mutate(card._id);
     };
 
     return (

@@ -4,7 +4,10 @@ import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";
 import { convertObjectEnglishNumber } from "@/helper/utils/converObject";
 import { sexPerson } from "@/helper/utils/data";
-import { validationSchemaInformationCardissuance, validationSchemaInformationCardissuancePass } from "@/helper/utils/validation/counter";
+import {
+    validationSchemaInformationCardissuance,
+    validationSchemaInformationCardissuancePass,
+} from "@/helper/utils/validation/counter";
 import useAssignCardToExitUser from "@/hooks/mutation/counter/useAssignCardToExitUser";
 import useAssignCardToNewUser from "@/hooks/mutation/counter/useAssignCardToNewUser";
 import useCounterStore from "@/stores/counter-store";
@@ -18,7 +21,9 @@ const Information = () => {
     const { information } = useCounterStore();
     const formik = useFormik({
         initialValues: information,
-        validationSchema: information.IsNewUser ? validationSchemaInformationCardissuance : validationSchemaInformationCardissuancePass,
+        validationSchema: information.IsNewUser
+            ? validationSchemaInformationCardissuance
+            : validationSchemaInformationCardissuancePass,
         onSubmit: (values) => {
             const data = {
                 cardId: "64c7a77fe63b7e4693bd0077",
@@ -32,7 +37,7 @@ const Information = () => {
             if (information.IsNewUser) {
                 mutate(result);
             } else {
-                mutateExit(result)
+                mutateExit(result);
             }
         },
     });
@@ -56,7 +61,12 @@ const Information = () => {
                     className="custom_btn !min-w-[120px] !bg-transparent text-black flex-1"
                     name="بازگشت"
                 />
-                <Button isLoading={isLoading || isLoadingExit} onClick={formik.handleSubmit} name="تکمیل" className="!bg-green-600  text-white" />
+                <Button
+                    isLoading={isLoading || isLoadingExit}
+                    onClick={formik.handleSubmit}
+                    name="تکمیل"
+                    className="!bg-green-600  text-white"
+                />
             </div>
         </div>
     );

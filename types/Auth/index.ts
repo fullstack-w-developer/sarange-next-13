@@ -6,6 +6,7 @@ export type SignupUser = {
     sex: string;
     city: string;
     state: string;
+    _id: string;
 };
 
 export type CheckCode = {

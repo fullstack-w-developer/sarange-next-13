@@ -34,15 +34,17 @@ const apiRoutes = {
         sharge: "/counter/cards/balance",
         get_code: "/counters/users/ActivationCode",
         assign_card_user: "/counters/cards",
-        get_balance_by_counter: "/counter/Cards", 
-        get_user_active_card:"/counters/users",
-        deactive_card_user:"/counters/cards",
-        me:"/counters/me"
+        get_balance_by_counter: "/counter/Cards",
+        get_user_active_card: "/counters/users",
+        deactive_card_user: "/counters/cards",
+        me: "/counters/me",
     },
-    admin:{
-      users:"/admin/users?limit=10",
-      get_permissions:"/ac/permissions/resources/64bbaaf326645b2aec7a3086/users"
-    }
+    admin: {
+        users: "/admin/users?limit=10",
+        get_permissions: "/ac/permissions?resourceName=کاربران&userId=",
+        deleteUser:"/admin/users",
+        editUser:"/admin/users"
+    },
 };
 
 export default apiRoutes;

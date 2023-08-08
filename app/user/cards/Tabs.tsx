@@ -9,7 +9,7 @@ import Empty from "./Empty";
 import { TypeCardBank } from "@/types/Card";
 
 interface Props {
-    cards: TypeCardBank[]
+    cards: TypeCardBank[];
     deActiveCard: (id: string) => void;
 }
 const Tabs = ({ cards, deActiveCard }: Props) => {

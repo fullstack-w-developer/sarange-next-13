@@ -9,7 +9,7 @@ export const shargeCard = async (data: any) => {
 
 export const getActiveationCode = async (data: any) => {
     const url = getRoute({ route: `${routes.counter.get_code}` });
-    return await client<{ IsNewUser: boolean,hasUserActiveCard:boolean }>({ url, method: "POST", data });
+    return await client<{ IsNewUser: boolean; hasUserActiveCard: boolean }>({ url, method: "POST", data });
 };
 export const getAssignCardToExitUser = async (data: any) => {
     const url = getRoute({ route: `${routes.counter.assign_card_user}/${data.cardId}/assignToUser` });
@@ -19,8 +19,6 @@ export const getAssignCardToNewUser = async (data: any) => {
     const url = getRoute({ route: `${routes.counter.assign_card_user}/${data.cardId}/newUser` });
     return await client({ url, method: "POST", data });
 };
-
-
 
 export const getUserActiveCard = async (phone: string) => {
     const url = getRoute({ route: `${routes.counter.get_user_active_card}/${phone}/ActivateCard` });

@@ -1,8 +1,8 @@
-import Header from '@/components/admin/Header'
-import Sidebar from '@/components/admin/Sidebar'
-import React from 'react'
+import Header from "@/components/admin/Header";
+import Sidebar from "@/components/admin/Sidebar";
+import React from "react";
 interface Props {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 const Layout = ({ children }: Props) => {
     return (
@@ -12,9 +12,8 @@ const Layout = ({ children }: Props) => {
                 <Sidebar />
                 {children}
             </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default Layout
+export default Layout;

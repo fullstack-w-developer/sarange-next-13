@@ -11,7 +11,7 @@ interface Props {
 const CounterLayout = ({ user, children }: Props) => {
     const { setUser, user: userInfo } = useAuthStore();
     const pathname = usePathname();
-    const isUserPage = true
+    const isUserPage = true;
     useEffect(() => {
         if (!userInfo?.phone) {
             setUser({ user });

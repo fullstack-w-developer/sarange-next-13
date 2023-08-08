@@ -14,7 +14,6 @@ export const USER = {
     GET_MY_TRANSACTIONS: "get-my-transactions",
 };
 
-
 export const COUNTER = {
-    GET_ACTIVE_CARD:"get_active_card_user",
-}
+    GET_ACTIVE_CARD: "get_active_card_user",
+};

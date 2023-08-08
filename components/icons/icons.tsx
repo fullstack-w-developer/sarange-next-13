@@ -273,22 +273,20 @@ export const Logout_iocn = () => (
     </svg>
 );
 
-
-
-export const Sidebar_icon = ()=><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_2987_60948)">
-<path d="M4 6H20" stroke="#3B3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4 12H20" stroke="#3B3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4 18H20" stroke="#3B3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<clipPath id="clip0_2987_60948">
-<rect width="24" height="24" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-
-
+export const Sidebar_icon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_2987_60948)">
+            <path d="M4 6H20" stroke="#3B3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4 12H20" stroke="#3B3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4 18H20" stroke="#3B3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <defs>
+            <clipPath id="clip0_2987_60948">
+                <rect width="24" height="24" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
 
 export const Home = ({ fill = "#626262" }: any) => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -302,8 +300,6 @@ export const Home = ({ fill = "#626262" }: any) => (
         />
     </svg>
 );
-
-
 
 export const Dash = ({ fill = "#1F0990" }: any) => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

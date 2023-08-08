@@ -143,48 +143,35 @@ export const withdrawalRequestStatusEnum = {
     FAILED: "ناموفق",
 };
 
-
-
-
 export const linksCounter = [
     {
-        name:"شارژ با اسکن",
-        url:"",
-        icon:""
+        name: "شارژ با اسکن",
+        url: "",
+        icon: "",
     },
     {
-        name:"شارژ با شماره سریال",
-        url:"",
-        icon:""
+        name: "شارژ با شماره سریال",
+        url: "",
+        icon: "",
     },
     {
-        name:"مسدودی کارت",
-        url:"",
-        icon:""
+        name: "مسدودی کارت",
+        url: "",
+        icon: "",
     },
     {
-        name:"موجودی کاربر",
-        url:"",
-        icon:""
+        name: "موجودی کاربر",
+        url: "",
+        icon: "",
     },
     {
-        name:"کارت جدید",
-        url:"",
-        icon:""
+        name: "کارت جدید",
+        url: "",
+        icon: "",
     },
-]
+];
 
-
-export const headerTableUser = [
-    "نام",
-    "خانوادگی",
-    "شماره تلفن",
-    "تاریخ عضویت",
-    "جنسیت",
-    "موجودی",
-]
-
-
+export const headerTableUser = ["نام", "خانوادگی", "شماره تلفن", "تاریخ عضویت", "جنسیت", "موجودی"];
 
 export const headerMenu = [
     {
@@ -224,5 +211,3 @@ export const headerMenu = [
         url: "",
     },
 ];
-
-

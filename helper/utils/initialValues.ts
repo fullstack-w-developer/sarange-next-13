@@ -35,7 +35,7 @@ export const initialValuesPayWithCode = {
 };
 
 export const initialValuesEditProfile = {
-    FileName: "",
+    FirstName: "",
     LastName: "",
     Sex: "",
 };
