@@ -105,3 +105,16 @@ body {
   .MuiPagination-ul{
     flex-direction: row-reverse !important;
   }
+
+
+  .container_create_taxi .MuiFormGroup-root{
+    flex-direction: row !important;
+    margin: 0 !important;
+    gap:25px !important;
+
+  }
+
+  .container_create_taxi .MuiFormControlLabel-root{
+    gap:5px !important;
+    margin: 0 !important;
+  }

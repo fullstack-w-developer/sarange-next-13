@@ -4,7 +4,7 @@ import React from "react";
 import Button from "@/components/common/Button";
 import { BsFillLockFill } from "react-icons/bs";
 import { sexPerson } from "@/helper/utils/data";
-import CustomRadioButton from "./CustomRadioButton";
+import CustomRadioButton from "../../../../components/common/CustomRadioButton";
 import { initialValuesSignUpUser } from "@/helper/utils/initialValues";
 import { validationSchemaSignUp } from "@/helper/utils/validation/auth";
 import { useFormik } from "formik";

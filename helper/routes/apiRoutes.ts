@@ -41,9 +41,25 @@ const apiRoutes = {
     },
     admin: {
         users: "/admin/users?limit=10",
-        get_permissions: "/ac/permissions?resourceName=کاربران&userId=",
-        deleteUser:"/admin/users",
-        editUser:"/admin/users"
+        drivers: "/admin/drivers?limit=10",
+        counters: "/counters?limit=10",
+        get_permissionsUsers: "/ac/permissions?resourceName=کاربران&userId=",
+        get_permissionDrivers: "/ac/permissions?resourceName=راننده&userId=",
+        get_permissionsCounter: "/ac/permissions?resourceName=باجه&userId=",
+        deleteUser: "/admin/users",
+        deleteDriver: "/admin/drivers",
+        editUser: "/admin/users",
+        resource: "/ac/resources?limit=10",
+        permission: {
+            craeteRole: "/ac/roles",
+            allUser: "/admin/users?skip=0&limit=10",
+            allRole: "/ac/roles?skip=0پپ&limit=10",
+            assignRole: "/ac/roles/users",
+            craeteAction: "/ac/actions",
+            deleteRole: "/ac/roles",
+            editRole: "/ac/roles",
+            action: "/ac/actions",
+        },
     },
 };
 

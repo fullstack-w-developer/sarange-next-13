@@ -1,4 +1,4 @@
-import { deleteUserByAdmin } from "@/server/admin/actions";
+import { deleteDriverByAdmin, deleteUserByAdmin } from "@/server/admin/actions";
 import useAdminStore from "@/stores/admin-store";
 import { Dialog } from "@mui/material";
 import React from "react";
@@ -6,11 +6,18 @@ import React from "react";
 const DeleteUserByAdmin = () => {
     const { operationUser, toggle_opration_user } = useAdminStore();
     const deleteUser = () => {
-        // @ts-ignore
-        deleteUserByAdmin(operationUser.info.AuthId!).finally(() => {
-            toggle_opration_user({ info: null, open: false })
-        })
-    }
+        if (operationUser.fun === "deleteUserByAdmin") {
+            // @ts-ignore
+            deleteUserByAdmin(operationUser.info.AuthId!).finally(() => {
+                toggle_opration_user({});
+            });
+        } else {
+            // @ts-ignore
+            deleteDriverByAdmin(operationUser.info.AuthId!).finally(() => {
+                toggle_opration_user({});
+            });
+        }
+    };
 
     return (
         <Dialog maxWidth="xs" fullWidth open={operationUser.open === "حذف"}>
@@ -32,7 +39,10 @@ const DeleteUserByAdmin = () => {
                         انصراف
                     </button>
                     {/* @ts-ignore */}
-                    <button onClick={deleteUser} className="w-full bg-red-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold">
+                    <button
+                        onClick={deleteUser}
+                        className="w-full bg-red-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
+                    >
                         حذف کاربر
                     </button>
                 </div>

@@ -25,7 +25,7 @@ const StyledTableCell = styled(TableCell)(() => ({
 }));
 
 interface PropsTable {
-    header: {Name:string}[];
+    header: { Name: string }[];
     children?: React.ReactNode;
     namebtn?: string;
     onClick?: () => void;
@@ -44,13 +44,13 @@ export default function Table({ header, children, namebtn, onClick, title, title
                     <TableMui>
                         <TableHead>
                             <TableRow>
-                                {header.map((header:any, i) => {
-                                    if(header.Name=="آیدی" || header.Name === "AuthId") return
-                                    return(
+                                {header.map((header: any, i) => {
+                                    if (header.Name == "آیدی" || header.Name === "AuthId" || header.Name === "ماشین") return;
+                                    return (
                                         <StyledTableCell key={i} align="center">
-                                        <span className="font-artin-bold">{header.Name}</span>
-                                    </StyledTableCell>
-                                    )
+                                            <span className="font-artin-bold">{header.Name}</span>
+                                        </StyledTableCell>
+                                    );
                                 })}
                             </TableRow>
                         </TableHead>

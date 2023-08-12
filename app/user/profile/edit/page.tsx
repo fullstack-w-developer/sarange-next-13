@@ -1,5 +1,5 @@
 "use client";
-import CustomRadioButton from "@/app/auth/signup/information/CustomRadioButton";
+import CustomRadioButton from "@/components/common/CustomRadioButton";
 import BackHeader from "@/components/common/BackHeader";
 import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";

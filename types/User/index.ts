@@ -18,7 +18,7 @@ export type User = {
     Rates: NumberRate;
     TotalNumberOfRate: number;
     createdAt: string;
-    _id:string;
+    _id: string;
 };
 
 export type Transaction = {

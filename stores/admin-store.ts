@@ -4,17 +4,19 @@ import { devtools } from "zustand/middleware";
 import { User } from "@/types/User";
 
 type TypeOperationUsersAdmin = {
-    open?:"حذف" | "ویرایش" | false;
-    info?:User | null;
-    operation?:any
-}
+    open?: "حذف" | "ویرایش" | "ایجاد" | false;
+    info?: User | null;
+    operation?: any;
+    fun?: string;
+};
 interface UseAdminStore {
     operationUser: {
-        open: "حذف" | "ویرایش" | false;
+        open: "حذف" | "ویرایش" | "ایجاد" | false;
         info: User | null;
-        operation:any
+        operation: any;
+        fun: string;
     };
-    toggle_opration_user: ({open,info,operation}:TypeOperationUsersAdmin)=> void;
+    toggle_opration_user: ({ open, info, operation }: TypeOperationUsersAdmin) => void;
 }
 const useAdminStore = create<UseAdminStore>()(
     devtools(
@@ -22,13 +24,15 @@ const useAdminStore = create<UseAdminStore>()(
             operationUser: {
                 open: false,
                 info: null,
-                operation:null
+                operation: null,
+                fun: "",
             },
-            toggle_opration_user: ({info,open,operation}) => {
+            toggle_opration_user: ({ info, open, operation, fun }) => {
                 set((state) => {
-                    state.operationUser.open = open ? open:false;
+                    state.operationUser.open = open ? open : false;
                     state.operationUser.info = info ? info : null;
                     state.operationUser.operation = operation ? operation : null;
+                    state.operationUser.fun = fun ? fun : "";
                 });
             },
         })),

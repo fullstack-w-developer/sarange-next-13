@@ -8,15 +8,18 @@ import useAdminStore from "@/stores/admin-store";
 import { User } from "@/types/User";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
+import React, { useTransition } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BiEditAlt, BiSearch } from "react-icons/bi";
 interface Props {
     list: { Users: User[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" }[] };
 }
-const Users = ({ list }: Props) => {
+const Drivers = ({ list }: Props) => {
     const { toggle_opration_user, operationUser } = useAdminStore();
+    const [page, setPage] = React.useState(1);
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
         router.push(`/admin?skip=${(value - 1) * 10}`);
     };
 
@@ -80,4 +83,4 @@ const Users = ({ list }: Props) => {
     );
 };
 
-export default Users;
+export default Drivers;

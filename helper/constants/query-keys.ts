@@ -17,3 +17,8 @@ export const USER = {
 export const COUNTER = {
     GET_ACTIVE_CARD: "get_active_card_user",
 };
+export const ADMIN = {
+    GET_ALL_USERS: "get_all_users",
+    GET_ALL_Roules: "get_all_roules",
+    GET_ALL_ACTION: "get_all_action",
+};
