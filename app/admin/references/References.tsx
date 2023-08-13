@@ -1,6 +1,9 @@
 "use client";
+import DeleteReferance from "@/components/admin/reference/DeleteReferance";
+import NewReferance from "@/components/admin/reference/NewReferance";
 import Table from "@/components/common/Table";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
+import useReferanceStore from "@/stores/reference-store";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { BiSearch } from "react-icons/bi";
@@ -8,6 +11,7 @@ interface Props {
     references: { Total: number; Resources: any[] };
 }
 const References = ({ references }: Props) => {
+    const { toggleNewReferance, toggleDeleteReferance } = useReferanceStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         router.push(`/admin/references?skip=${(value - 1) * 10}`);
@@ -27,7 +31,13 @@ const References = ({ references }: Props) => {
                     />
                     <BiSearch size={20} />
                 </div>
-                {<button className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg"> جدید</button>}
+                <button
+                    onClick={() => toggleNewReferance({})}
+                    className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg"
+                >
+                    {" "}
+                    جدید
+                </button>
             </div>
             <Table header={[{ Name: "نقش" }, { Name: "عملیات" }]}>
                 {references.Resources?.map((item) => (
@@ -37,10 +47,16 @@ const References = ({ references }: Props) => {
                         </StyledTableCell>
                         <StyledTableCell align="center">
                             <div className="">
-                                <button className="bg-red-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular">
+                                <button
+                                    onClick={() => toggleDeleteReferance({ info: item })}
+                                    className="bg-red-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
+                                >
                                     حذف
                                 </button>
-                                <button className="bg-green-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular">
+                                <button
+                                    onClick={() => toggleNewReferance({ name: "edit", info: item })}
+                                    className="bg-green-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
+                                >
                                     ویرایش
                                 </button>
                             </div>
@@ -56,6 +72,8 @@ const References = ({ references }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
+            <NewReferance />
+            <DeleteReferance />
         </div>
     );
 };

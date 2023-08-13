@@ -49,7 +49,12 @@ const apiRoutes = {
         deleteUser: "/admin/users",
         deleteDriver: "/admin/drivers",
         editUser: "/admin/users",
-        resource: "/ac/resources?limit=10",
+        resource: {
+            all: "/ac/resources?limit=10",
+            add: "/ac/resources",
+            delete: "/ac/resources",
+            edit: "/ac/resources",
+        },
         permission: {
             craeteRole: "/ac/roles",
             allUser: "/admin/users?skip=0&limit=10",

@@ -224,12 +224,65 @@ export const getReferences = async (q: string, skip: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.resource}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
+        const data: any = await fetch(`${mainUrl}${route.admin.resource.all}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
                 "x-Access-Token": token!,
+            },
+            next: {
+                tags: ["all-referances"],
             },
         });
         const reference = await data.json();
         return reference;
+    }
+};
+
+export const deleteReferanceAction = async (id: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.resource.delete}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+            method: "DELETE",
+        });
+        const deleteUser = await data.json();
+        revalidateTag("all-referances");
+        return deleteUser;
+    }
+};
+export const addReferanceAction = async (formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.resource.add}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type":  'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(formData),
+        });
+        const result = await data.json();
+        revalidateTag("all-referances");
+        return result;
+    }
+};
+export const editReferanceAction = async (id: string, formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.resource.edit}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type":  'application/json'
+            },
+            method: "PATCH",
+            body: JSON.stringify(formData),
+        });
+        const result = await data.json();
+        revalidateTag("all-referances");
+        return result;
     }
 };

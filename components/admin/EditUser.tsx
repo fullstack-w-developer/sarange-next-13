@@ -46,8 +46,8 @@ const EditUser = () => {
                             const componentConfig = componentMap[attr.Value];
                             return componentConfig ? (
                                 componentConfig.type === "text" ? (
-                                    // @ts-ignore
                                     <Input
+                                        // @ts-ignore
                                         defaultValue={operationUser?.info[attr.Value]}
                                         key={attr._id}
                                         label={componentConfig.label}
