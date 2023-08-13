@@ -49,6 +49,11 @@ const apiRoutes = {
         deleteUser: "/admin/users",
         deleteDriver: "/admin/drivers",
         editUser: "/admin/users",
+        attribute:{
+            add:"/ac/resources",
+            delete:"/ac/attributes",
+            edit:"/ac/attributes",
+        },
         resource: {
             all: "/ac/resources?limit=10",
             add: "/ac/resources",

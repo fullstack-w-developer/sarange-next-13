@@ -252,6 +252,11 @@ export const deleteReferanceAction = async (id: string) => {
         return deleteUser;
     }
 };
+
+
+
+
+
 export const addReferanceAction = async (formData: any) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -259,7 +264,7 @@ export const addReferanceAction = async (formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.add}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type":  'application/json'
+                "Content-Type": 'application/json'
             },
             method: "POST",
             body: JSON.stringify(formData),
@@ -276,7 +281,7 @@ export const editReferanceAction = async (id: string, formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.edit}/${id}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type":  'application/json'
+                "Content-Type": 'application/json'
             },
             method: "PATCH",
             body: JSON.stringify(formData),
@@ -286,3 +291,78 @@ export const editReferanceAction = async (id: string, formData: any) => {
         return result;
     }
 };
+export const getAllAttribute = async (id: string, name: string, q?: string, skip?: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}/ac/resources/${id}/attributes?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": 'application/json'
+            },
+            method: "GET",
+            next: {
+                tags: ["all-attributes"]
+            }
+        });
+        const result = await data.json();
+        return result;
+    }
+};
+
+
+
+
+export const deleteAttributeAction = async (id: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.attribute.delete}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+            method: "DELETE",
+        });
+        const deleteAttribute = await data.json();
+        revalidateTag("all-attributes");
+
+        return deleteAttribute;
+    }
+};
+export const addAttributeAction = async (id: string, formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.attribute.add}/${id}/attributes`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(formData)
+        });
+        const Attribute = await data.json();
+        revalidateTag("all-attributes");
+
+        return Attribute;
+    }
+};
+export const editAttributeAction = async (id: string, formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.attribute.edit}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": 'application/json'
+            },
+            method: "PATCH",
+            body: JSON.stringify(formData)
+        });
+        const Attribute = await data.json();
+        revalidateTag("all-attributes");
+
+        return Attribute;
+    }
+};
+
