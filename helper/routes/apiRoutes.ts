@@ -69,6 +69,11 @@ const apiRoutes = {
             deleteRole: "/ac/roles",
             editRole: "/ac/roles",
             action: "/ac/actions",
+            allAttribute:"/ac/attributes",
+            allResources:"/ac/resources",
+            delete:"/ac/permissions",
+            add:"/ac/permissions",
+            edit:"/ac/permissions",
         },
     },
 };

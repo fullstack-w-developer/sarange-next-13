@@ -48,3 +48,9 @@ export const initialValuesMoneyTransfoer = {
 export const initialValuesMoneyTransfoerVerify = {
     password: "",
 };
+export const initialValuesPermession = {
+    Role: {} as any,
+    Action: {} as any,
+    Resource: {} as any,
+    Attributes:[]
+};

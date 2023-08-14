@@ -347,6 +347,8 @@ export const addAttributeAction = async (id: string, formData: any) => {
         return Attribute;
     }
 };
+
+
 export const editAttributeAction = async (id: string, formData: any) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -361,8 +363,89 @@ export const editAttributeAction = async (id: string, formData: any) => {
         });
         const Attribute = await data.json();
         revalidateTag("all-attributes");
+        
+        return Attribute;
+    }
+};
+
+
+export const getAllPermissions = async (q?: string, skip?: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}/ac/allPermissions?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": 'application/json'
+            },
+            method: "GET",
+            next: {
+                tags: ["all-permissions"]
+            }
+        });
+        const result = await data.json();
+        return result;
+    }
+};
+
+
+
+
+export const deletePermisstionAction = async (id: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.permission.delete}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+            method: "DELETE",
+        });
+        const deletePermissions = await data.json();
+        revalidateTag("all-permissions");
+
+        return deletePermissions;
+    }
+};
+
+
+
+export const addPermessionAction = async (formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.permission.add}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(formData)
+        });
+        const Attribute = await data.json();
+        revalidateTag("all-permissions");
 
         return Attribute;
     }
 };
 
+
+
+export const editPermessionAction = async (id: string, formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.permission.edit}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": 'application/json'
+            },
+            method: "PATCH",
+            body: JSON.stringify(formData)
+        });
+        const result = await data.json();
+        revalidateTag("all-permissions");
+        
+        return result;
+    }
+};

@@ -22,4 +22,5 @@ export const ADMIN = {
     GET_ALL_Roules: "get_all_roules",
     GET_ALL_ACTION: "get_all_action",
     GET_ALL_ATTRIBUTE: "get_all_attributes",
+    GET_ALL_RECOURCE: "get_all_recource",
 };

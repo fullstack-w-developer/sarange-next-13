@@ -15,7 +15,7 @@ const CreateRole = () => {
     const { setModal, modal } = usePermisstionStore();
 
     const { data } = useGetAllRolesQuery();
-    const { mutate, isLoading, isSuccess } = useCreateRoleMutation();
+    const { mutate, isLoading } = useCreateRoleMutation();
 
     const formik = useFormik({
         initialValues: {

@@ -11,20 +11,18 @@ interface Props {
     isLoading?: boolean;
     onChange?: (value: any) => void;
     isDisabled?: boolean;
+    isMulti?: boolean;
+    defaultValue?:any
 }
-const Select = ({ options, formik, name, getOptionValue, isDisabled, getOptionLabel, label, isLoading, onChange }: Props) => {
-    const Input = ({ ...rest }) => (
-        // @ts-ignore
-        <components.Input {...rest} autoComplete={"nope"} />
-    );
+const Select = ({ options,isMulti,defaultValue, formik, name, getOptionValue, isDisabled, getOptionLabel, label, isLoading, onChange }: Props) => {
     const styles = {
         control: (base: any, state: any) => ({
             ...base,
             border: state.isFocused ? 0 : formik.touched[name!]?._id && formik.errors[name!]?._id ? "1px solid #ef4444" : 0,
             backgroundColor: "#EFF2F6",
-            height: "44px",
+            height: isMulti ? "fit-content" :"44px",
             borderRadius: "8px",
-            fontFamily: "artin-regular !important",
+            fontFamily: "artin-regular",
             fontSize: "12px",
             // This line disable the blue border
             boxShadow: state.isFocused ? 0 : 0,
@@ -33,14 +31,17 @@ const Select = ({ options, formik, name, getOptionValue, isDisabled, getOptionLa
             },
             options: (styles: any) => ({
                 ...styles,
-                color: "red",
+                fontFamily: "artin-regular",
             }),
+
         }),
     };
     return (
         <div className="w-full">
             {label && <label className="font-artin-regular lg:text-[12px] block mb-1 pr-1 text-[#2F2F2F]">{label}</label>}
             <ReactSelect
+            defaultValue={defaultValue}
+                isMulti={isMulti}
                 value={formik.values[name]}
                 isLoading={isLoading}
                 placeholder={<span className="!text-gray-400">انتخاب کنید</span>}
