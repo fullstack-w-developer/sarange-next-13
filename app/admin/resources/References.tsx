@@ -15,11 +15,11 @@ const References = ({ references }: Props) => {
     const { toggleNewReferance, toggleDeleteReferance } = useReferanceStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        router.push(`/admin/references?skip=${(value - 1) * 10}`);
+        router.push(`/admin/resources?skip=${(value - 1) * 10}`);
     };
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        router.push(`/admin/references?q=${e.target.value}`);
+        router.push(`/admin/resources?q=${e.target.value}`);
     };
     return (
         <div className="flex-1 w-full mb-20">
@@ -40,11 +40,11 @@ const References = ({ references }: Props) => {
                     جدید
                 </button>
             </div>
-            <Table header={[{ Name: "نقش" }, { Name: "عملیات" }]}>
+            <Table header={[{ Name: "منبع" }, { Name: "عملیات" }]}>
                 {references.Resources?.map((item) => (
                     <StyledTableRow key={item._id}>
                         <StyledTableCell align="center">
-                            <Link href={`/admin/references/${item._id}`}>
+                            <Link href={`/admin/resources/${item._id}`}>
                                 <span className="font-artin-regular">{item.Name}</span>
                             </Link>
                         </StyledTableCell>

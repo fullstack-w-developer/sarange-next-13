@@ -5,6 +5,22 @@ import route from "@/helper/routes/apiRoutes";
 import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
 
+export const getTransactionsListAdmin = async (q: string, skip: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.transactions}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+            next: {
+                tags: ["transaction-list"],
+            },
+        });
+        const result = await data.json();
+        return result;
+    }
+};
 export const getUserListAdmin = async (q: string, skip: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -67,12 +83,41 @@ export const getPermissionsUsers = async () => {
         return permissions;
     }
 };
+export const getPermissionsTransactions = async () => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const decodeCode: any = jwt_decode(token);
+        const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsTransactions}${decodeCode.userId}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+        });
+        const permissions = await data.json();
+        return permissions;
+    }
+};
 export const getPermissionsCounters = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsCounter}${decodeCode.userId}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+        });
+        const permissions = await data.json();
+        return permissions;
+
+    }
+};
+export const getPermissionsSidebar = async () => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const decodeCode: any = jwt_decode(token);
+        const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsSidebar}${decodeCode.userId}`, {
             headers: {
                 "x-Access-Token": token!,
             },
@@ -96,8 +141,35 @@ export const getPermissionsDrivers = async () => {
     }
 };
 
+export const getTransactionsListWithPermissions = async (q: string, skip: string) => {
+    const [transactions, permisstion] = await Promise.all([getTransactionsListAdmin(q, skip), getPermissionsTransactions()]);
+    console.log(JSON.stringify(transactions), "transactions")
+    console.log(JSON.stringify(permisstion), "permisstion")
+    const filteredTransactions = transactions.Transactions.map((user: any) => {
+        const attributes = permisstion
+          .flatMap((item: any) => item.Attributes)
+          .map((attribute: any) => attribute.Value);
+        const filteredTransactions: any = {};
+        attributes.forEach((attr: any) => {
+          filteredTransactions[attr] = user[attr];
+        });
+      
+        return filteredTransactions;
+      });
+
+      
+    const Headers = permisstion.filter((item: any) => item.Action !== "مشاهده").flatMap((item: any) => item.Attributes);
+
+    return {
+        Transactions: filteredTransactions,
+        Total: transactions.Total,
+        Headers: Headers.length > 1 ? [...Headers, { Name: "عملیات" }] : Headers,
+        operation: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده"),
+    };
+};
 export const getUserListWithPermissions = async (q: string, skip: string) => {
     const [users, permisstion] = await Promise.all([getUserListAdmin(q, skip), getPermissionsUsers()]);
+
     const filteredUsers = users.Users.map((user: any) => {
         const attributes = permisstion
             .filter((item: any) => item.Action !== "مشاهده")
@@ -363,7 +435,7 @@ export const editAttributeAction = async (id: string, formData: any) => {
         });
         const Attribute = await data.json();
         revalidateTag("all-attributes");
-        
+
         return Attribute;
     }
 };
@@ -445,7 +517,7 @@ export const editPermessionAction = async (id: string, formData: any) => {
         });
         const result = await data.json();
         revalidateTag("all-permissions");
-        
+
         return result;
     }
 };

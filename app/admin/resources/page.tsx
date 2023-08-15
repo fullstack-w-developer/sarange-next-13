@@ -9,7 +9,10 @@ interface Props {
 }
 const Page = async ({ searchParams }: Props) => {
     const references: { Total: number; Resources: any[] } = await getReferences(searchParams?.q!, searchParams?.skip!);
-    return <References references={references} />;
+    return <div className="flex flex-col flex-1">
+        <h1 className="text-center text-3xl text-[#222] font-artin-black w-full py-4">منابع</h1>
+        <References references={references} />
+    </div>
 };
 
 export default Page;

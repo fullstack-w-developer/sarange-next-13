@@ -27,3 +27,20 @@ export const userDashboard = [
         url: "/infouser",
     },
 ];
+
+
+
+export const accessItems = [
+    {
+        name:"نقش",
+        url:"/admin/role",
+    },
+    {
+        name:"منابع",
+        url:"/admin/resources",
+    },
+    {
+        name:"سطح دسترسی",
+        url:"/admin/permission",
+    },
+]

@@ -26,7 +26,7 @@ const useVerifyCode = () => {
                 } else if (decoded.UserRole === "Counter") {
                     router.push("/counter");
                 } else {
-                    router.push("/admin");
+                    router.push("/admin/user");
                 }
             }
         },

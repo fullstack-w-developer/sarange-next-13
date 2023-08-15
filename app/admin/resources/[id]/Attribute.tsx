@@ -16,15 +16,15 @@ const Attribute = ({ attributes ,id}: Props) => {
     const { toggleAttribute } = useReferanceStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        router.push(`/admin/references?skip=${(value - 1) * 10}`);
+        router.push(`/admin/resources?skip=${(value - 1) * 10}`);
     };
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        router.push(`/admin/references?q=${e.target.value}`);
+        router.push(`/admin/resources?q=${e.target.value}`);
     };
     return (
         <div className="flex-1 w-full mb-20">
-            <BackHeader name="منابع" url="/admin/references"/>
+            <BackHeader name="منابع" url="/admin/resources"/>
             <div className="flex items-center justify-between my-10">
                 <div className="flex items-center  lg:w-1/2 bg-[#f7f7f7] border px-2 border-[#e1e1e1] rounded-lg py-2">
                     <input

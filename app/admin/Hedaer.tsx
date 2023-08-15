@@ -1,7 +1,6 @@
 import { Sidebar_icon } from "@/components/icons/icons";
 import React from "react";
-import Logo from "@/assets/images/logo.svg";
-import Image from "next/image";
+
 
 const Hedaer = () => {
     return (

@@ -3,6 +3,7 @@ import { Dialog } from "@mui/material";
 import React from "react";
 import Input from "../Input";
 import { addAttributeAction, editAttributeAction } from "@/server/admin/actions";
+import { successToast } from "@/helper/utils/error";
 interface Props {
     id: string
 }
@@ -11,15 +12,17 @@ const AttributeAction = ({ id }: Props) => {
     const onAction = async (e: FormData) => {
         const attributeName = e.get("attributeName")?.toString();
         const value = e.get("value")?.toString();
-        if (!attributeName || !value) return;
+        const header = e.get("header")?.toString();
+        if (!attributeName || !value || !header) return;
 
         if (attribute.name === "edit") {
             const data = {
                 attributeName,
-                attributeValue: value
+                attributeValue: value,
+                header
             };
             editAttributeAction(attribute.info?._id, data).finally(() => {
-                toggleAttribute({ open: undefined });
+                successToast("با موفقیت  ثبت شد")
             });
         } else {
             const data = {
@@ -41,6 +44,7 @@ const AttributeAction = ({ id }: Props) => {
                     <form action={onAction} className="flex flex-col gap-2">
                         <Input defaultValue={attribute.info?.Name ?? ""} name="attributeName" label={"نام"} />
                         <Input defaultValue={attribute.info?.Value ?? ""} name="value" label={"مقدار(Value)"} />
+                        <Input defaultValue={attribute.info?.TableHeader ?? ""} name="header" label={"عنوان در جدول"} />
                         <div className="flex items-center mt-7 my-4 px-4 gap-10">
                             <button
                                 type="button"
