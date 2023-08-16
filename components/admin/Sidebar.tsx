@@ -70,9 +70,10 @@ export default function Sidebar({ dashboardAdmin }: Props) {
                                 open &&
                                 <ul className="w-full">
                                     {
-                                        accessItems.map((access) => (
-                                            <li>
+                                        accessItems.map((access,idx) => (
+                                            <li key={idx}>
                                                 <Link
+                                                
                                                     href={`${access.url}`}
                                                     className={`flex gap-4 px-8 items-center  py-2 text-[14px] ${pathname === `${access.url}`
                                                         ? "font-artin-bold text-[#1F0990] after:rounded-xl relative after:absolute after:right-5 after:w-[3px] after:h-3 after:bg-[#02D0FF]"
