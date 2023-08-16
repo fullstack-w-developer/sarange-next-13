@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
-type Attribute = { info?: any; open?: "add" | "edit" | "delete"; name?: "add" | "edit" | "delete" }
+type Attribute = { info?: any; open?: "add" | "edit" | "delete"; name?: "add" | "edit" | "delete" };
 interface UseReferanceStore {
     newReferance: {
         open: boolean;
@@ -27,7 +27,7 @@ const useReferanceStore = create<UseReferanceStore>()(
             attribute: {
                 open: undefined,
                 info: null,
-                name: "add"
+                name: "add",
             },
             newReferance: {
                 open: false,

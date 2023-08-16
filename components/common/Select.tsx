@@ -12,15 +12,27 @@ interface Props {
     onChange?: (value: any) => void;
     isDisabled?: boolean;
     isMulti?: boolean;
-    defaultValue?:any
+    defaultValue?: any;
 }
-const Select = ({ options,isMulti,defaultValue, formik, name, getOptionValue, isDisabled, getOptionLabel, label, isLoading, onChange }: Props) => {
+const Select = ({
+    options,
+    isMulti,
+    defaultValue,
+    formik,
+    name,
+    getOptionValue,
+    isDisabled,
+    getOptionLabel,
+    label,
+    isLoading,
+    onChange,
+}: Props) => {
     const styles = {
         control: (base: any, state: any) => ({
             ...base,
             border: state.isFocused ? 0 : formik.touched[name!]?._id && formik.errors[name!]?._id ? "1px solid #ef4444" : 0,
             backgroundColor: "#EFF2F6",
-            height: isMulti ? "fit-content" :"44px",
+            height: isMulti ? "fit-content" : "44px",
             borderRadius: "8px",
             fontFamily: "artin-regular",
             fontSize: "12px",
@@ -33,14 +45,13 @@ const Select = ({ options,isMulti,defaultValue, formik, name, getOptionValue, is
                 ...styles,
                 fontFamily: "artin-regular",
             }),
-
         }),
     };
     return (
         <div className="w-full">
             {label && <label className="font-artin-regular lg:text-[12px] block mb-1 pr-1 text-[#2F2F2F]">{label}</label>}
             <ReactSelect
-            defaultValue={defaultValue}
+                defaultValue={defaultValue}
                 isMulti={isMulti}
                 value={formik.values[name]}
                 isLoading={isLoading}

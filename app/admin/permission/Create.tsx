@@ -11,7 +11,7 @@ interface Props {
     permession: { Total: number; Permissions: any[] };
 }
 const Create = ({ permession }: Props) => {
-    const {setPermisstion } = usePermisstionStore();
+    const { setPermisstion } = usePermisstionStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         router.push(`/admin/permession/create?skip=${(value - 1) * 10}`);
@@ -77,10 +77,7 @@ const Create = ({ permession }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {
-            
-                <Permession />
-            }
+            {<Permession />}
             <DeletePermisstion />
         </div>
     );

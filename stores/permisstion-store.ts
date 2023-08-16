@@ -12,7 +12,7 @@ type PermisstionType = {
     name?: "delete" | "edit" | "add" | "";
 };
 interface UsePermisstionStore {
-    permisstion: PermisstionType
+    permisstion: PermisstionType;
     modal: {
         open: "حذف" | "ویرایش" | boolean;
         data: any;
@@ -27,7 +27,7 @@ const usePermisstionStore = create<UsePermisstionStore>()(
             permisstion: {
                 open: false,
                 data: null,
-                name: ""
+                name: "",
             },
             modal: {
                 open: false,

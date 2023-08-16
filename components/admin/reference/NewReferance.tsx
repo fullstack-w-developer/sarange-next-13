@@ -30,7 +30,7 @@ const NewReferance = () => {
         <Dialog maxWidth="xs" fullWidth open={newReferance.open}>
             <div className="h-fit  !flex !flex-col !justify-between">
                 <h1 className="text-center font-artin-black text-xl text-[#222] border-[#e1e1e1] border-b py-3">
-                    منبع   {newReferance.name === "edit" ? "ویرایش" : "جدید"}
+                    منبع {newReferance.name === "edit" ? "ویرایش" : "جدید"}
                 </h1>
                 <div className="p-2 px-4 pt-4">
                     <form action={onAction} className="flex flex-col gap-2">
@@ -48,9 +48,7 @@ const NewReferance = () => {
                                 type="submit"
                                 className="w-full bg-green-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                             >
-                                {
-                                    newReferance.name === "edit" ? "ویرایش" : "ایجاد"
-                                }
+                                {newReferance.name === "edit" ? "ویرایش" : "ایجاد"}
                             </button>
                         </div>
                     </form>

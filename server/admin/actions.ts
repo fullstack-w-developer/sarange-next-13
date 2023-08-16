@@ -21,6 +21,7 @@ export const getTransactionsListAdmin = async (q: string, skip: string) => {
         return result;
     }
 };
+
 export const getUserListAdmin = async (q: string, skip: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -83,6 +84,7 @@ export const getPermissionsUsers = async () => {
         return permissions;
     }
 };
+
 export const getPermissionsTransactions = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -109,7 +111,6 @@ export const getPermissionsCounters = async () => {
         });
         const permissions = await data.json();
         return permissions;
-
     }
 };
 export const getPermissionsSidebar = async () => {
@@ -151,7 +152,7 @@ export const getTransactionsListWithPermissions = async (q: string, skip: string
     return {
         Transactions: transactions.Transactions,
         Total: transactions.Total,
-        Headers:permisstion[0].Attributes,
+        Headers: permisstion[0].Attributes,
     };
 };
 export const getUserListWithPermissions = async (q: string, skip: string) => {
@@ -312,10 +313,6 @@ export const deleteReferanceAction = async (id: string) => {
     }
 };
 
-
-
-
-
 export const addReferanceAction = async (formData: any) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -323,7 +320,7 @@ export const addReferanceAction = async (formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.add}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "POST",
             body: JSON.stringify(formData),
@@ -340,7 +337,7 @@ export const editReferanceAction = async (id: string, formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.edit}/${id}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "PATCH",
             body: JSON.stringify(formData),
@@ -354,23 +351,23 @@ export const getAllAttribute = async (id: string, name: string, q?: string, skip
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
-        const data: any = await fetch(`${mainUrl}/ac/resources/${id}/attributes?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`, {
-            headers: {
-                "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+        const data: any = await fetch(
+            `${mainUrl}/ac/resources/${id}/attributes?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`,
+            {
+                headers: {
+                    "x-Access-Token": token!,
+                    "Content-Type": "application/json",
+                },
+                method: "GET",
+                next: {
+                    tags: ["all-attributes"],
+                },
             },
-            method: "GET",
-            next: {
-                tags: ["all-attributes"]
-            }
-        });
+        );
         const result = await data.json();
         return result;
     }
 };
-
-
-
 
 export const deleteAttributeAction = async (id: string) => {
     const cookieStore = cookies();
@@ -395,10 +392,10 @@ export const addAttributeAction = async (id: string, formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.attribute.add}/${id}/attributes`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "POST",
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
         });
         const Attribute = await data.json();
         revalidateTag("all-attributes");
@@ -406,7 +403,6 @@ export const addAttributeAction = async (id: string, formData: any) => {
         return Attribute;
     }
 };
-
 
 export const editAttributeAction = async (id: string, formData: any) => {
     const cookieStore = cookies();
@@ -415,10 +411,10 @@ export const editAttributeAction = async (id: string, formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.attribute.edit}/${id}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "PATCH",
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
         });
         const Attribute = await data.json();
         revalidateTag("all-attributes");
@@ -427,7 +423,6 @@ export const editAttributeAction = async (id: string, formData: any) => {
     }
 };
 
-
 export const getAllPermissions = async (q?: string, skip?: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -435,20 +430,17 @@ export const getAllPermissions = async (q?: string, skip?: string) => {
         const data: any = await fetch(`${mainUrl}/ac/allPermissions?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "GET",
             next: {
-                tags: ["all-permissions"]
-            }
+                tags: ["all-permissions"],
+            },
         });
         const result = await data.json();
         return result;
     }
 };
-
-
-
 
 export const deletePermisstionAction = async (id: string) => {
     const cookieStore = cookies();
@@ -467,8 +459,6 @@ export const deletePermisstionAction = async (id: string) => {
     }
 };
 
-
-
 export const addPermessionAction = async (formData: any) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -476,10 +466,10 @@ export const addPermessionAction = async (formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.permission.add}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "POST",
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
         });
         const Attribute = await data.json();
         revalidateTag("all-permissions");
@@ -488,8 +478,6 @@ export const addPermessionAction = async (formData: any) => {
     }
 };
 
-
-
 export const editPermessionAction = async (id: string, formData: any) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -497,10 +485,10 @@ export const editPermessionAction = async (id: string, formData: any) => {
         const data: any = await fetch(`${mainUrl}${route.admin.permission.edit}/${id}`, {
             headers: {
                 "x-Access-Token": token!,
-                "Content-Type": 'application/json'
+                "Content-Type": "application/json",
             },
             method: "PATCH",
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
         });
         const result = await data.json();
         revalidateTag("all-permissions");

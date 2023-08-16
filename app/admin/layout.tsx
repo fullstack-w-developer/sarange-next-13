@@ -6,7 +6,7 @@ interface Props {
     children: React.ReactNode;
 }
 const Layout = async ({ children }: Props) => {
-    const sidebar = await getPermissionsSidebar()
+    const sidebar = await getPermissionsSidebar();
     return (
         <div>
             <Header />

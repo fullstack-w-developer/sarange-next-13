@@ -6,8 +6,7 @@ const useAddAttributeMutation = () => {
     const router = useRouter();
 
     return useMutation(async (data: any) => await addAttribute(data), {
-        onSuccess: async function () {
-        },
+        onSuccess: async function () {},
         onError: async function (error) {},
     });
 };

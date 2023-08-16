@@ -32,7 +32,7 @@ export const getAllUsersByAdmin = async () => {
     const url = getRoute({ route: `${routes.admin.permission.allUser}` });
     return await client<{ Total: number; Users: User[] }>({ url, method: "GET" });
 };
-export const getAllAttributeByAdmin = async (id:string) => {
+export const getAllAttributeByAdmin = async (id: string) => {
     const url = getRoute({ route: `${routes.admin.permission.allResources}/${id}/attributes?skip=0&limit=10` });
     return await client<any>({ url, method: "GET" });
 };

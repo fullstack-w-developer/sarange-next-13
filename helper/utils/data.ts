@@ -211,3 +211,18 @@ export const headerMenu = [
         url: "",
     },
 ];
+
+
+
+export const itemsRoute = [
+    {
+        name:"Name",
+        title:"نام مسیر",
+        type:"text"
+    },
+    {
+        name:"Cost",
+        title:"هزینه",
+        type:"text"
+    },
+]

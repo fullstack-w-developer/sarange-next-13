@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
 import { BiSearch } from "react-icons/bi";
 interface Props {
     attributes: { Total: number; Attributes: any[] };
-    id:string
+    id: string;
 }
-const Attribute = ({ attributes ,id}: Props) => {
+const Attribute = ({ attributes, id }: Props) => {
     const { toggleAttribute } = useReferanceStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -24,7 +24,7 @@ const Attribute = ({ attributes ,id}: Props) => {
     };
     return (
         <div className="flex-1 w-full mb-20">
-            <BackHeader name="منابع" url="/admin/resources"/>
+            <BackHeader name="منابع" url="/admin/resources" />
             <div className="flex items-center justify-between my-10">
                 <div className="flex items-center  lg:w-1/2 bg-[#f7f7f7] border px-2 border-[#e1e1e1] rounded-lg py-2">
                     <input
@@ -35,7 +35,7 @@ const Attribute = ({ attributes ,id}: Props) => {
                     <BiSearch size={20} />
                 </div>
                 <button
-                    onClick={() => toggleAttribute({open:"add",name:"add"})}
+                    onClick={() => toggleAttribute({ open: "add", name: "add" })}
                     className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg"
                 >
                     جدید
@@ -77,7 +77,7 @@ const Attribute = ({ attributes ,id}: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            <AttributeAction id={id}/>
+            <AttributeAction id={id} />
             <DeleteAttribute />
         </div>
     );

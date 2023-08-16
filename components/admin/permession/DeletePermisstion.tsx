@@ -4,7 +4,7 @@ import { Dialog } from "@mui/material";
 import React from "react";
 
 const DeletePermisstion = () => {
-    const { permisstion, setPermisstion } = usePermisstionStore()
+    const { permisstion, setPermisstion } = usePermisstionStore();
     const deleteReferanceMutate = () => {
         deletePermisstionAction(permisstion.data._id).finally(() => {
             setPermisstion({});

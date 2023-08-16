@@ -4,13 +4,12 @@ import { Dialog } from "@mui/material";
 import React from "react";
 
 const DeleteAttribute = () => {
-    const { attribute, toggleAttribute } = useReferanceStore()
+    const { attribute, toggleAttribute } = useReferanceStore();
     const deleteReferanceMutate = () => {
         deleteAttributeAction(attribute.info._id).finally(() => {
             toggleAttribute({});
         });
     };
-
 
     return (
         <Dialog maxWidth="xs" fullWidth open={attribute.open === "delete"}>

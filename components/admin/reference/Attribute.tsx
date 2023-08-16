@@ -5,7 +5,7 @@ import Input from "../Input";
 import { addAttributeAction, editAttributeAction } from "@/server/admin/actions";
 import { successToast } from "@/helper/utils/error";
 interface Props {
-    id: string
+    id: string;
 }
 const AttributeAction = ({ id }: Props) => {
     const { attribute, toggleAttribute } = useReferanceStore();
@@ -19,15 +19,15 @@ const AttributeAction = ({ id }: Props) => {
             const data = {
                 attributeName,
                 attributeValue: value,
-                header
+                header,
             };
             editAttributeAction(attribute.info?._id, data).finally(() => {
-                successToast("با موفقیت  ثبت شد")
+                successToast("با موفقیت  ثبت شد");
             });
         } else {
             const data = {
                 attributeName,
-                value
+                value,
             };
             addAttributeAction(id, data).finally(() => {
                 toggleAttribute({ open: undefined });
@@ -38,12 +38,12 @@ const AttributeAction = ({ id }: Props) => {
         <Dialog maxWidth="xs" fullWidth open={attribute.open === "edit" || attribute.open === "add"}>
             <div className="h-fit  !flex !flex-col !justify-between">
                 <h1 className="text-center font-artin-black text-xl text-[#222] border-[#e1e1e1] border-b py-3">
-                    صفت(Attribute)   {attribute.name === "edit" ? "ویرایش" : "جدید"}
+                    صفت(Attribute) {attribute.name === "edit" ? "ویرایش" : "جدید"}
                 </h1>
                 <div className="p-2 px-4 pt-4">
                     <form action={onAction} className="flex flex-col gap-2">
                         <Input defaultValue={attribute.info?.Name ?? ""} name="attributeName" label={"نام"} />
-                        <Input defaultValue={attribute.info?.Value ?? ""} name="value" label={"مقدار(Value)"} />
+                        <Input ltr defaultValue={attribute.info?.Value ?? ""} name="value" label={"مقدار(Value)"} />
                         <Input defaultValue={attribute.info?.TableHeader ?? ""} name="header" label={"عنوان در جدول"} />
                         <div className="flex items-center mt-7 my-4 px-4 gap-10">
                             <button
@@ -58,9 +58,7 @@ const AttributeAction = ({ id }: Props) => {
                                 type="submit"
                                 className="w-full bg-green-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                             >
-                                {
-                                    attribute.name === "edit" ? "ویرایش" : "ایجاد"
-                                }
+                                {attribute.name === "edit" ? "ویرایش" : "ایجاد"}
                             </button>
                         </div>
                     </form>

@@ -6,13 +6,17 @@ interface Props {
         q?: string;
         skip?: string;
     };
-    params:{
-        id:string
-    }
+    params: {
+        id: string;
+    };
 }
 const Page = async ({ searchParams, params }: Props) => {
-    const attribute: { Total: number; Attributes: any[] } = await getAllAttribute(params?.id!,searchParams?.q!,searchParams?.skip);
-    return <Attribute id={params.id} attributes={attribute}/>;
+    const attribute: { Total: number; Attributes: any[] } = await getAllAttribute(
+        params?.id!,
+        searchParams?.q!,
+        searchParams?.skip,
+    );
+    return <Attribute id={params.id} attributes={attribute} />;
 };
 
 export default Page;

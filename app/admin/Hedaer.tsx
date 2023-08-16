@@ -1,7 +1,6 @@
 import { Sidebar_icon } from "@/components/icons/icons";
 import React from "react";
 
-
 const Hedaer = () => {
     return (
         <div className="flex justify-between items-center border-b pb-5 border-[#e1e1e1]">

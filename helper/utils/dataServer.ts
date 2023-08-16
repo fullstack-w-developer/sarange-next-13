@@ -28,19 +28,17 @@ export const userDashboard = [
     },
 ];
 
-
-
 export const accessItems = [
     {
-        name:"نقش",
-        url:"/admin/role",
+        name: "نقش",
+        url: "/admin/role",
     },
     {
-        name:"منابع",
-        url:"/admin/resources",
+        name: "منابع",
+        url: "/admin/resources",
     },
     {
-        name:"سطح دسترسی",
-        url:"/admin/permission",
+        name: "سطح دسترسی",
+        url: "/admin/permission",
     },
-]
+];
