@@ -42,10 +42,10 @@ const Create = ({ permession }: Props) => {
                 {permession.Permissions?.map((item) => (
                     <StyledTableRow key={item._id}>
                         <StyledTableCell align="center">
-                            <span className="font-artin-regular">{item.Role.Name}</span>
+                            <span className="font-artin-regular">{item.Role?.Name}</span>
                         </StyledTableCell>
                         <StyledTableCell align="center">
-                            <span className="font-artin-regular">{item.Resource.Name}</span>
+                            <span className="font-artin-regular">{item.Resource?.Name}</span>
                         </StyledTableCell>
                         <StyledTableCell align="center">
                             <span className="font-artin-regular">{item.Action?.Name}</span>

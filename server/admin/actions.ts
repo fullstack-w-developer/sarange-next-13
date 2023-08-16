@@ -123,6 +123,7 @@ export const getPermissionsSidebar = async () => {
             },
         });
         const permissions = await data.json();
+
         return permissions;
     }
 };
@@ -143,28 +144,14 @@ export const getPermissionsDrivers = async () => {
 
 export const getTransactionsListWithPermissions = async (q: string, skip: string) => {
     const [transactions, permisstion] = await Promise.all([getTransactionsListAdmin(q, skip), getPermissionsTransactions()]);
-    console.log(JSON.stringify(transactions), "transactions")
-    console.log(JSON.stringify(permisstion), "permisstion")
-    const filteredTransactions = transactions.Transactions.map((user: any) => {
-        const attributes = permisstion
-          .flatMap((item: any) => item.Attributes)
-          .map((attribute: any) => attribute.Value);
-        const filteredTransactions: any = {};
-        attributes.forEach((attr: any) => {
-          filteredTransactions[attr] = user[attr];
-        });
-      
-        return filteredTransactions;
-      });
-
-      
+    // console.log(JSON.stringify(transactions), "transactions")
+    // console.log(JSON.stringify(permisstion), "permisstion")
     const Headers = permisstion.filter((item: any) => item.Action !== "مشاهده").flatMap((item: any) => item.Attributes);
 
     return {
-        Transactions: filteredTransactions,
+        Transactions: transactions.Transactions,
         Total: transactions.Total,
-        Headers: Headers.length > 1 ? [...Headers, { Name: "عملیات" }] : Headers,
-        operation: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده"),
+        Headers:permisstion[0].Attributes,
     };
 };
 export const getUserListWithPermissions = async (q: string, skip: string) => {
