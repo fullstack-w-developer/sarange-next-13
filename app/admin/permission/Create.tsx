@@ -14,11 +14,11 @@ const Create = ({ permession }: Props) => {
     const { setPermisstion } = usePermisstionStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        router.push(`/admin/permession/create?skip=${(value - 1) * 10}`);
+        router.push(`/admin/permission?skip=${(value - 1) * 10}`);
     };
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        router.push(`/admin/permession/create?q=${e.target.value}`);
+        router.push(`/admin/permission?q=${e.target.value}`);
     };
     return (
         <div className="flex-1 w-full mb-20">
