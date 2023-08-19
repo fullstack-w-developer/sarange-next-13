@@ -1,4 +1,5 @@
-import { deleteDriverByAdmin, deleteUserByAdmin } from "@/server/admin/actions";
+import {  deleteUserByAdmin } from "@/server/admin/actions";
+import { deleteDriverByAdmin } from "@/server/admin/driver";
 import useAdminStore from "@/stores/admin-store";
 import { Dialog } from "@mui/material";
 import React from "react";

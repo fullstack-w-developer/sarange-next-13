@@ -47,25 +47,23 @@ export const getPermissionsTransactions = async () => {
 
 
 export const getTransactionsListWithPermissions = async (q: string, skip: string) => {
-    const [transactions, permisstion] = await Promise.all([getTransactionsListAdmin(q, skip), getPermissionsTransactions()]);
+    const [data, permisstion] = await Promise.all([getTransactionsListAdmin(q, skip), getPermissionsTransactions()]);
 
-
-//     for (let i=0;i<transactions.Transactions.length;i++){
-
-//     for (let j=0;j<permisstion.Attributes.length;j++){
-//         console.log(permisstion.Transactions[i][permisstion.Attributes[j].Value], " ")
-//         //console.log(Attributes[j])
-//     }
-
-//     console.log('/r/n')
-// }
-
-    const Headers = permisstion.filter((item: any) => item.Action !== "مشاهده").flatMap((item: any) => item.Attributes);
+    const headerItems: any = []
+    const dataTable: any = []
+    for (let i = 0; i < data.Transactions.length; i++) {
+        for (let j = 0; j < permisstion[0].Attributes.length; j++) {
+            headerItems.push({ Name: permisstion[0].Attributes[j].Name })
+        }
+        dataTable.push(data.Transactions[i])
+    }
+    // @ts-ignore
+    const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
 
     return {
-        Transactions: transactions.Transactions,
-        Total: transactions.Total,
-        Headers: permisstion[0].Attributes,
+        Transactions: dataTable,
+        Total: dataTable.Total,
+        Headers: Headers,
     };
 };
 
