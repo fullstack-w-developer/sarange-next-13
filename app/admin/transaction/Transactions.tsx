@@ -22,7 +22,6 @@ const Transactions = ({ list }: Props) => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         router.push(`/admin/transaction?q=${e.target.value}`);
     };
-    console.log(list.Transactions);
 
     return (
         <div className="flex-1 w-full mb-20">

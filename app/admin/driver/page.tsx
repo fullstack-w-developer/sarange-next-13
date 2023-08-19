@@ -1,6 +1,6 @@
 import React from "react";
-import { getDriversListWithPermissions } from "@/server/admin/actions";
 import Drivers from "./Drivers";
+import { getDriversListWithPermissions } from "@/server/admin/driver";
 interface Props {
     searchParams?: {
         q?: string;

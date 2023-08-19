@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { AiFillDelete } from "react-icons/ai";
 import { BiEditAlt, BiSearch } from "react-icons/bi";
 interface Props {
-    list: { Users: User[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" | "ایجاد" }[] };
+    list: { data: User[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" | "ایجاد" }[] };
 }
 const Drivers = ({ list }: Props) => {
     const { toggle_opration_user, operationUser } = useAdminStore();
@@ -39,7 +39,7 @@ const Drivers = ({ list }: Props) => {
                 )}
             </div>
             <Table header={list.Headers}>
-                {list.Users?.map((user, i) => (
+                {list.data?.map((user, i) => (
                     <StyledTableRow key={i}>
                         {user.FirstName && <StyledTableCell align="center">{user.FirstName}</StyledTableCell>}
                         {user.LastName && <StyledTableCell align="center">{user.LastName}</StyledTableCell>}

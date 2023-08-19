@@ -1,6 +1,6 @@
 import React from "react";
-import { getTransactionsListWithPermissions } from "@/server/admin/actions";
 import TransactionsCom from "./Transactions";
+import { getTransactionsListWithPermissions } from "@/server/admin/transaction";
 interface Props {
     searchParams?: {
         q?: string;
