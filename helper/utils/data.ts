@@ -226,3 +226,15 @@ export const itemsRoute = [
         type:"text"
     },
 ]
+export const itemsCard = [
+    {
+        name:"Serial",
+        title:"شماره سریال",
+        type:"text"
+    },
+    {
+        name:"Status",
+        title:"وضعیت",
+        type:"radio"
+    },
+]

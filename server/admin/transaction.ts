@@ -57,7 +57,7 @@ export const getTransactionsListWithPermissions = async (q: string, skip: string
         }
         dataTable.push(data.Transactions[i])
     }
-    // @ts-ignore
+    //@ts-ignore
     const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
 
     return {

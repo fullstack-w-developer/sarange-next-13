@@ -54,7 +54,7 @@ body {
 
 
 
-.form_signup .MuiFormControlLabel-root,
+.form_signup .MuiFormControlLabel-root 
 .MuiButtonBase-root {
     @apply !m-0 !p-0
 }

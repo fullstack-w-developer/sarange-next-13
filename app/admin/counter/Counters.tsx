@@ -1,5 +1,4 @@
 "use client";
-import DeleteUserByAdmin from "@/components/admin/DeleteUserByAdmin";
 import EditUser from "@/components/admin/EditUser";
 import Table from "@/components/common/Table";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
@@ -77,7 +76,6 @@ const Drivers = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {operationUser.open === "حذف" && <DeleteUserByAdmin />}
             {operationUser.open === "ویرایش" && <EditUser />}
         </div>
     );

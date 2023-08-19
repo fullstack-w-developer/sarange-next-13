@@ -43,6 +43,7 @@ const apiRoutes = {
         users: "/admin/users?limit=10",
         drivers: "/admin/drivers?limit=10",
         counters: "/counters?limit=10",
+        cards: "/admin/Cards?limit=10",
         withdrawals: "/withdrawals?limit=10",
         transactions: "/admin/transactions?limit=10",
         get_permissionsUsers: "/ac/permissions?resourceName=کاربران&userId=",
@@ -50,6 +51,7 @@ const apiRoutes = {
         get_permissionDrivers: "/ac/permissions?resourceName=راننده&userId=",
         get_permissionsCounter: "/ac/permissions?resourceName=باجه&userId=",
         get_permissionsSidebar: "/ac/permissions?resourceName=sidebar&userId=",
+        get_permissionCards: "/ac/permissions?resourceName=کارت&userId=",
         get_permissionsRoute: "/ac/permissions?resourceName=مسیر&userId=",
         get_permissionsWithdrawals: "/ac/permissions?resourceName=تسویه&userId=",
         deleteUser: "/admin/users",
@@ -67,10 +69,15 @@ const apiRoutes = {
             delete: "/ac/resources",
             edit: "/ac/resources",
         },
-        route:{
-            delete:"/routes",
-            add:"/routes",
-            edit:"/routes",
+        card: {
+            add: "/admin/cards",
+            edit: "/admin/cards",
+            delete: "/admin/cards"
+        },
+        route: {
+            delete: "/routes",
+            add: "/routes",
+            edit: "/routes",
         },
         permission: {
             craeteRole: "/ac/roles",

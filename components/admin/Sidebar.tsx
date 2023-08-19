@@ -29,7 +29,7 @@ export default function Sidebar({ dashboardAdmin }: Props) {
                                 backgroundImage: `url(${Frame.src})`,
                             }}
                         ></div>
-                        <span className=" w-[56px] flex h-[56px] border-4 border-white rounded-[100%] absolute -bottom-6 left-1/2 -translate-x-1/2 z-[9999] ">
+                        <span className=" w-[56px] flex h-[56px] border-4 border-white rounded-[100%] absolute -bottom-6 left-1/2 -translate-x-1/2 z-10 bg-white ">
                             <Image className="w-[48px] h-[48px] overflow-hidden rounded-[100%]" src={UserIcon} alt="" />
                         </span>
                     </div>

@@ -6,22 +6,6 @@ import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
 
 
-export const getUserListAdmin = async (q: string, skip: string) => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.users}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-            next: {
-                tags: ["user-list"],
-            },
-        });
-        const users = await data.json();
-        return users;
-    }
-};
 
 export const getContersListAdmin = async (q: string, skip: string) => {
     const cookieStore = cookies();
@@ -39,20 +23,7 @@ export const getContersListAdmin = async (q: string, skip: string) => {
         return users;
     }
 };
-export const getPermissionsUsers = async () => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const decodeCode: any = jwt_decode(token);
-        const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsUsers}${decodeCode.userId}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-        });
-        const permissions = await data.json();
-        return permissions;
-    }
-};
+
 
 
 export const getPermissionsCounters = async () => {
@@ -87,33 +58,6 @@ export const getPermissionsSidebar = async () => {
 
 
 
-export const getUserListWithPermissions = async (q: string, skip: string) => {
-    const [users, permisstion] = await Promise.all([getUserListAdmin(q, skip), getPermissionsUsers()]);
-
-    const filteredUsers = users.Users.map((user: any) => {
-        const attributes = permisstion
-            .filter((item: any) => item.Action !== "مشاهده")
-            .flatMap((item: any) => item.Attributes)
-            .map((attribute: any) => attribute.Value);
-        const filteredUser: any = {};
-
-        attributes.forEach((attr: string) => {
-            filteredUser[attr] = user[attr];
-        });
-
-        return filteredUser;
-    });
-
-    const Headers = permisstion.filter((item: any) => item.Action === "مشاهده").flatMap((item: any) => item.Attributes);
-
-    return {
-        Users: filteredUsers,
-        Total: users.Total,
-        Headers: Headers.length > 1 ? [...Headers, { Name: "عملیات" }] : Headers,
-        operation: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده"),
-    };
-};
-
 export const getCountersListWithPermissions = async (q: string, skip: string) => {
     const [counters, permisstion] = await Promise.all([getContersListAdmin(q, skip), getPermissionsCounters()]);
     const filteredUsers = counters.counters.map((user: any) => {
@@ -140,21 +84,7 @@ export const getCountersListWithPermissions = async (q: string, skip: string) =>
     };
 };
 
-export const deleteUserByAdmin = async (id: string) => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.deleteUser}/${id}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-            method: "DELETE",
-        });
-        const deleteUser = await data.json();
-        revalidateTag("user-list");
-        return deleteUser;
-    }
-};
+
 
 
 export const actionEditUserByAdmin = async (id: string, formData: any) => {

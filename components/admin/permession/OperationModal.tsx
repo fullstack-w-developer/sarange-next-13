@@ -1,5 +1,5 @@
-import { Dialog } from "@mui/material";
-import React, { useState , useEffect} from "react";
+import { Dialog, Switch } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import { successToast } from "@/helper/utils/error";
 import Input from "@/components/common/Input";
 import { useFormik } from "formik";
@@ -23,10 +23,12 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
   const { modal, setModal } = useAdminStore()
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema,
+    // validationSchema,
     onSubmit: async (values) => {
       setIsLoading(true)
-      delete values?._id
+      if(values?._id){
+        delete values?._id
+      }
       const result = convertObjectEnglishNumber(values)
       if (modal.name === "ویرایش") {
         // @ts-ignore
@@ -40,6 +42,7 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
         // @ts-ignore
         await craeteFun(result).finally(() => {
           setModal({})
+          console.log(result)
           setIsLoading(false)
           successToast("با موفقیت ایجاد شد")
           formik.resetForm()
@@ -49,14 +52,14 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
   })
 
 
-  useEffect(()=>{
-    if(modal.info){
+  useEffect(() => {
+    if (modal.info) {
       formik.setValues({
         ...modal.info
       })
     }
 
-  },[modal.info])
+  }, [modal.info])
   return (
     <Dialog maxWidth="xs" fullWidth open={modal.open === "ویرایش" || modal.open === "ایجاد"}>
       <div className="h-fit  !flex !flex-col !justify-between">
@@ -72,6 +75,13 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
                 }
                 if (item.type === "select") {
                   return <Select formik={formik} name={item.name} label={item.title} options={[]} />
+                }
+                if (item.type === "radio") {
+                  return <div className="flex items-center gap-7">
+                    <p className="font-artin-regular lg:text-[12px] block mb-1 pr-1 text-[#2F2F2F]">{item.title}:</p>
+                    <Switch name={item.name} color="warning" />
+                  </div>
+
                 }
               })
             }

@@ -17,7 +17,7 @@ const Input = ({ icon, placeholder, classInput, ltr, label, classInputTag, name,
         <div>
             {label && <label className="font-artin-regular lg:text-[12px] block mb-1 pr-1 text-[#2F2F2F]">{label}</label>}
             <div
-                className={`flex gap-1 w-full h-[52px] border bg-[#EFF2F6]  rounded-lg px-2 items-center ${
+                className={`flex gap-1 w-full h-[52px] lg:h-[48px] border bg-[#EFF2F6]  rounded-lg px-2 items-center ${
                     formik && formik.touched[name!] && formik.errors[name!] ? "!border-[#E40000]" : "border-transparent"
                 }  ${classInput}`}
             >

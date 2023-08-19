@@ -1,9 +1,11 @@
 "use client";
-import DeleteUserByAdmin from "@/components/admin/DeleteUserByAdmin";
 import EditUser from "@/components/admin/EditUser";
+import DeleteComponent from "@/components/admin/permession/DeleteComponent";
 import Table from "@/components/common/Table";
+import { Delete_icon, EditIcon } from "@/components/icons/icons";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
+import { deleteUserByAdmin } from "@/server/admin/user";
 import useAdminStore from "@/stores/admin-store";
 import { User } from "@/types/User";
 import { Pagination } from "@mui/material";
@@ -14,14 +16,14 @@ interface Props {
     list: { Users: User[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" }[] };
 }
 const Users = ({ list }: Props) => {
-    const { toggle_opration_user, operationUser } = useAdminStore();
+    const { modal, setModal } = useAdminStore()
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        router.push(`/admin?skip=${(value - 1) * 10}`);
+        router.push(`/admin/user?skip=${(value - 1) * 10}`);
     };
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        router.push(`/admin?q=${e.target.value}`);
+        router.push(`/admin/user?q=${e.target.value}`);
     };
     return (
         <div className="flex-1 w-full mb-20">
@@ -43,21 +45,18 @@ const Users = ({ list }: Props) => {
                         {user.Sex && <StyledTableCell align="center">{user.Sex}</StyledTableCell>}
                         {user.Balance && <StyledTableCell align="center">{spratorNumber(user.Balance)} تومان</StyledTableCell>}
                         {list.operation.length !== 0 && (
-                            <StyledTableCell width={"200px"}>
+                            <StyledTableCell  width={"100px"}>
                                 <div className="flex gap-3 items-center justify-center">
                                     {list.operation.map((operation, idx) => (
                                         <button
                                             onClick={() =>
-                                                toggle_opration_user({ open: operation.Action, info: user, operation: operation })
+                                                setModal({ open: operation.Action, info: user, name: operation.Action })
                                             }
                                             key={idx}
-                                            className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white ${
-                                                operation.Action === "ویرایش" ? "bg-green-500" : "bg-red-500"
-                                            }`}
+                                            className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white `}
                                         >
-                                            <p className="pt-[1px]">{operation.Action}</p>
-                                            {operation.Action === "ویرایش" && <BiEditAlt size={14} color="#fff" />}
-                                            {operation.Action === "حذف" && <AiFillDelete size={14} color="#fff" />}
+                                            {operation.Action === "ویرایش" && <EditIcon className="text-[#9E9E9E]"/>}
+                                            {operation.Action === "حذف" && <Delete_icon className="text-[#DF2040] hover:text-red-400"/>}
                                         </button>
                                     ))}
                                 </div>
@@ -74,8 +73,12 @@ const Users = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {operationUser.open === "حذف" && <DeleteUserByAdmin />}
-            {operationUser.open === "ویرایش" && <EditUser />}
+            {modal.open === "حذف" && <DeleteComponent
+                name={`${modal.info.FirstName} 
+            ${modal.info.LastName}`}
+                deleteFun={() => deleteUserByAdmin(modal.info.AuthId)}
+                title="کاربر" />}
+            {modal.open === "ویرایش" && <EditUser />}
         </div>
     );
 };

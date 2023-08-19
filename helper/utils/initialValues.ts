@@ -58,3 +58,10 @@ export const initialValuesPermession = {
     Resource: {} as any,
     Attributes: [],
 };
+
+
+
+export const initialValuesCard = {
+    Serial : "",
+    Status: true
+}

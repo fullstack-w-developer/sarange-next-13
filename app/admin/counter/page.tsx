@@ -1,5 +1,5 @@
 import React from "react";
-import { getCountersListWithPermissions, getUserListWithPermissions } from "@/server/admin/actions";
+import { getCountersListWithPermissions } from "@/server/admin/actions";
 import Counters from "./Counters";
 interface Props {
     searchParams?: {
