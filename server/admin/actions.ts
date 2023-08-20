@@ -87,22 +87,6 @@ export const getCountersListWithPermissions = async (q: string, skip: string) =>
 
 
 
-export const actionEditUserByAdmin = async (id: string, formData: any) => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.editUser}/${id}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-            body: JSON.stringify(formData!),
-            method: "PATCH",
-        });
-        const editUser = await data.json();
-        revalidateTag("user-list");
-        return editUser;
-    }
-};
 
 export const getReferences = async (q: string, skip: string) => {
     const cookieStore = cookies();

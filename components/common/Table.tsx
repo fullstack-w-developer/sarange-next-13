@@ -76,10 +76,10 @@ export default function Table({ header, children, namebtn, onClick, title, title
                     </button>
                 )}
                 {titleFooter && (
-                    <div className="flex justify-between py-3 rounded-br-lg lg:rounded--b-lg items-center px-5 bg-[#0b0330]">
-                        <p className="text-white font-es-bold flex-1 flex justify-end">{titleFooter}</p>
+                    <div className="flex justify-between py-2 rounded-br-lg lg:rounded--b-lg items-center px-5 bg-[#0b0330]">
+                        <p className="text-white font-artin-black flex-1 flex justify-end">{titleFooter}</p>
                         <div className="flex-1 flex justify-end">
-                            <p className="w-[130px] py-3 rounded-lg  flex justify-center items-center bg-white text-black font-artin-bold">
+                            <p className="w-[70px] py-1 rounded-lg  flex justify-center items-center bg-white text-black font-artin-bold">
                                 {subTitleFooter}
                             </p>
                         </div>

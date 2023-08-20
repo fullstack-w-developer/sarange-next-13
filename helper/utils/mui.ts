@@ -14,11 +14,14 @@ export const StyledTableRow: any = styled(TableRow)(() => ({
 }));
 
 export const StyledTableCell = styled(TableCell)(() => ({
+    padding: 4.5,
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: "#e1e1e1",
         color: "#626262",
         fontFamily: "artin-bold",
         whiteSpace: "nowrap",
+        height: "20px",
+        padding: 0
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 13,

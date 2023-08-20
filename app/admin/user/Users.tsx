@@ -1,19 +1,19 @@
 "use client";
-import EditUser from "@/components/admin/EditUser";
 import DeleteComponent from "@/components/admin/permession/DeleteComponent";
+import OperationModal from "@/components/admin/permession/OperationModal";
 import Table from "@/components/common/Table";
 import { Delete_icon, EditIcon } from "@/components/icons/icons";
+import { generateObjectInitailValue } from "@/helper/utils/generateObjectInitalValue";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
-import { deleteUserByAdmin } from "@/server/admin/user";
+import { deleteUserByAdmin, editUserByAdmin } from "@/server/admin/user";
 import useAdminStore from "@/stores/admin-store";
-import { User } from "@/types/User";
+import { ListType } from "@/types/common";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { AiFillDelete } from "react-icons/ai";
-import { BiEditAlt, BiSearch } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 interface Props {
-    list: { Users: User[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" }[] };
+    list: ListType;
 }
 const Users = ({ list }: Props) => {
     const { modal, setModal } = useAdminStore()
@@ -35,28 +35,30 @@ const Users = ({ list }: Props) => {
                 />
                 <BiSearch size={20} />
             </div>
-            <Table header={list.Headers}>
-                {list.Users?.map((user, i) => (
+            <Table subTitleFooter={list.Total} titleFooter="تعداد کاربران" header={list.Headers}>
+                {list.data?.map((item: any, i: number) => (
                     <StyledTableRow key={i}>
-                        {user.FirstName && <StyledTableCell align="center">{user.FirstName}</StyledTableCell>}
-                        {user.LastName && <StyledTableCell align="center">{user.LastName}</StyledTableCell>}
-                        {user.Phone && <StyledTableCell align="center">{toFarsiNumber(user.Phone)}</StyledTableCell>}
-                        {user.createdAt && <StyledTableCell align="center">{convertDate(user.createdAt)}</StyledTableCell>}
-                        {user.Sex && <StyledTableCell align="center">{user.Sex}</StyledTableCell>}
-                        {user.Balance && <StyledTableCell align="center">{spratorNumber(user.Balance)} تومان</StyledTableCell>}
-                        {list.operation.length !== 0 && (
-                            <StyledTableCell  width={"100px"}>
+                        {item.AuthId && <StyledTableCell align="center">{i+1}</StyledTableCell>}
+                        {item.FirstName && <StyledTableCell align="center">{item.FirstName}</StyledTableCell>}
+                        {item.LastName && <StyledTableCell align="center">{item.LastName}</StyledTableCell>}
+                        {item.Phone && <StyledTableCell align="center">{toFarsiNumber(item.Phone)}</StyledTableCell>}
+                        {item.createdAt && <StyledTableCell align="center">{convertDate(item.createdAt)}</StyledTableCell>}
+                        {item.Sex && <StyledTableCell align="center">{item.Sex}</StyledTableCell>}
+                        {Object.hasOwn(item,"Status") && <StyledTableCell align="center">{item.Status ? "فعال" : "غیر فعال"}</StyledTableCell>}
+                        {item.Balance && <StyledTableCell align="center">{spratorNumber(item.Balance)} تومان</StyledTableCell>}
+                        {list.operation.Total !== 0 && (
+                            <StyledTableCell width={"100px"}>
                                 <div className="flex gap-3 items-center justify-center">
-                                    {list.operation.map((operation, idx) => (
+                                    {list.operation.names.map((operation: any, idx: number) => (
                                         <button
                                             onClick={() =>
-                                                setModal({ open: operation.Action, info: user, name: operation.Action })
+                                                setModal({ open: operation.Action, info: item, name: operation.Action })
                                             }
                                             key={idx}
-                                            className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white `}
+                                            className={`flex items-center gap-0 text-[14px]  px-3 py-[8px] rounded-lg text-white `}
                                         >
-                                            {operation.Action === "ویرایش" && <EditIcon className="text-[#9E9E9E]"/>}
-                                            {operation.Action === "حذف" && <Delete_icon className="text-[#DF2040] hover:text-red-400"/>}
+                                            {operation.Action === "ویرایش" && <EditIcon className="text-[#9E9E9E]" />}
+                                            {operation.Action === "حذف" && <Delete_icon className="text-[#DF2040] hover:text-red-400" />}
                                         </button>
                                     ))}
                                 </div>
@@ -78,7 +80,15 @@ const Users = ({ list }: Props) => {
             ${modal.info.LastName}`}
                 deleteFun={() => deleteUserByAdmin(modal.info.AuthId)}
                 title="کاربر" />}
-            {modal.open === "ویرایش" && <EditUser />}
+            {modal.open === "ویرایش" &&
+                <OperationModal
+                    craeteFun={() => { }}
+                    editFun={editUserByAdmin}
+                    initialValues={generateObjectInitailValue(modal.name!,list.operation.edit,list.operation.create)}
+                    items={modal.name === "ویرایش" ? list.operation.edit : []}
+                    title="کاربر"
+                    validationSchema={{}}
+                />}
         </div>
     );
 };

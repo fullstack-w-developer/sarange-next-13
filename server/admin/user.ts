@@ -58,10 +58,15 @@ export const getUserListWithPermissions = async (q: string, skip: string) => {
     const check = permisstion.filter((item: any) => item.Action !== "مشاهده");
 
     return {
-        Users: dataTable,
+        data: dataTable,
         Total: data.Total,
-        Headers: check.length >= 1 ? [...Headers, { Name: "عملیات" }] : Headers,
-        operation: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده"),
+        Headers: check.length >= 1 ? [{ Name: "ردیف" },...Headers, { Name: "عملیات" }] : Headers,
+        operation: {
+            Total: check.length,
+            create: permisstion.find((item: any) => item.Action === "ایجاد")?.Attributes,
+            edit: permisstion.find((item: any) => item.Action == "ویرایش")?.Attributes,
+            names: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده")
+        },
     };
 };
 
@@ -80,5 +85,25 @@ export const deleteUserByAdmin = async (id: string) => {
         const deleteUser = await data.json();
         revalidateTag("user-list");
         return deleteUser;
+    }
+};
+
+
+export const editUserByAdmin = async (id: string, formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    console.log(formData)
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.editUser}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData!),
+            method: "PATCH",
+        });
+        const editUser = await data.json();
+        revalidateTag("user-list");
+        return editUser;
     }
 };
