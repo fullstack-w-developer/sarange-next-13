@@ -8,11 +8,15 @@ import { useEffect, useState } from "react";
 import Logo from "@/assets/images/logo.svg";
 import useGlobalStore from "@/stores/global-store";
 import { useRouter } from "next/navigation";
+import useFcmToken from "@/hooks/common/useFcmToken";
 
 export default function Home() {
+    const { fcmToken, notificationPermissionStatus } = useFcmToken();
+
     const { setIsDriver } = useGlobalStore();
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(true);
+
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -38,6 +42,7 @@ export default function Home() {
                     <Image src={Logo} alt="logo" />
                     <motion.h1 className={`font-artin-black text-black text-2xl text-center  `}>
                         به آپلیکیشن سارنگ خوش آمدید
+                        <p>{fcmToken}</p>
                     </motion.h1>
                 </motion.div>
                 <motion.div
