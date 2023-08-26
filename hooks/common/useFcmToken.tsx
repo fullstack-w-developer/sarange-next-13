@@ -34,6 +34,7 @@ const useFcmToken = () => {
           }
         }
       } catch (error) {
+        alert(error)
         console.log('An error occurred while retrieving token:', error);
       }
     };
