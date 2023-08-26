@@ -54,7 +54,6 @@ export default function Home() {
                     <Image src={Logo} alt="logo" />
                     <motion.h1 className={`font-artin-black text-black text-2xl text-center  `}>
                         به آپلیکیشن سارنگ خوش آمدید
-                        <p>{fcmToken}</p>
                     </motion.h1>
                 </motion.div>
                 <motion.div
@@ -71,6 +70,7 @@ export default function Home() {
                     transition={{ duration: 1.9, delay: 4.5 }}
                     className="mb-5"
                 >
+                    <p>{fcmToken} token:</p>
                     <Link href="/auth/signin">
                         <Button name="بزن بریم" />
                     </Link>
