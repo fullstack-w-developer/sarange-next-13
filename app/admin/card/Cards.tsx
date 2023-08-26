@@ -1,13 +1,10 @@
 "use client";
-import DeleteUserByAdmin from "@/components/admin/DeleteUserByAdmin";
-import EditUser from "@/components/admin/EditUser";
+
 import DeleteComponent from "@/components/admin/permession/DeleteComponent";
 import OperationModal from "@/components/admin/permession/OperationModal";
 import Table from "@/components/common/Table";
-import { itemsCard } from "@/helper/utils/data";
 import { initialValuesCard } from "@/helper/utils/initialValues";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
-import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
 import { addCardAction, deleteCardAction, editCardAction } from "@/server/admin/card";
 import useAdminStore from "@/stores/admin-store";
 import { User } from "@/types/User";
@@ -93,7 +90,7 @@ const Drivers = ({ list }: Props) => {
             />
             {modal.open === "حذف" && <DeleteComponent name={`شماره سریال: ${modal.info.Serial}`}  deleteFun={()=>deleteCardAction(modal.info._id)} title="کارت" />}
             <OperationModal
-                items={itemsCard}
+                items={[]}
                 craeteFun={addCardAction}
                 editFun={editCardAction}
                 initialValues={initialValuesCard}

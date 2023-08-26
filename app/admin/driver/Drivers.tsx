@@ -1,5 +1,4 @@
 "use client";
-import EditUser from "@/components/admin/EditUser";
 import Table from "@/components/common/Table";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
@@ -86,7 +85,7 @@ const Drivers = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {operationUser.open === "ویرایش" && <EditUser />}
+            {/* {operationUser.open === "ویرایش" && <EditUser />} */}
         </div>
     );
 };
