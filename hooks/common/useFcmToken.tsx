@@ -24,6 +24,7 @@ const useFcmToken = () => {
                 'BE-7SCgI6C8t2duJ_WnJwp96u0pvhD6kW-a6RJk_tR5NIcjQwIJawsERbj-5nCFZKpSYUJ1sZCKBWsB8RBDlaQM',
             });
             if (currentToken) {
+                alert(currentToken)
               setToken(currentToken);
             } else {
                 alert('No registration token available. Request permission to generate one.')
