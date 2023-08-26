@@ -9,15 +9,28 @@ import Logo from "@/assets/images/logo.svg";
 import useGlobalStore from "@/stores/global-store";
 import { useRouter } from "next/navigation";
 import useFcmToken from "@/hooks/common/useFcmToken";
+import { getMessaging, onMessage } from "firebase/messaging";
+import firebaseApp from "@/helper/utils/firebase/firebase";
 
 export default function Home() {
-    const { fcmToken, notificationPermissionStatus } = useFcmToken();
+    const { fcmToken } = useFcmToken();
 
     const { setIsDriver } = useGlobalStore();
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(true);
 
-
+    useEffect(() => {
+        alert(fcmToken)
+        if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+            const messaging = getMessaging(firebaseApp);
+            const unsubscribe = onMessage(messaging, (payload) => {
+                console.log('Foreground push notification received:', payload);
+            });
+            return () => {
+                unsubscribe(); // Unsubscribe from the onMessage event
+            };
+        }
+    }, []);
     useEffect(() => {
         const timeout = setTimeout(() => {
             setIsVisible(false);

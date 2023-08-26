@@ -23,19 +23,7 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
 
     fcmToken && console.log('FCM token:', fcmToken);
 
-    useEffect(() => {
-        alert(fcmToken)
-        if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-            const messaging = getMessaging(firebaseApp);
-            const unsubscribe = onMessage(messaging, (payload) => {
-                console.log('Foreground push notification received:', payload);
-            });
-            return () => {
-                alert("jjjjjjjjjjjjjjjjjjjjj")
-                unsubscribe(); // Unsubscribe from the onMessage event
-            };
-        }
-    }, []);
+
 
     return (
         <QueryClientProvider client={queryClient}>
