@@ -33,6 +33,8 @@ const useFcmToken = () => {
               );
             }
           }
+        }else{
+            alert('Registration token')
         }
       } catch (error) {
         alert(error)
