@@ -20,7 +20,6 @@ export default function Home() {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
-        alert(fcmToken)
         if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
             const messaging = getMessaging(firebaseApp);
             const unsubscribe = onMessage(messaging, (payload) => {
