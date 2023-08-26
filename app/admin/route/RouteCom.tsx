@@ -89,7 +89,7 @@ const RouteCom = ({ list }: Props) => {
                 validationSchema={validationSchemaRoutes}
                 title="مسیر"
                 initialValues={initialValuesRoutes}
-                items={itemsRoute}
+                items={[]}
                 craeteFun={addRouteAction}
                 editFun={editRouteAction}
             />
