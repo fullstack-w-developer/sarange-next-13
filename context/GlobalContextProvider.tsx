@@ -15,19 +15,16 @@ interface GlobalContextProviderProps {
 }
 
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
-    const { fcmToken, notificationPermissionStatus } = useFcmToken();
     const queryClient = useConfigureQueryClient();
     useHandleCookies();
     useVerifyAuth();
     useAndroidBackButton(true);
 
-    fcmToken && console.log('FCM token:', fcmToken);
 
 
 
     return (
         <QueryClientProvider client={queryClient}>
-            <p>{fcmToken}</p>
             {children}
             <ToastContainer delay={8000} position="top-right" />
         </QueryClientProvider>
