@@ -1,6 +1,7 @@
 "use client";
 import Home from "@/app/page";
 import { Dash, Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
+import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { BiLogoTelegram, BiSupport } from "react-icons/bi";
 import { BsDiscord, BsFillCreditCardFill, BsTwitter } from "react-icons/bs";
 import { FaCar } from "react-icons/fa";
@@ -216,25 +217,62 @@ export const headerMenu = [
 
 export const itemsRoute = [
     {
-        name:"Name",
-        title:"نام مسیر",
-        type:"text"
+        name: "Name",
+        title: "نام مسیر",
+        type: "text"
     },
     {
-        name:"Cost",
-        title:"هزینه",
-        type:"text"
+        name: "Cost",
+        title: "هزینه",
+        type: "text"
     },
 ]
 export const itemsCard = [
     {
-        name:"Serial",
-        title:"شماره سریال",
-        type:"text"
+        name: "Serial",
+        title: "شماره سریال",
+        type: "text"
     },
     {
-        name:"Status",
-        title:"وضعیت",
-        type:"radio"
+        name: "Status",
+        title: "وضعیت",
+        type: "radio"
     },
 ]
+
+
+
+
+export const columnsUsers: GridColDef[] = [
+    {
+        field: 'id',
+        headerName: 'ردیف',
+        valueGetter: (params: GridValueGetterParams) =>
+            `${1}`,
+    },
+    {
+        field: 'FirstName',
+        headerName: 'نام',
+     
+    },
+    {
+        field: 'LastName',
+        headerName: 'نام خانوادگی',
+    },
+    {
+        field: 'Balance',
+        headerName: 'موجودی',
+    },
+    {
+        field: 'Phone',
+        headerName: 'موبایل',
+    },
+    {
+        field: 'createdAt',
+        headerName: 'تاریج ایجاد',
+    },
+    {
+        field: 'Sex',
+        headerName: 'جنسیت',
+    },
+];

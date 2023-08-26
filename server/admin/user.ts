@@ -4,6 +4,7 @@ import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes";
 import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
+import { GridValueGetterParams } from "@mui/x-data-grid";
 
 
 export const getUserListAdmin = async (q: string, skip: string) => {
@@ -49,7 +50,8 @@ export const getUserListWithPermissions = async (q: string, skip: string) => {
     const dataTable: any = []
     for (let i = 0; i < data.Users.length; i++) {
         for (let j = 0; j < permisstion[0].Attributes.length; j++) {
-            headerItems.push({ Name: permisstion[0].Attributes[j].Name })
+            if(permisstion[0].Attributes[j].Name === "آیدی") continue
+            headerItems.push({ headerName: permisstion[0].Attributes[j].Name, field: permisstion[0].Attributes[j].Value})
         }
         dataTable.push(data.Users[i])
     }
@@ -57,10 +59,12 @@ export const getUserListWithPermissions = async (q: string, skip: string) => {
     const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
     const check = permisstion.filter((item: any) => item.Action !== "مشاهده");
 
+
+
     return {
         data: dataTable,
         Total: data.Total,
-        Headers: check.length >= 1 ? [{ Name: "ردیف" },...Headers, { Name: "عملیات" }] : Headers,
+        Headers: check.length >= 1 ? [...Headers, { headerName: "عملیات",field:"operation" }] : [...Headers],
         operation: {
             Total: check.length,
             create: permisstion.find((item: any) => item.Action === "ایجاد")?.Attributes,
@@ -92,7 +96,6 @@ export const deleteUserByAdmin = async (id: string) => {
 export const editUserByAdmin = async (id: string, formData: any) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
-    console.log(formData)
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.editUser}/${id}`, {
             headers: {

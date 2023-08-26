@@ -1,8 +1,10 @@
 "use client";
 import DeleteComponent from "@/components/admin/permession/DeleteComponent";
 import OperationModal from "@/components/admin/permession/OperationModal";
+import DataGridTable from "@/components/common/GridTable";
 import Table from "@/components/common/Table";
 import { Delete_icon, EditIcon } from "@/components/icons/icons";
+import { columnsUsers } from "@/helper/utils/data";
 import { generateObjectInitailValue } from "@/helper/utils/generateObjectInitalValue";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
@@ -35,17 +37,17 @@ const Users = ({ list }: Props) => {
                 />
                 <BiSearch size={20} />
             </div>
-            <Table subTitleFooter={list.Total} titleFooter="تعداد کاربران" header={list.Headers}>
+            {/* <Table subTitleFooter={list.Total} titleFooter="تعداد کاربران" header={list.Headers}>
                 {list.data?.map((item: any, i: number) => (
                     <StyledTableRow key={i}>
                         {item.AuthId && <StyledTableCell align="center">{i+1}</StyledTableCell>}
                         {item.FirstName && <StyledTableCell align="center">{item.FirstName}</StyledTableCell>}
                         {item.LastName && <StyledTableCell align="center">{item.LastName}</StyledTableCell>}
+                        {Object.hasOwn(item,"Status") && <StyledTableCell align="center">{item.Status ? "فعال" : "غیر فعال"}</StyledTableCell>}
+                        {Object.hasOwn(item,"Balance") && <StyledTableCell align="center">{spratorNumber(item.Balance)} تومان</StyledTableCell>}
                         {item.Phone && <StyledTableCell align="center">{toFarsiNumber(item.Phone)}</StyledTableCell>}
                         {item.createdAt && <StyledTableCell align="center">{convertDate(item.createdAt)}</StyledTableCell>}
                         {item.Sex && <StyledTableCell align="center">{item.Sex}</StyledTableCell>}
-                        {Object.hasOwn(item,"Status") && <StyledTableCell align="center">{item.Status ? "فعال" : "غیر فعال"}</StyledTableCell>}
-                        {item.Balance && <StyledTableCell align="center">{spratorNumber(item.Balance)} تومان</StyledTableCell>}
                         {list.operation.Total !== 0 && (
                             <StyledTableCell width={"100px"}>
                                 <div className="flex gap-3 items-center justify-center">
@@ -66,7 +68,8 @@ const Users = ({ list }: Props) => {
                         )}
                     </StyledTableRow>
                 ))}
-            </Table>
+            </Table> */}
+            <DataGridTable  rows={list.data} columns={list.Headers}/>
             <Pagination
                 onChange={handleChange}
                 color="primary"
