@@ -1,10 +1,14 @@
+"use client"
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridRenderCellParams, GridSortApi, GridValueGetterParams, } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, } from '@mui/x-data-grid';
+import { Delete_icon, EditIcon, Edit_icon } from '../icons/icons';
+import useAdminStore from '@/stores/admin-store';
+import { usePathname, useRouter } from 'next/navigation';
+import { getObjectValue } from '@/helper/utils/generateObjectInitalValue';
 
 
 function generateRandom() {
-    var length = 8,
+    let length = 8,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
         retVal = "";
     for (var i = 0, n = charset.length; i < length; ++i) {
@@ -14,30 +18,56 @@ function generateRandom() {
 }
 
 
+
 interface Props {
     columns: GridColDef[] | any
-    rows: any[]
+    rows: any[];
+    operation?: any,
+    onDelete?: () => void
 }
 
-export default function DataGridTable({ columns, rows }: Props) {
-    
+export default function DataGridTable({ columns, rows, operation }: Props) {
+    const { modal, setModal } = useAdminStore()
+    const pathname = usePathname()
+    const router = useRouter();
+
     return (
         <DataGrid
-            rows={rows}
-            columns={[
-                {
-                    field: '_id',
-                    headerName: 'ردیف',
-                    filterable: false,
-                    renderCell: (params:any) =>
-                    params.api.getRowIndexRelativeToVisibleRows(params.row._id) + 1,
+            className='!min-h-[200px] !h-fit !shadow-none  overflow-hidden'
+            rows={rows.map((item) => { return { ...item, operation } })}
+            columns={columns.map((item: any) => {
+                if (item.field.indexOf(".") !== -1) {
+                    return { ...item, valueGetter: (params: any) =>  getObjectValue(params.row, item.field)}
+                } else {
+                    return {...item}
                 }
-
-                , ...columns]}
+            })}
             disableColumnSelector
             disableRowSelectionOnClick
             hideFooter
             getRowId={() => generateRandom()}
+            slots={{
+                noRowsOverlay: () => <div className='flex flex-col h-full justify-between py-5 items-center gap-3'>
+                    <p className='text-center text-xl text-[#626262] font-artin-bold '>دیتایی وجود ندارد</p>
+                    <button onClick={() => router.replace(pathname)} className='font-artin-regular bg-[#e1e1e1] border px-3 py-2 rounded-lg w-fit'>دیدن همه اطلاعات</button>
+                </div>
+            }}
         />
     );
 }
+
+
+
+// operation.Total !== 0 ? {
+//     headerName: "عملیات", field: "operation", flex: 1, align: "center", headerClassName: "font-artin-bold", renderCell: (params) => (<div className='flex gap-4'>
+
+//         {operation.names.map((name: any, idx: number) => {
+//             if (name === "ویرایش") {
+//                 return <button key={idx} onClick={() => setModal({ info: params.row, name, open: "ویرایش", values: params.row.operation.edit })}><EditIcon className='text-[#9e9e9e]' /></button>
+//             }
+//             if (name === "حذف") {
+//                 return <button key={idx} onClick={() => setModal({ info: params.row, name, open: "حذف" })} className='text-red-500'><Delete_icon /></button>
+//             }
+//         })}
+//     </div>)
+// } : {}

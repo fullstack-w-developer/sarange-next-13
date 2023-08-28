@@ -3,7 +3,6 @@ import React, { ReactNode, useEffect } from "react";
 import { ToastContainer, toast } from "react-toast";
 import { QueryClientProvider } from "react-query";
 import useConfigureQueryClient from "@/hooks/common/useConfigureQueryClient";
-import { MuiRtl } from "@/theme/RtlProvider";
 import useHandleCookies from "@/hooks/common/useHandleCookies";
 import useVerifyAuth from "@/hooks/global/useVerifyAuth";
 import useAndroidBackButton from "@/hooks/common/useAndroidBackButton";
@@ -15,6 +14,7 @@ interface GlobalContextProviderProps {
 }
 
 const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
+    const { fcmToken } = useFcmToken();
     const queryClient = useConfigureQueryClient();
     useHandleCookies();
     useVerifyAuth();
@@ -33,6 +33,11 @@ const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
                 });
         }
     }, [])
+
+
+
+
+
     return (
         <QueryClientProvider client={queryClient}>
             {children}

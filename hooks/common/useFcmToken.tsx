@@ -11,6 +11,7 @@ const useFcmToken = () => {
     const retrieveToken = async () => {
       try {
         if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+          const status = await Notification.requestPermission();
           const messaging = getMessaging(firebaseApp);
 
           // Retrieve the notification permission status
@@ -24,20 +25,15 @@ const useFcmToken = () => {
                 'BE-7SCgI6C8t2duJ_WnJwp96u0pvhD6kW-a6RJk_tR5NIcjQwIJawsERbj-5nCFZKpSYUJ1sZCKBWsB8RBDlaQM',
             });
             if (currentToken) {
-                alert(currentToken)
               setToken(currentToken);
             } else {
-                alert('No registration token available. Request permission to generate one.')
               console.log(
                 'No registration token available. Request permission to generate one.'
               );
             }
           }
-        }else{
-            alert('Registration token')
         }
       } catch (error) {
-        alert(error)
         console.log('An error occurred while retrieving token:', error);
       }
     };

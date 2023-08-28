@@ -1,25 +1,27 @@
 
+import Loading from "@/components/common/Loading";
 import { errorToast, successToast } from "@/helper/utils/error";
 import useAdminStore from "@/stores/admin-store";
 import { Dialog } from "@mui/material";
-import { useState } from "react";
+import { useTransition } from "react";
 interface Props {
     title: string;
     deleteFun: () => void;
     name?: string
 }
 const DeleteComponent = ({ title, deleteFun, name }: Props) => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isPending, startTransition] = useTransition()
+
     const { modal, setModal } = useAdminStore()
     const onDelete = async () => {
-        setIsLoading(true)
-        // @ts-ignore
-        await deleteFun().then(() => successToast("با موفقیت حذف شد")
-        ).catch(() => {
-            errorToast("با موفقیت حذف شد")
-        }).finally(() => {
-            setModal({})
-            setIsLoading(false)
+        startTransition(async () => {
+            // @ts-ignore
+            await deleteFun().then(() => successToast("با موفقیت حذف شد")
+            ).catch(() => {
+                errorToast("با موفقیت حذف شد")
+            }).finally(() => {
+                setModal({})
+            })
         })
     }
     return (
@@ -43,7 +45,7 @@ const DeleteComponent = ({ title, deleteFun, name }: Props) => {
                         onClick={onDelete}
                         className="w-full bg-red-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                     >
-                        {isLoading ? "در حال حذف" : "حذف"}
+                        {isPending ? <Loading /> : "حذف"}
                     </button>
                 </div>
             </div>

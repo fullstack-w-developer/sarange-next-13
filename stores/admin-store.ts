@@ -13,9 +13,10 @@ type TypeAdminModal = {
     open?: "حذف" | "ویرایش" | "ایجاد" | false;
     info?: any;
     name?: "حذف" | "ویرایش" | "ایجاد" | string;
+    values?: any[]
 };
 interface UseAdminStore {
-    modal:TypeAdminModal;
+    modal: TypeAdminModal;
     operationUser: {
         open: "حذف" | "ویرایش" | "ایجاد" | false;
         info: User | null;
@@ -29,10 +30,11 @@ interface UseAdminStore {
 const useAdminStore = create<UseAdminStore>()(
     devtools(
         immer((set) => ({
-            modal:{
-                info:null,
-                name:"",
-                open:false
+            modal: {
+                info: null,
+                name: "",
+                open: false,
+                values: []
             },
             operationUser: {
                 open: false,
@@ -48,11 +50,12 @@ const useAdminStore = create<UseAdminStore>()(
                     state.operationUser.fun = fun ? fun : "";
                 });
             },
-            setModal: ({ info, open, name }) => {
+            setModal: ({ info, open, name, values }) => {
                 set((state) => {
                     state.modal.open = open ? open : false;
                     state.modal.info = info ? info : null;
                     state.modal.name = name ? name : "";
+                    state.modal.values = values ? values : [];
                 });
             },
         })),

@@ -1,5 +1,5 @@
 import { Dialog, Switch } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useTransition } from "react";
 import { errorToast, successToast } from "@/helper/utils/error";
 import Input from "@/components/common/Input";
 import { useFormik } from "formik";
@@ -20,40 +20,39 @@ interface Props {
   editFun: (id: string, data: any) => void;
 }
 const OperationModal = ({ items, initialValues, title, validationSchema, craeteFun, editFun }: Props) => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isPending,startTransition] = useTransition()
   const { modal, setModal } = useAdminStore()
   const formik = useFormik({
     initialValues: initialValues,
     // validationSchema,
     onSubmit: async (values) => {
-      setIsLoading(true)
-      if (values?._id) {
-        delete values?._id
-        delete values?.AuthId
-      }
-      let result = convertObjectEnglishNumber(values)
-      if (Object.hasOwn(values, "Status")) {
-        result.Status = values?.Status
-      }
-      if (modal.name === "ویرایش") {
-        // @ts-ignore
-        await editFun(modal.info.AuthId ? modal.info.AuthId : modal.info._id, result).then(() => successToast("با موفقیت ویرایش شد")
-        ).catch(() => {
-          errorToast("مشکلی پیش آمده است")
-        }).finally(() => {
-          setModal({})
-          setIsLoading(false)
-          formik.resetForm()
-        })
-      } else {
-        // @ts-ignore
-        await craeteFun(result).finally(() => {
-          setModal({})
-          setIsLoading(false)
-          successToast("با موفقیت ایجاد شد")
-          formik.resetForm()
-        })
-      }
+      startTransition( async()=>{
+        if (values?._id) {
+          delete values?._id
+          delete values?.AuthId
+        }
+        let result = await convertObjectEnglishNumber(values)
+        if (Object.hasOwn(values, "Status")) {
+          result.Status = values?.Status
+        }
+        if (modal.name === "ویرایش") {
+          // @ts-ignore
+          await editFun(modal.info.AuthId ? modal.info.AuthId : modal.info._id, result).then(() => successToast("با موفقیت ویرایش شد")
+          ).catch(() => {
+            errorToast("مشکلی پیش آمده است")
+          }).finally(() => {
+            setModal({})
+            formik.resetForm()
+          })
+        } else {
+          // @ts-ignore
+          await craeteFun(result).finally(() => {
+            setModal({})
+            successToast("با موفقیت ایجاد شد")
+            formik.resetForm()
+          })
+        }
+      })
     }
   })
 
@@ -102,7 +101,7 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
                 type="submit"
                 className="w-full bg-green-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
               >
-                {isLoading ? <Loading /> : (modal.name === "ویرایش" ? "ویرایش" : "ایجاد")}
+                {isPending ? <Loading /> : (modal.name === "ویرایش" ? "ویرایش" : "ایجاد")}
               </button>
             </div>
           </form>

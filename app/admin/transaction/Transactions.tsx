@@ -1,15 +1,12 @@
 "use client";
 
-import Table from "@/components/common/Table";
-import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
-import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
+import DataGridTable from "@/components/common/GridTable";
 import useAdminStore from "@/stores/admin-store";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { AiFillDelete } from "react-icons/ai";
-import { BiEditAlt, BiSearch } from "react-icons/bi";
+import {  BiSearch } from "react-icons/bi";
 interface Props {
-    list: { Transactions: any[]; Total: number; Headers: { Name: string }[] };
+    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any};
 }
 const Transactions = ({ list }: Props) => {
     const { toggle_opration_user, operationUser } = useAdminStore();
@@ -32,18 +29,8 @@ const Transactions = ({ list }: Props) => {
                 />
                 <BiSearch size={20} />
             </div>
-            <Table header={list.Headers}>
-                {list.Transactions?.map((item, i) => {
-                    return (
-                        <StyledTableRow key={i}>
-                            <StyledTableCell align="center">{item?.To?.FirstName}</StyledTableCell>
-                            <StyledTableCell align="center">{item?.From?.FirstName}</StyledTableCell>
-                            <StyledTableCell align="center">{item?.Amount}</StyledTableCell>
-                            <StyledTableCell align="center">{item?.TransactionType}</StyledTableCell>
-                        </StyledTableRow>
-                    );
-                })}
-            </Table>
+            <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
+
             <Pagination
                 onChange={handleChange}
                 color="primary"

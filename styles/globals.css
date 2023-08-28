@@ -124,3 +124,39 @@ body {
     font-family: "artin-regular" !important;
     font-size: 14px !important;
   }
+
+
+
+  /* ************************************************************************************ */
+  /* .MuiDataGrid-columnHeadersInner{
+    width: 100% !important;
+  }
+  .css-yrdy0g-MuiDataGrid-columnHeaderRow {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  } */
+
+  .MuiDataGrid-columnHeaderTitleContainer{
+    justify-content: center !important;
+  }
+
+  .MuiDataGrid-cellContent{
+    @apply !font-artin-regular
+  }
+
+  .MuiDataGrid-columnHeadersInner {
+    @apply bg-[#e1e1e1] !text-[#626262]
+  }
+
+  .MuiDataGrid-virtualScrollerRenderZone > div:nth-child(even){
+  background-color: #f7f7f7 !important;
+  }
+
+  .MuiDataGrid-virtualScrollerRenderZone > div:last-child > div{
+    @apply !border-none 
+  }
+
+  .css-axafay-MuiDataGrid-virtualScroller{
+   overflow: initial !important;
+  }

@@ -6,8 +6,15 @@ import axios from "@/services/utils/axios";
 import { useCookies } from "react-cookie";
 import useGlobalStore from "@/stores/global-store";
 import jwt_decode from "jwt-decode";
+import { getMessaging, onMessage } from "firebase/messaging";
+import firebaseApp from "@/helper/utils/firebase/firebase";
+import useFcmToken from "@/hooks/common/useFcmToken";
+import useRigisterNootficationToken from "../notfication/useRigisterNootficationToken";
 
 const useVerifyCode = () => {
+    const { mutate } = useRigisterNootficationToken()
+    const { fcmToken } = useFcmToken();
+
     const { isSignupUser } = useGlobalStore();
     const [, setCookies] = useCookies(["token"]);
     const router = useRouter();
@@ -16,9 +23,21 @@ const useVerifyCode = () => {
             if (isSignupUser) {
                 router.push("/auth/signup/information");
             } else {
+                axios.defaults.headers.common["x-access-token"] = `${data.token}`;
                 const decoded: any = await jwt_decode(data.token);
                 setCookies("token", data.token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
-                axios.defaults.headers.common["x-access-token"] = `${data.token}`;
+
+                if (fcmToken) {
+                    mutate({ toekn: fcmToken })
+                    try {
+                        //  @ts-ignore
+                        await Android.Token(data.token)
+                    } catch (error) {
+                        console.log(error);
+                    }
+
+                }
+                // set coockies and reedirect
                 if (decoded.UserRole === "Driver") {
                     router.push("/driver");
                 } else if (decoded.UserRole === "Customer") {
@@ -30,7 +49,7 @@ const useVerifyCode = () => {
                 }
             }
         },
-        onError: async function (error) {},
+        onError: async function (error) { },
     });
 };
 
