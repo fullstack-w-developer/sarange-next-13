@@ -132,7 +132,6 @@ export const getTransactionsListWithPermissions = async (q: string, skip: string
     const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
     const check = permisstion.filter((item: any) => item.Action !== "مشاهده");
 
-    console.log(dataTable);
 
     return {
         data: dataTable,

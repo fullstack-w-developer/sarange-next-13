@@ -27,6 +27,8 @@ interface Props {
 }
 
 export default function DataGridTable({ columns, rows, operation }: Props) {
+    let options = { year: "numeric", month: "long", day: "numeric" };
+
     const { modal, setModal } = useAdminStore()
     const pathname = usePathname()
     const router = useRouter();
@@ -35,11 +37,34 @@ export default function DataGridTable({ columns, rows, operation }: Props) {
         <DataGrid
             className='!min-h-[200px] !h-fit !shadow-none  overflow-hidden'
             rows={rows.map((item) => { return { ...item, operation } })}
-            columns={columns.map((item: any) => {
+            columns={[...columns, operation.Total !== 0 ? {
+                headerName: "عملیات", field: "operation", flex: 1, align: "center", headerClassName: "font-artin-bold", width: 100, renderCell: (params: any) => (<div className='flex gap-4'>
+                    {operation.names.map((name: any, idx: number) => {
+                        if (name === "ویرایش") {
+                            return <button key={idx} onClick={() => setModal({ info: params.row, name, open: "ویرایش", values: params.row.operation.edit })}><EditIcon className='text-[#9e9e9e]' /></button>
+                        }
+                        if (name === "حذف") {
+                            return <button key={idx} onClick={() => setModal({ info: params.row, name, open: "حذف" })} className='text-red-500'><Delete_icon /></button>
+                        }
+                    })}
+                </div>)
+            } : {}].map((item: any) => {
                 if (item.field.indexOf(".") !== -1) {
-                    return { ...item, valueGetter: (params: any) =>  getObjectValue(params.row, item.field)}
-                } else {
-                    return {...item}
+                    return { ...item, valueGetter: (params: any) => getObjectValue(params.row, item.field) }
+                } else if (item.field === "Status") {
+                    return { ...item, renderCell: (params: any) => <p className='font-artin-regular'>{params.row?.Status ? "فعال" : "غیر غعال"}</p> }
+                } else if (item.field === "createdAt") {
+                    // @ts-ignore
+                    return { ...item, renderCell: (params: any) => <p className='font-artin-regular'>{new Date(params.row?.createdAt).toLocaleDateString("fa-IR", options)}</p> }
+                } else if (item.field === "Balance") {
+                    return { ...item, renderCell: (params: any) => <p className='font-artin-regular'>{params.row?.Balance?.toLocaleString()} تومان</p> }
+                }
+                else if (item.field === "Cost") {
+                    return { ...item, renderCell: (params: any) => <p className='font-artin-regular'>{params.row?.Cost?.toLocaleString()} تومان</p> }
+                }
+                else {
+
+                    return { ...item }
                 }
             })}
             disableColumnSelector
@@ -58,16 +83,3 @@ export default function DataGridTable({ columns, rows, operation }: Props) {
 
 
 
-// operation.Total !== 0 ? {
-//     headerName: "عملیات", field: "operation", flex: 1, align: "center", headerClassName: "font-artin-bold", renderCell: (params) => (<div className='flex gap-4'>
-
-//         {operation.names.map((name: any, idx: number) => {
-//             if (name === "ویرایش") {
-//                 return <button key={idx} onClick={() => setModal({ info: params.row, name, open: "ویرایش", values: params.row.operation.edit })}><EditIcon className='text-[#9e9e9e]' /></button>
-//             }
-//             if (name === "حذف") {
-//                 return <button key={idx} onClick={() => setModal({ info: params.row, name, open: "حذف" })} className='text-red-500'><Delete_icon /></button>
-//             }
-//         })}
-//     </div>)
-// } : {}

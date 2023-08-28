@@ -1,6 +1,7 @@
 "use client";
 import DeleteComponent from "@/components/admin/permession/DeleteComponent";
 import OperationModal from "@/components/admin/permession/OperationModal";
+import DataGridTable from "@/components/common/GridTable";
 import Table from "@/components/common/Table";
 import { itemsRoute } from "@/helper/utils/data";
 import { initialValuesRoutes } from "@/helper/utils/initialValues";
@@ -13,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { AiFillDelete } from "react-icons/ai";
 import { BiEditAlt, BiSearch } from "react-icons/bi";
 interface Props {
-    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" | "ایجاد" }[] };
+    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any };
 }
 const RouteCom = ({ list }: Props) => {
     const { modal, setModal } = useAdminStore()
@@ -26,6 +27,9 @@ const RouteCom = ({ list }: Props) => {
         router.push(`/admin/route?q=${e.target.value}`);
     };
 
+
+
+    console.log(list.operation);
     return (
         <div className="flex-1 w-full mb-20">
             <div className="flex items-center justify-between my-10">
@@ -37,41 +41,12 @@ const RouteCom = ({ list }: Props) => {
                     />
                     <BiSearch size={20} />
                 </div>
-                {list.operation.find((item) => item.Action === "ایجاد") && (
+                {list.operation.names.find((item: any) => item.Action === "ایجاد") && (
                     <button onClick={() => setModal({ open: "ایجاد", name: "ایجاد" })} className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg">مسیر جدید</button>
                 )}
             </div>
-            <Table header={list.Headers}>
-                {list.data?.map((item, i) => {
-                    return (
-                        <StyledTableRow key={i}>
-                            <StyledTableCell align="center">{item?.Name}</StyledTableCell>
-                            <StyledTableCell align="center">{item?.Cost}</StyledTableCell>
-                            {list.operation.length !== 0 && (
-                                <StyledTableCell width={"200px"}>
-                                    <div className="flex gap-3 items-center justify-center">
-                                        {list.operation.map((operation, idx) => {
-                                            if (operation.Action === "ایجاد") return;
-                                            return (
-                                                <button
-                                                    onClick={() => setModal({ name: operation.Action, info: item, open: operation.Action })}
-                                                    key={idx}
-                                                    className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white ${operation.Action === "ویرایش" ? "bg-green-500" : "bg-red-500"
-                                                        }`}
-                                                >
-                                                    <p className="pt-[1px]">{operation.Action}</p>
-                                                    {operation.Action === "ویرایش" && <BiEditAlt size={14} color="#fff" />}
-                                                    {operation.Action === "حذف" && <AiFillDelete size={14} color="#fff" />}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </StyledTableCell>
-                            )}
-                        </StyledTableRow>
-                    );
-                })}
-            </Table>
+            <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
+
             <Pagination
                 onChange={handleChange}
                 color="primary"
@@ -89,7 +64,7 @@ const RouteCom = ({ list }: Props) => {
                 validationSchema={validationSchemaRoutes}
                 title="مسیر"
                 initialValues={initialValuesRoutes}
-                items={[]}
+                items={modal.name === "ویرایش" ? list.operation.edit : []}
                 craeteFun={addRouteAction}
                 editFun={editRouteAction}
             />

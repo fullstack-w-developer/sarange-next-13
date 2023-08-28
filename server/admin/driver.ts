@@ -51,6 +51,7 @@ export const getDriversListWithPermissions = async (q: string, skip: string) => 
     for (let i = 0; i < data.drivers?.length; i++) {
         for (let j = 0; j < permisstion[0].Attributes?.length; j++) {
             if (permisstion[0].Attributes[j].Name === "آیدی") continue
+            if (permisstion[0].Attributes[j].Name === "AuthId") continue
             headerItems.push({ headerName: permisstion[0].Attributes[j].Name, field: permisstion[0].Attributes[j].Value, flex: 1, align: "center", justifyContent: "center", headerClassName: "font-artin-bold"})
         }
         dataTable.push({ ...data.drivers[i], id: i + 1,  })

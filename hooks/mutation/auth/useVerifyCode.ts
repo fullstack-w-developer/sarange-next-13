@@ -26,16 +26,14 @@ const useVerifyCode = () => {
                 axios.defaults.headers.common["x-access-token"] = `${data.token}`;
                 const decoded: any = await jwt_decode(data.token);
                 setCookies("token", data.token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
-
+                try {
+                    //  @ts-ignore
+                    await Android.Token(data.token)
+                } catch (error) {
+                    console.log(error);
+                }
                 if (fcmToken) {
                     mutate({ toekn: fcmToken })
-                    try {
-                        //  @ts-ignore
-                        await Android.Token(data.token)
-                    } catch (error) {
-                        console.log(error);
-                    }
-
                 }
                 // set coockies and reedirect
                 if (decoded.UserRole === "Driver") {
