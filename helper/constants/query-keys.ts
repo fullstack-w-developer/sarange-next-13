@@ -20,7 +20,9 @@ export const COUNTER = {
 export const ADMIN = {
     GET_ALL_USERS: "get_all_users",
     GET_ALL_Roules: "get_all_roules",
+    GET_ALL_ROUTES: "get_all_routers",
     GET_ALL_ACTION: "get_all_action",
     GET_ALL_ATTRIBUTE: "get_all_attributes",
     GET_ALL_RECOURCE: "get_all_recource",
+    GET_Driver_Info:"get_all_driver_info",
 };

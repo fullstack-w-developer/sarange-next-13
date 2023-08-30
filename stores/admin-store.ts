@@ -13,7 +13,7 @@ type TypeAdminModal = {
     open?: "حذف" | "ویرایش" | "ایجاد" | false;
     info?: any;
     name?: "حذف" | "ویرایش" | "ایجاد" | string;
-    values?: any[]
+    values?: any[];
 };
 interface UseAdminStore {
     modal: TypeAdminModal;
@@ -25,7 +25,6 @@ interface UseAdminStore {
     };
     toggle_opration_user: ({ open, info, operation }: TypeOperationUsersAdmin) => void;
     setModal: ({ open, info, name }: TypeAdminModal) => void;
-
 }
 const useAdminStore = create<UseAdminStore>()(
     devtools(
@@ -34,7 +33,7 @@ const useAdminStore = create<UseAdminStore>()(
                 info: null,
                 name: "",
                 open: false,
-                values: []
+                values: [],
             },
             operationUser: {
                 open: false,

@@ -17,7 +17,7 @@ interface Props {
     list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any };
 }
 const RouteCom = ({ list }: Props) => {
-    const { modal, setModal } = useAdminStore()
+    const { modal, setModal } = useAdminStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         router.push(`/admin/route?skip=${(value - 1) * 10}`);
@@ -27,9 +27,6 @@ const RouteCom = ({ list }: Props) => {
         router.push(`/admin/route?q=${e.target.value}`);
     };
 
-
-
-    console.log(list.operation);
     return (
         <div className="flex-1 w-full mb-20">
             <div className="flex items-center justify-between my-10">
@@ -41,8 +38,13 @@ const RouteCom = ({ list }: Props) => {
                     />
                     <BiSearch size={20} />
                 </div>
-                {list.operation.names.find((item: any) => item.Action === "ایجاد") && (
-                    <button onClick={() => setModal({ open: "ایجاد", name: "ایجاد" })} className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg">مسیر جدید</button>
+                {list.operation.names.find((item: any) => item === "ایجاد") && (
+                    <button
+                        onClick={() => setModal({ open: "ایجاد", name: "ایجاد" })}
+                        className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg"
+                    >
+                        مسیر جدید
+                    </button>
                 )}
             </div>
             <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
@@ -55,16 +57,13 @@ const RouteCom = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {
-                modal.open === "حذف" &&
-                <DeleteComponent deleteFun={() => deleteRouteAction(modal.info._id)} title="مسیر" />
-            }
+            {modal.open === "حذف" && <DeleteComponent deleteFun={() => deleteRouteAction(modal.info._id)} title="مسیر" />}
 
             <OperationModal
                 validationSchema={validationSchemaRoutes}
                 title="مسیر"
                 initialValues={initialValuesRoutes}
-                items={modal.name === "ویرایش" ? list.operation.edit : []}
+                items={modal.name === "ویرایش" ? list.operation.edit : list.operation.create}
                 craeteFun={addRouteAction}
                 editFun={editRouteAction}
             />

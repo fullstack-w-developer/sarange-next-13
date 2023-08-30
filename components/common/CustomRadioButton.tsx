@@ -45,10 +45,12 @@ function BpRadio(props: RadioProps) {
 interface Props {
     formik: any;
     name: string;
-    list: {
-        label: string;
-        value: string;
-    }[];
+    list:
+        | {
+              label: string;
+              value: string;
+          }[]
+        | any;
     label?: string;
     className?: string;
 }
@@ -57,7 +59,7 @@ export default function CustomRadioButton({ formik, name, list, className, label
         <FormControl className={className}>
             <span className="font-artin-regular block mb-1 pr-1 text-[#2F2F2F]">{label}</span>
             <RadioGroup aria-labelledby="demo-customized-radios" name={name}>
-                {list.map((item, i) => (
+                {list.map((item: any, i: number) => (
                     <FormControlLabel
                         checked={formik.values[name] === item.value}
                         key={i}

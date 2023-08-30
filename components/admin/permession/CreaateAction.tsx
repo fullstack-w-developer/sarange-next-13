@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import React from "react";
 import Delete from "./Delete";
 import Edit from "./Edit";
+import { Delete_icon, EditIcon } from "@/components/icons/icons";
 
 const CreateAction = () => {
     const { setModal, modal } = usePermisstionStore();
@@ -32,7 +33,7 @@ const CreateAction = () => {
         },
     });
     return (
-        <div className="flex justify-center gap-10 items-center w-full">
+        <div className="flex justify-center gap-10 items-start w-full">
             <form onSubmit={formik.handleSubmit} className="min-w-[400px] mt-14">
                 <Input name="Name" label="نام عملیات" classInput="!h-[44px]" formik={formik} />
                 <button className="w-full bg-blue-500 rounded-lg text-white h-[44px] mt-10">
@@ -49,15 +50,15 @@ const CreateAction = () => {
                             <div className="flex justify-center items-center gap-5 !max-w-[200px]">
                                 <button
                                     onClick={() => setModal({ open: "حذف", data: item, name: "action" })}
-                                    className="bg-red-500 font-artin-regular text-white py-1 rounded-lg px-4"
+
                                 >
-                                    حذف
+                                    <Delete_icon className="text-red-500" />
                                 </button>
                                 <button
                                     onClick={() => setModal({ open: "ویرایش", data: item, name: "action" })}
-                                    className="bg-green-500 font-artin-regular text-white py-1 rounded-lg px-4"
                                 >
-                                    ویرایش
+                                    <EditIcon className="text-[#9e9e9e]" />
+
                                 </button>
                             </div>
                         </TableCell>

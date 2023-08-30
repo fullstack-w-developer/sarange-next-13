@@ -4,6 +4,7 @@ import OperationModal from "@/components/admin/permession/OperationModal";
 import DataGridTable from "@/components/common/GridTable";
 import Table from "@/components/common/Table";
 import { Delete_icon, EditIcon } from "@/components/icons/icons";
+import { generateValues } from "@/helper/utils/converObject";
 import { columnsUsers } from "@/helper/utils/data";
 import { generateObjectInitailValue } from "@/helper/utils/generateObjectInitalValue";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
@@ -18,7 +19,7 @@ interface Props {
     list: ListType;
 }
 const Users = ({ list }: Props) => {
-    const { modal } = useAdminStore()
+    const { modal } = useAdminStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         router.push(`/admin/user?skip=${(value - 1) * 10}`);
@@ -47,20 +48,24 @@ const Users = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {modal.open === "حذف" && <DeleteComponent
-                name={`${modal.info.FirstName} 
+            {modal.open === "حذف" && (
+                <DeleteComponent
+                    name={`${modal.info.FirstName} 
                 ${modal.info.LastName}`}
-                deleteFun={() => deleteUserByAdmin(modal.info.AuthId)}
-                title="کاربر" />}
-            {modal.open === "ویرایش" &&
+                    deleteFun={() => deleteUserByAdmin(modal.info.AuthId)}
+                    title="کاربر"
+                />
+            )}
+            {modal.open === "ویرایش" && (
                 <OperationModal
-                    craeteFun={() => { }}
+                    craeteFun={() => {}}
                     editFun={editUserByAdmin}
-                    initialValues={modal.values}
+                    initialValues={modal.name === "ویرایش" ? generateValues(list.operation.edit) : {}}
                     items={modal.name === "ویرایش" ? list.operation.edit : []}
                     title="کاربر"
                     validationSchema={{}}
-                />}
+                />
+            )}
         </div>
     );
 };

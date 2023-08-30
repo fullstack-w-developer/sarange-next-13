@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB8ocBSDcXZ0aRmb4QGbBOiVvgNJFs5d-8",
@@ -8,8 +8,7 @@ const firebaseConfig = {
     storageBucket: "sarang-2a28d.appspot.com",
     messagingSenderId: "73266879258",
     appId: "1:73266879258:web:9c2ae2eea982ea62296aa3",
-    measurementId: "G-PBJ0977HLK"
-
+    measurementId: "G-PBJ0977HLK",
 };
 
 // Initialize Firebase

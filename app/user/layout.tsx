@@ -1,4 +1,5 @@
 import UserLayout from "@/components/user/UserLayout";
+import { getUnreadNotifications } from "@/server/common/action";
 import { getUser } from "@/server/user/actions";
 import React from "react";
 interface Props {
@@ -6,7 +7,12 @@ interface Props {
 }
 const Layout = async ({ children }: Props) => {
     const user = await getUser();
-    return <UserLayout user={user}>{children}</UserLayout>;
+    const notfication = await getUnreadNotifications();
+    return (
+        <UserLayout totalNotfications={notfication[0].Total} user={user}>
+            {children}
+        </UserLayout>
+    );
 };
 
 export default Layout;

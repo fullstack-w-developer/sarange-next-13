@@ -28,3 +28,4 @@ export const deactiveCardByCounter = async (id: string) => {
     const url = getRoute({ route: `${routes.counter.deactive_card_user}/${id}/status` });
     return await client<any>({ url, method: "PATCH" });
 };
+

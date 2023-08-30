@@ -2,22 +2,21 @@
 
 import DeleteComponent from "@/components/admin/permession/DeleteComponent";
 import OperationModal from "@/components/admin/permession/OperationModal";
-import Table from "@/components/common/Table";
+import DataGridTable from "@/components/common/GridTable";
+import { generateValues } from "@/helper/utils/converObject";
 import { initialValuesCard } from "@/helper/utils/initialValues";
-import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import { addCardAction, deleteCardAction, editCardAction } from "@/server/admin/card";
 import useAdminStore from "@/stores/admin-store";
 import { User } from "@/types/User";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
-import React, { useTransition } from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { BiEditAlt, BiSearch } from "react-icons/bi";
+import React from "react";
+import { BiSearch } from "react-icons/bi";
 interface Props {
-    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" | "ایجاد" }[] };
+    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any };
 }
 const Drivers = ({ list }: Props) => {
-    const { modal, setModal } = useAdminStore()
+    const { modal, setModal } = useAdminStore();
     const [, setPage] = React.useState(1);
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -29,6 +28,7 @@ const Drivers = ({ list }: Props) => {
         router.push(`/admin/card?q=${e.target.value}`);
     };
 
+    const isOpenModal = modal.name === "ویرایش" || modal.name === "ایجاد"
 
     return (
         <div className="flex-1 w-full mb-20">
@@ -41,45 +41,17 @@ const Drivers = ({ list }: Props) => {
                     />
                     <BiSearch size={20} />
                 </div>
-                {list.operation.find((item) => item.Action === "ایجاد") && (
-                    <button onClick={() => setModal({ open: "ایجاد", name: "ایجاد" })} className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg">کارت جدید</button>
+                {list.operation.names.find((item: string) => item === "ایجاد") && (
+                    <button
+                        onClick={() => setModal({ open: "ایجاد", name: "ایجاد" })}
+                        className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg"
+                    >
+                        کارت جدید
+                    </button>
                 )}
             </div>
-            <Table header={list.Headers}>
-                {list.data?.map((item, i) => (
-                    <StyledTableRow key={i}>
-                        {item.Serial && <StyledTableCell align="center">{item.Serial}</StyledTableCell>}
-                        { <StyledTableCell align="center">{item?.Owner?.FirstName}</StyledTableCell>}
-                        {<StyledTableCell align="center">{item?.Owner?.LastName}</StyledTableCell>}
-                        {item?.Status&&<StyledTableCell align="center">{item?.Status}</StyledTableCell>}
+            <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
 
-                        {list.operation.length !== 0 && (
-                            <StyledTableCell width={"200px"}>
-                                <div className="flex gap-3 items-center justify-center">
-                                    {list.operation.map((operation, idx) => {
-                                        if (operation.Action === "ایجاد") return
-                                        return (
-                                            (
-                                                <button
-                                                    onClick={() => setModal({ name: operation.Action, info: item, open: operation.Action })}
-
-                                                    key={idx}
-                                                    className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white ${operation.Action === "ویرایش" ? "bg-green-500" : "bg-red-500"
-                                                        }`}
-                                                >
-                                                    <p className="pt-[1px]">{operation.Action}</p>
-                                                    {operation.Action === "ویرایش" && <BiEditAlt size={14} color="#fff" />}
-                                                    {operation.Action === "حذف" && <AiFillDelete size={14} color="#fff" />}
-                                                </button>
-                                            )
-                                        )
-                                    })}
-                                </div>
-                            </StyledTableCell>
-                        )}
-                    </StyledTableRow>
-                ))}
-            </Table>
             <Pagination
                 onChange={handleChange}
                 color="primary"
@@ -88,16 +60,26 @@ const Drivers = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {modal.open === "حذف" && <DeleteComponent name={`شماره سریال: ${modal.info.Serial}`}  deleteFun={()=>deleteCardAction(modal.info._id)} title="کارت" />}
-            <OperationModal
-                items={[]}
-                craeteFun={addCardAction}
-                editFun={editCardAction}
-                initialValues={initialValuesCard}
-                title="کارت"
-                validationSchema={{}}
-
-            />
+            {modal.open === "حذف" && (
+                <DeleteComponent
+                    name={`شماره سریال: ${modal.info.Serial}`}
+                    deleteFun={() => deleteCardAction(modal.info._id)}
+                    title="کارت"
+                />
+            )}
+            {
+                isOpenModal &&
+                <OperationModal
+                    craeteFun={addCardAction}
+                    editFun={editCardAction}
+                    initialValues={
+                        modal.name === "ویرایش" ? generateValues(list.operation.edit) : generateValues(list.operation.create)
+                    }
+                    items={modal.name === "ویرایش" ? list.operation.edit : list.operation.create}
+                    title="کارت"
+                    validationSchema={{}}
+                />
+            }
         </div>
     );
 };

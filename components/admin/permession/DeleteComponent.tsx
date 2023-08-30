@@ -1,4 +1,3 @@
-
 import Loading from "@/components/common/Loading";
 import { errorToast, successToast } from "@/helper/utils/error";
 import useAdminStore from "@/stores/admin-store";
@@ -7,23 +6,25 @@ import { useTransition } from "react";
 interface Props {
     title: string;
     deleteFun: () => void;
-    name?: string
+    name?: string;
 }
 const DeleteComponent = ({ title, deleteFun, name }: Props) => {
-    const [isPending, startTransition] = useTransition()
+    const [isPending, startTransition] = useTransition();
 
-    const { modal, setModal } = useAdminStore()
+    const { modal, setModal } = useAdminStore();
     const onDelete = async () => {
         startTransition(async () => {
+            await deleteFun()
             // @ts-ignore
-            await deleteFun().then(() => successToast("با موفقیت حذف شد")
-            ).catch(() => {
-                errorToast("با موفقیت حذف شد")
-            }).finally(() => {
-                setModal({})
-            })
-        })
-    }
+                .then(() => successToast("با موفقیت حذف شد"))
+                .catch(() => {
+                    errorToast("با موفقیت حذف شد");
+                })
+                .finally(() => {
+                    setModal({info:{}});
+                });
+        });
+    };
     return (
         <Dialog maxWidth="xs" fullWidth open={modal.open === "حذف"}>
             <div className="h-[280px]  !flex !flex-col !justify-between">

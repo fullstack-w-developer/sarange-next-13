@@ -2,6 +2,7 @@
 import DeletePermisstion from "@/components/admin/permession/DeletePermisstion";
 import Permession from "@/components/admin/permession/Permession";
 import Table from "@/components/common/Table";
+import { Delete_icon, EditIcon } from "@/components/icons/icons";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import usePermisstionStore from "@/stores/permisstion-store";
 import { Pagination } from "@mui/material";
@@ -50,19 +51,17 @@ const Create = ({ permession }: Props) => {
                         <StyledTableCell align="center">
                             <span className="font-artin-regular">{item.Action?.Name}</span>
                         </StyledTableCell>
-                        <StyledTableCell align="center">
-                            <div className="">
+                        <StyledTableCell width={200} align="center">
+                            <div className="flex w-full items-center gap-3 justify-center">
                                 <button
                                     onClick={() => setPermisstion({ data: item, name: "delete", open: "delete" })}
-                                    className="bg-red-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
                                 >
-                                    حذف
+                                    <Delete_icon className="text-red-500" />
                                 </button>
                                 <button
                                     onClick={() => setPermisstion({ name: "edit", data: item, open: "edit" })}
-                                    className="bg-green-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
                                 >
-                                    ویرایش
+                                    <EditIcon className="text-[#9e9e9e]" />
                                 </button>
                             </div>
                         </StyledTableCell>

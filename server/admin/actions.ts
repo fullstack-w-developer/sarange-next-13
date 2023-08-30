@@ -5,41 +5,6 @@ import route from "@/helper/routes/apiRoutes";
 import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
 
-
-
-export const getContersListAdmin = async (q: string, skip: string) => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.counters}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-            next: {
-                tags: ["user-list"],
-            },
-        });
-        const users = await data.json();
-        return users;
-    }
-};
-
-
-
-export const getPermissionsCounters = async () => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const decodeCode: any = jwt_decode(token);
-        const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsCounter}${decodeCode.userId}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-        });
-        const permissions = await data.json();
-        return permissions;
-    }
-};
 export const getPermissionsSidebar = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -55,38 +20,6 @@ export const getPermissionsSidebar = async () => {
         return permissions;
     }
 };
-
-
-
-export const getCountersListWithPermissions = async (q: string, skip: string) => {
-    const [counters, permisstion] = await Promise.all([getContersListAdmin(q, skip), getPermissionsCounters()]);
-    const filteredUsers = counters.counters.map((user: any) => {
-        const attributes = permisstion
-            .filter((item: any) => item.Action === "مشاهده")
-            .flatMap((item: any) => item.Attributes)
-            .map((attribute: any) => attribute.Value);
-        const filteredUser: any = {};
-
-        attributes.forEach((attr: string) => {
-            filteredUser[attr] = user[attr];
-        });
-
-        return filteredUser;
-    });
-
-    const Headers = permisstion.filter((item: any) => item.Action !== "مشاهده").flatMap((item: any) => item.Attributes);
-
-    return {
-        Users: filteredUsers,
-        Total: counters.Total,
-        Headers: Headers.length > 1 ? [...Headers, { Name: "عملیات" }] : Headers,
-        operation: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده"),
-    };
-};
-
-
-
-
 
 export const getReferences = async (q: string, skip: string) => {
     const cookieStore = cookies();
@@ -155,7 +88,7 @@ export const editReferanceAction = async (id: string, formData: any) => {
         return result;
     }
 };
-export const getAllAttribute = async (id: string, name: string, q?: string, skip?: string) => {
+export const getAllAttribute = async (id: string, q?: string, skip?: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {

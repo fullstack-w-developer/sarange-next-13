@@ -13,6 +13,7 @@
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
+        "@mariocasciaro/benchpress": "^0.2.1",
         "@mui/material": "^5.14.0",
         "@mui/x-data-grid": "^6.11.2",
         "@types/node": "20.4.2",

@@ -6,7 +6,6 @@ import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
 import { GridValueGetterParams } from "@mui/x-data-grid";
 
-
 export const getUserListAdmin = async (q: string, skip: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -24,9 +23,6 @@ export const getUserListAdmin = async (q: string, skip: string) => {
     }
 };
 
-
-
-
 export const getPermissionsUsers = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -42,39 +38,44 @@ export const getPermissionsUsers = async () => {
     }
 };
 
-
-
 export const getUserListWithPermissions = async (q: string, skip: string) => {
     const [data, permisstion] = await Promise.all([getUserListAdmin(q, skip), getPermissionsUsers()]);
-    const headerItems: any = []
-    const dataTable: any = []
+    const headerItems: any = [];
+    const dataTable: any = [];
     for (let i = 0; i < data.Users?.length; i++) {
         for (let j = 0; j < permisstion[0].Attributes?.length; j++) {
-            if (permisstion[0].Attributes[j].Name === "آیدی") continue
-            if (permisstion[0].Attributes[j].Name === "AuthId") continue
-            headerItems.push({ headerName: permisstion[0].Attributes[j].Name, field: permisstion[0].Attributes[j].Value, flex: 1, align: "center", justifyContent: "center", headerClassName: "font-artin-bold"})
+            if (permisstion[0].Attributes[j].Name === "آیدی") continue;
+            if (permisstion[0].Attributes[j].Name === "AuthId") continue;
+            headerItems.push({
+                headerName: permisstion[0].Attributes[j].Name,
+                field: permisstion[0].Attributes[j].Value,
+                flex: 1,
+                align: "center",
+                justifyContent: "center",
+                headerClassName: "font-artin-bold",
+            });
         }
-        dataTable.push({ ...data.Users[i], id: i + 1,  })
+        dataTable.push({ ...data.Users[i], id: i + 1 });
     }
     // @ts-ignore
     const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
     const check = permisstion.filter((item: any) => item.Action !== "مشاهده");
 
-
     return {
         data: dataTable,
         Total: data.Total,
-        Headers: check?.length >= 1 ? [{ headerName: "ردیف", field: "id", flex: 1, align: "center", headerClassName: "font-artin-bold" }, ...Headers] : [{ headerName: "ردیف", field: "id" }, ...Headers],
+        Headers:
+            check?.length >= 1
+                ? [{ headerName: "ردیف", field: "id", flex: 1, align: "center", headerClassName: "font-artin-bold" }, ...Headers]
+                : [{ headerName: "ردیف", field: "id" }, ...Headers],
         operation: {
             Total: check.length,
             create: permisstion.find((item: any) => item.Action === "ایجاد")?.Attributes,
             edit: permisstion.find((item: any) => item.Action == "ویرایش")?.Attributes,
-            names: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده").flatMap((item: any) => item.Action)
+            names: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده").flatMap((item: any) => item.Action),
         },
     };
 };
-
-
 
 export const deleteUserByAdmin = async (id: string) => {
     const cookieStore = cookies();
@@ -91,7 +92,6 @@ export const deleteUserByAdmin = async (id: string) => {
         return deleteUser;
     }
 };
-
 
 export const editUserByAdmin = async (id: string, formData: any) => {
     const cookieStore = cookies();

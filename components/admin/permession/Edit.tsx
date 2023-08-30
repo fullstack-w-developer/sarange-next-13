@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import Input from "@/components/common/Input";
 import useEditRoleMutation from "@/hooks/mutation/permission/useEditRoleMutation";
 import useEditActionMutation from "@/hooks/mutation/permission/useEditActionMutation";
+import Loading from "@/components/common/Loading";
 
 const Edit = () => {
     const { mutate: mutateAction, isLoading: loadingAction } = useEditActionMutation();
@@ -53,7 +54,7 @@ const Edit = () => {
                                 type="submit"
                                 className="w-full bg-green-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                             >
-                                {isLoading || loadingAction ? "در حال ویرایش" : "ویرایش"}
+                                {isLoading || loadingAction ? <Loading /> : "ویرایش"}
                             </button>
                         </div>
                     </form>

@@ -8,19 +8,14 @@ import useAuthStore from "@/stores/auth-store";
 interface Props {
     user: User;
     children: React.ReactNode;
+    totalNotfications?: number;
 }
-const UserLayout = ({ user, children }: Props) => {
-    const { setUser, user: userInfo } = useAuthStore();
+const UserLayout = ({ user, totalNotfications, children }: Props) => {
     const pathname = usePathname();
     const isUserPage = pathname === "/user" || pathname === "/user/transactions" || pathname.startsWith("/moneytransfer");
-    useEffect(() => {
-        if (!userInfo?.phone) {
-            setUser({ user });
-        }
-    }, [pathname]);
     return (
         <>
-            {isUserPage && <ProfileInfo user={user} />}
+            {isUserPage && <ProfileInfo totalNotfications={totalNotfications} user={user} />}
             {children}
         </>
     );

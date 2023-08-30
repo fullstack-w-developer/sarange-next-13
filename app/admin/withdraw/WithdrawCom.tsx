@@ -1,12 +1,11 @@
 "use client";
-import Table from "@/components/common/Table";
-import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
+import DataGridTable from "@/components/common/GridTable";
+import useAdminStore from "@/stores/admin-store";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { AiFillDelete } from "react-icons/ai";
-import { BiEditAlt, BiSearch } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 interface Props {
-    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" | "ایجاد" }[] };
+    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any };
 }
 const WithdrawCom = ({ list }: Props) => {
     const router = useRouter();
@@ -29,41 +28,9 @@ const WithdrawCom = ({ list }: Props) => {
                     />
                     <BiSearch size={20} />
                 </div>
-                {list.operation.find((item) => item.Action === "ایجاد") && (
-                    <button className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg">راننده جدید</button>
-                )}
             </div>
-            <Table header={list.Headers}>
-                {list.data?.map((item, i) => {
-                    return (
-                        <StyledTableRow key={i}>
-                            <StyledTableCell align="center">{item?.Amount}</StyledTableCell>
-                            <StyledTableCell align="center">{item?.status}</StyledTableCell>
-                            {list.operation.length !== 0 && (
-                                <StyledTableCell width={"200px"}>
-                                    <div className="flex gap-3 items-center justify-center">
-                                        {list.operation.map((operation, idx) => {
-                                            if (operation.Action === "ایجاد") return;
-                                            return (
-                                                <button
-                                                    key={idx}
-                                                    className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white ${
-                                                        operation.Action === "ویرایش" ? "bg-green-500" : "bg-red-500"
-                                                    }`}
-                                                >
-                                                    <p className="pt-[1px]">{operation.Action}</p>
-                                                    {operation.Action === "ویرایش" && <BiEditAlt size={14} color="#fff" />}
-                                                    {operation.Action === "حذف" && <AiFillDelete size={14} color="#fff" />}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </StyledTableCell>
-                            )}
-                        </StyledTableRow>
-                    );
-                })}
-            </Table>
+            <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
+
             <Pagination
                 onChange={handleChange}
                 color="primary"

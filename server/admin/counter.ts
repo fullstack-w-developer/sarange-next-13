@@ -9,12 +9,12 @@ export const getList = async (q: string, skip: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.withdrawals}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
+        const data: any = await fetch(`${mainUrl}${route.admin.counters.all}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
                 "x-Access-Token": token!,
             },
             next: {
-                tags: ["driver-list"],
+                tags: ["counter-list"],
             },
         });
         const result = await data.json();
@@ -27,7 +27,7 @@ export const getPermissions = async () => {
     const token = cookieStore.get("token")?.value;
     if (token) {
         const decodeCode: any = jwt_decode(token);
-        const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsWithdrawals}${decodeCode.userId}`, {
+        const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsCounter}${decodeCode.userId}`, {
             headers: {
                 "x-Access-Token": token!,
             },
@@ -37,11 +37,11 @@ export const getPermissions = async () => {
     }
 };
 
-export const getWithdrawalsPermissions = async (q: string, skip: string) => {
+export const getCountersListWithPermissions = async (q: string, skip: string) => {
     const [data, permisstion] = await Promise.all([getList(q, skip), getPermissions()]);
     const headerItems: any = [];
     const dataTable: any = [];
-    for (let i = 0; i < data.Requests?.length; i++) {
+    for (let i = 0; i < data.counters?.length; i++) {
         for (let j = 0; j < permisstion[0].Attributes?.length; j++) {
             if (permisstion[0].Attributes[j].Name === "آیدی") continue;
             headerItems.push({
@@ -53,7 +53,7 @@ export const getWithdrawalsPermissions = async (q: string, skip: string) => {
                 headerClassName: "font-artin-bold",
             });
         }
-        dataTable.push({ ...data.Requests[i], id: i + 1 });
+        dataTable.push({ ...data.counters[i], id: i + 1 });
     }
     // @ts-ignore
     const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
@@ -93,4 +93,58 @@ export const getWithdrawalsPermissions = async (q: string, skip: string) => {
             names: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده").flatMap((item: any) => item.Action),
         },
     };
+};
+
+export const addCounterAction = async (formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.counters.add}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(formData),
+        });
+        const result = await data.json();
+        console.log(result);
+        revalidateTag("counter-list");
+
+        return result;
+    }
+};
+
+export const editCounterAction = async (id: string, formData: any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.counters.edit}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+                "Content-Type": "application/json",
+            },
+            method: "PATCH",
+            body: JSON.stringify(formData),
+        });
+        const result = await data.json();
+        revalidateTag("counter-list");
+        return result;
+    }
+};
+
+export const deleteCounterAction = async (id: string) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}${route.admin.counters.delete}/${id}`, {
+            headers: {
+                "x-Access-Token": token!,
+            },
+            method: "DELETE",
+        });
+        const deleteFun = await data.json();
+        revalidateTag("counter-list");
+        return deleteFun;
+    }
 };

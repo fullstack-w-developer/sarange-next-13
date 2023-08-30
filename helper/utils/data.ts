@@ -16,6 +16,16 @@ export const sexPerson = [
         label: "زن",
     },
 ];
+export const optionYesOrNo = [
+    {
+        value: true,
+        label: "بله",
+    },
+    {
+        value: false,
+        label: "خیر",
+    },
+];
 
 export const menuUser = [
     {
@@ -213,66 +223,59 @@ export const headerMenu = [
     },
 ];
 
-
-
 export const itemsRoute = [
     {
         name: "Name",
         title: "نام مسیر",
-        type: "text"
+        type: "text",
     },
     {
         name: "Cost",
         title: "هزینه",
-        type: "text"
+        type: "text",
     },
-]
+];
 export const itemsCard = [
     {
         name: "Serial",
         title: "شماره سریال",
-        type: "text"
+        type: "text",
     },
     {
         name: "Status",
         title: "وضعیت",
-        type: "radio"
+        type: "radio",
     },
-]
-
-
-
+];
 
 export const columnsUsers: GridColDef[] = [
     {
-        field: 'id',
-        headerName: 'ردیف',
-        valueGetter: (params: GridValueGetterParams) =>
-            `${1}`,
+        field: "id",
+        headerName: "ردیف",
+        valueGetter: (params: GridValueGetterParams) => `${1}`,
     },
     {
-        field: 'FirstName',
-        headerName: 'نام',
-     
+        field: "FirstName",
+        headerName: "نام",
     },
     {
-        field: 'LastName',
-        headerName: 'نام خانوادگی',
+        field: "LastName",
+        headerName: "نام خانوادگی",
     },
     {
-        field: 'Balance',
-        headerName: 'موجودی',
+        field: "Balance",
+        headerName: "موجودی",
     },
     {
-        field: 'Phone',
-        headerName: 'موبایل',
+        field: "Phone",
+        headerName: "موبایل",
     },
     {
-        field: 'createdAt',
-        headerName: 'تاریج ایجاد',
+        field: "createdAt",
+        headerName: "تاریج ایجاد",
     },
     {
-        field: 'Sex',
-        headerName: 'جنسیت',
+        field: "Sex",
+        headerName: "جنسیت",
     },
 ];

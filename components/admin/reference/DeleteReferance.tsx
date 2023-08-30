@@ -1,14 +1,20 @@
+import Loading from "@/components/common/Loading";
 import { deleteReferanceAction } from "@/server/admin/actions";
 import useReferanceStore from "@/stores/reference-store";
 import { Dialog } from "@mui/material";
-import React from "react";
+import React, { useTransition } from "react";
 
 const DeleteReferance = () => {
+
+    const [isPnding, setStartTransaction] = useTransition()
+
     const { deleteReferance, toggleDeleteReferance } = useReferanceStore();
     const deleteReferanceMutate = () => {
-        deleteReferanceAction(deleteReferance.info._id).finally(() => {
-            toggleDeleteReferance({});
-        });
+        setStartTransaction(async () => {
+            deleteReferanceAction(deleteReferance.info._id).finally(() => {
+                toggleDeleteReferance({});
+            });
+        })
     };
 
     return (
@@ -33,7 +39,7 @@ const DeleteReferance = () => {
                         onClick={deleteReferanceMutate}
                         className="w-full bg-red-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                     >
-                        {"حذف منبع"}
+                        {isPnding ? <Loading /> : "حذف منبع"}
                     </button>
                 </div>
             </div>

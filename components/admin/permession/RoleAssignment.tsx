@@ -4,11 +4,13 @@ import useAssignmentUserMutation from "@/hooks/mutation/permission/useAssignment
 import useGetAllRolesQuery from "@/hooks/query/permission/useGetAllRolesQuery";
 import useGetAllUserQuery from "@/hooks/query/permission/useGetAllUserQuery";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const RoleAssignment = () => {
+    const [page, setPage] = useState(0);
+    const { data: users, isLoading: loadUser, isSuccess } = useGetAllUserQuery({ page });
+    const [options, setOptions] = useState<any[]>([]);
     const { data: roles, isLoading: loadRoles } = useGetAllRolesQuery();
-    const { data: users, isLoading: loadUser } = useGetAllUserQuery();
     const { mutate, isLoading } = useAssignmentUserMutation();
 
     const formik = useFormik<any>({
@@ -24,6 +26,19 @@ const RoleAssignment = () => {
             mutate(data);
         },
     });
+
+    useEffect(() => {
+        if (isSuccess) {
+            setOptions([...options, ...users?.Users!]);
+        }
+    }, [isSuccess]);
+
+    const handleMenuScrollToBottom = () => {
+        if (options.length === users?.Total) return;
+        if (loadUser) return;
+        const nextPage = page + 1;
+        setPage(nextPage);
+    };
     return (
         <div className="flex justify-center items-center w-full">
             <form onSubmit={formik.handleSubmit} className="min-w-[400px] mt-14 flex flex-col gap-3">
@@ -41,9 +56,10 @@ const RoleAssignment = () => {
                     label="انتخاب کاربر"
                     getOptionValue={(option) => option._id}
                     getOptionLabel={(option) => `${option.FirstName} ${option.LastName}`}
-                    options={users?.Users!}
+                    options={options}
                     formik={formik}
                     name="user"
+                    onMenuScrollToBottom={handleMenuScrollToBottom}
                 />
                 <button className="w-full bg-blue-500 rounded-lg text-white h-[44px] mt-10">
                     {isLoading ? "در حال انتصاب" : "انتصاب"}

@@ -10,11 +10,9 @@ import useGlobalStore from "@/stores/global-store";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-
     const { setIsDriver } = useGlobalStore();
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(true);
-
 
     useEffect(() => {
         const timeout = setTimeout(() => {

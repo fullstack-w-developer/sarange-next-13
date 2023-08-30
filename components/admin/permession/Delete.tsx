@@ -1,3 +1,4 @@
+import Loading from "@/components/common/Loading";
 import useDeleteActionMutation from "@/hooks/mutation/permission/useDeleteActionMutation";
 import useDeleteRoleMutation from "@/hooks/mutation/permission/useDeleteRoleMutation";
 import usePermisstionStore from "@/stores/permisstion-store";
@@ -38,7 +39,7 @@ const Delete = () => {
                         onClick={deleteFun}
                         className="w-full bg-red-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                     >
-                        {isLoading || loadingAction ? "در حال حذف" : "  حذف "}
+                        {isLoading || loadingAction ? <Loading /> : "  حذف "}
                     </button>
                 </div>
             </div>

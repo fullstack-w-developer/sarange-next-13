@@ -6,7 +6,6 @@ import GlobalLayout from "@/components/user/UserLayout";
 import Loadidng from "@/components/common/Loadidng";
 
 const User = async () => {
-    const user = await getUser();
     return (
         <main>
             <SectionUserPage />

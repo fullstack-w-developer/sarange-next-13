@@ -20,3 +20,9 @@ export const getUserByCardId = async (cardId: string) => {
     const url = getRoute({ route: `${routes.driver.user_userInfo_by_cardId}/${cardId}` });
     return await client<any>({ url, method: "GET" });
 };
+
+
+export const getDriverById = async (id: string) => {
+    const url = getRoute({ route: `${routes.admin.drivers.default}/${id}` });
+    return await client<any>({ url, method: "GET" });
+};

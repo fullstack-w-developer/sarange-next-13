@@ -4,12 +4,10 @@ import ProfileImage from "./ProfileImage";
 import Link from "next/link";
 import { Edit_iocn, Wallet_icon } from "../icons/icons";
 import { toFarsiNumber } from "@/helper/utils/toFarsiNumber";
-import useAuthStore from "@/stores/auth-store";
 import { rateToDriver } from "@/helper/utils/rate";
+import { User } from "@/types/User";
 
-const InfoUser = () => {
-    const { user } = useAuthStore();
-
+const InfoUser = ({ user }: { user: User }) => {
     return (
         <div className="border-b border-gray-200 pb-5">
             <div className="py-6 h-full  flex justify-between items-center">

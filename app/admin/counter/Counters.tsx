@@ -1,19 +1,20 @@
 "use client";
-import Table from "@/components/common/Table";
-import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
-import { convertDate, spratorNumber, toFarsiNumber } from "@/helper/utils/toFarsiNumber";
+import DeleteComponent from "@/components/admin/permession/DeleteComponent";
+import OperationModal from "@/components/admin/permession/OperationModal";
+import DataGridTable from "@/components/common/GridTable";
+import { generateValues } from "@/helper/utils/converObject";
+import { addCounterAction, deleteCounterAction, editCounterAction } from "@/server/admin/counter";
 import useAdminStore from "@/stores/admin-store";
 import { User } from "@/types/User";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
-import React, { useTransition } from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { BiEditAlt, BiSearch } from "react-icons/bi";
+import React from "react";
+import { BiSearch } from "react-icons/bi";
 interface Props {
-    list: { Users: User[]; Total: number; Headers: { Name: string }[]; operation: { Action: "حذف" | "ویرایش" }[] };
+    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any };
 }
 const Drivers = ({ list }: Props) => {
-    const { toggle_opration_user, operationUser } = useAdminStore();
+    const { setModal, modal } = useAdminStore();
     const [page, setPage] = React.useState(1);
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -24,49 +25,30 @@ const Drivers = ({ list }: Props) => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         router.push(`/admin?q=${e.target.value}`);
     };
+
+    const isOpenModal = modal.name === "ویرایش" || modal.name === "ایجاد" 
     return (
         <div className="flex-1 w-full mb-20">
-            <div className="flex items-center mb-10 lg:w-1/2 bg-[#f7f7f7] border px-2 border-[#e1e1e1] rounded-lg py-2">
-                <input
-                    placeholder="جستجو..."
-                    className="bg-transparent font-artin-regular outline-none w-full"
-                    onChange={onChange}
-                />
-                <BiSearch size={20} />
+            <div className="flex items-center justify-between my-10">
+                <div className="flex items-center  lg:w-1/2 bg-[#f7f7f7] border px-2 border-[#e1e1e1] rounded-lg py-2">
+                    <input
+                        placeholder="جستجو..."
+                        className="bg-transparent font-artin-regular outline-none w-full"
+                        onChange={onChange}
+                    />
+                    <BiSearch size={20} />
+                </div>
+                {list.operation.names.find((item: any) => item === "ایجاد") && (
+                    <button
+                        onClick={() => setModal({ open: "ایجاد", name: "ایجاد" })}
+                        className="font-artin-bold text-xs bg-[#0096f5] text-white px-4 py-3 rounded-lg"
+                    >
+                        باجه جدید
+                    </button>
+                )}
             </div>
-            <Table header={list.Headers}>
-                {list.Users?.map((user, i) => (
-                    <StyledTableRow key={i}>
-                        {user.FirstName && <StyledTableCell align="center">{user.FirstName}</StyledTableCell>}
-                        {user.LastName && <StyledTableCell align="center">{user.LastName}</StyledTableCell>}
-                        {user.Phone && <StyledTableCell align="center">{toFarsiNumber(user.Phone)}</StyledTableCell>}
-                        {user.createdAt && <StyledTableCell align="center">{convertDate(user.createdAt)}</StyledTableCell>}
-                        {user.Sex && <StyledTableCell align="center">{user.Sex}</StyledTableCell>}
-                        {user.Balance && <StyledTableCell align="center">{spratorNumber(user.Balance)} تومان</StyledTableCell>}
-                        {list.operation.length !== 0 && (
-                            <StyledTableCell width={"200px"}>
-                                <div className="flex gap-3 items-center justify-center">
-                                    {list.operation.map((operation, idx) => (
-                                        <button
-                                            onClick={() =>
-                                                toggle_opration_user({ open: operation.Action, info: user, operation: operation })
-                                            }
-                                            key={idx}
-                                            className={`flex items-center gap-1 text-[14px]  px-3 py-[8px] rounded-lg text-white ${
-                                                operation.Action === "ویرایش" ? "bg-green-500" : "bg-red-500"
-                                            }`}
-                                        >
-                                            <p className="pt-[1px]">{operation.Action}</p>
-                                            {operation.Action === "ویرایش" && <BiEditAlt size={14} color="#fff" />}
-                                            {operation.Action === "حذف" && <AiFillDelete size={14} color="#fff" />}
-                                        </button>
-                                    ))}
-                                </div>
-                            </StyledTableCell>
-                        )}
-                    </StyledTableRow>
-                ))}
-            </Table>
+            <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
+
             <Pagination
                 onChange={handleChange}
                 color="primary"
@@ -75,7 +57,20 @@ const Drivers = ({ list }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            {/* {operationUser.open === "ویرایش" && <EditUser />} */}
+            {modal.open === "حذف" && <DeleteComponent deleteFun={() => deleteCounterAction(modal.info._id)} title="باجه" />}
+            {
+                isOpenModal &&
+                <OperationModal
+                    validationSchema={{}}
+                    title="باجه"
+                    initialValues={
+                        modal.name === "ویرایش" ? generateValues(list.operation.edit) : generateValues(list.operation.create)
+                    }
+                    items={modal.name === "ویرایش" ? list.operation.edit : list.operation.create}
+                    craeteFun={addCounterAction}
+                    editFun={editCounterAction}
+                />
+            }
         </div>
     );
 };

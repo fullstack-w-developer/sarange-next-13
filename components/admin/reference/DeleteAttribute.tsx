@@ -1,14 +1,18 @@
+import Loading from "@/components/common/Loading";
 import { deleteAttributeAction } from "@/server/admin/actions";
 import useReferanceStore from "@/stores/reference-store";
 import { Dialog } from "@mui/material";
-import React from "react";
+import React, { useTransition } from "react";
 
 const DeleteAttribute = () => {
+    const [isPending, startTransaction] = useTransition()
     const { attribute, toggleAttribute } = useReferanceStore();
     const deleteReferanceMutate = () => {
-        deleteAttributeAction(attribute.info._id).finally(() => {
-            toggleAttribute({});
-        });
+        startTransaction(async()=>{
+            deleteAttributeAction(attribute.info._id).finally(() => {
+                toggleAttribute({});
+            });
+        })
     };
 
     return (
@@ -33,7 +37,7 @@ const DeleteAttribute = () => {
                         onClick={deleteReferanceMutate}
                         className="w-full bg-red-500 text-white border border-[#e1e1e1] py-[10px] rounded-lg font-artin-bold"
                     >
-                        {"حذف صفت(attribute)"}
+                        {isPending ?<Loading/> : "حذف صفت(attribute)"}
                     </button>
                 </div>
             </div>

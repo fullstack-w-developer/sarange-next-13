@@ -2,6 +2,7 @@
 import DeleteReferance from "@/components/admin/reference/DeleteReferance";
 import NewReferance from "@/components/admin/reference/NewReferance";
 import Table from "@/components/common/Table";
+import { Delete_icon, EditIcon } from "@/components/icons/icons";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import useReferanceStore from "@/stores/reference-store";
 import { Pagination } from "@mui/material";
@@ -48,19 +49,18 @@ const References = ({ references }: Props) => {
                                 <span className="font-artin-regular">{item.Name}</span>
                             </Link>
                         </StyledTableCell>
-                        <StyledTableCell align="center">
-                            <div className="">
+                        <StyledTableCell width={200} align="center">
+                            <div className="flex items-center justify-center gap-4">
                                 <button
                                     onClick={() => toggleDeleteReferance({ info: item })}
-                                    className="bg-red-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
                                 >
-                                    حذف
+                                    <Delete_icon className="text-red-500"/>
                                 </button>
                                 <button
                                     onClick={() => toggleNewReferance({ name: "edit", info: item })}
-                                    className="bg-green-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
                                 >
-                                    ویرایش
+                                    <EditIcon className="text-[#9e9e9e]" />
+
                                 </button>
                             </div>
                         </StyledTableCell>

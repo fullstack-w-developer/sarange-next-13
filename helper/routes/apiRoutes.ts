@@ -7,10 +7,13 @@ const apiRoutes = {
         checkCodeLogin: "/auth/login/VerificationCode",
         forgetPass: "/auth/resetPassword",
         me: "/user",
-        edit_user: "/user"
+        edit_user: "/user",
     },
     notfication: {
-        registerToken: "/Notifications/me/registrationTokens"
+        registerToken: "/Notifications/me/registrationTokens",
+        unread: "/Notifications/unread/me?skip=0&limit=10",
+        all: "/Notifications/unread/me?skip=0&limit=10",
+        readall: "/notifications/readAll",
     },
     driver: {
         getDriverByCityNumber: "/driver",
@@ -44,8 +47,17 @@ const apiRoutes = {
     },
     admin: {
         users: "/admin/users?limit=10",
-        drivers: "/admin/drivers?limit=10",
-        counters: "/counters?limit=10",
+        drivers: {
+            all: "/admin/drivers?limit=10",
+            default: "/admin/drivers",
+            add: "/drivers",
+        },
+        counters: {
+            all: "/counters?limit=10",
+            delete: "/counters",
+            add: "/counters",
+            edit: "/counters",
+        },
         cards: "/admin/Cards?limit=10",
         withdrawals: "/withdrawals?limit=10",
         transactions: "/admin/transactions?limit=10",
@@ -75,7 +87,7 @@ const apiRoutes = {
         card: {
             add: "/admin/cards",
             edit: "/admin/cards",
-            delete: "/admin/cards"
+            delete: "/admin/cards",
         },
         route: {
             delete: "/routes",
@@ -84,7 +96,7 @@ const apiRoutes = {
         },
         permission: {
             craeteRole: "/ac/roles",
-            allUser: "/admin/users?skip=0&limit=10",
+            allUser: "/admin/users?limit=10",
             allRole: "/ac/roles?skip=0پپ&limit=10",
             assignRole: "/ac/roles/users",
             craeteAction: "/ac/actions",

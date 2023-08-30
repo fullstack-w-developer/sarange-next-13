@@ -50,7 +50,7 @@ export const initialValuesMoneyTransfoerVerify = {
 };
 export const initialValuesRoutes = {
     Cost: "",
-    Name:""
+    Name: "",
 };
 export const initialValuesPermession = {
     Role: {} as any,
@@ -59,9 +59,9 @@ export const initialValuesPermession = {
     Attributes: [],
 };
 
-
-
 export const initialValuesCard = {
-    Serial : "",
-    Status: true
-}
+    Serial: "",
+    Status: true,
+};
+
+export const initialValuesRequests = () => {};

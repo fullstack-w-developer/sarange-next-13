@@ -28,12 +28,12 @@ export const assignmentUser = async (data: any) => {
     return await client<string>({ url, method: "POST", data });
 };
 
-export const getAllUsersByAdmin = async () => {
-    const url = getRoute({ route: `${routes.admin.permission.allUser}` });
+export const getAllUsersByAdmin = async (page: number) => {
+    const url = getRoute({ route: `${routes.admin.permission.allUser}${`&skip=${page * 10}`}` });
     return await client<{ Total: number; Users: User[] }>({ url, method: "GET" });
 };
 export const getAllAttributeByAdmin = async (id: string) => {
-    const url = getRoute({ route: `${routes.admin.permission.allResources}/${id}/attributes?skip=0&limit=10` });
+    const url = getRoute({ route: `${routes.admin.permission.allResources}/${id}/attributes?skip=0&limit=100` });
     return await client<any>({ url, method: "GET" });
 };
 export const getAllReourceByAdmin = async () => {

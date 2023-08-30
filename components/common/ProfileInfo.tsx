@@ -6,11 +6,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { User } from "@/types/User";
 import { Notifi_icon } from "../icons/icons";
 import { BiArrowBack } from "react-icons/bi";
+import Link from "next/link";
 interface Props {
     back?: boolean;
     user?: User;
+    totalNotfications?: number;
 }
-const ProfileInfo = ({ back, user }: Props) => {
+const ProfileInfo = ({ back, user, totalNotfications }: Props) => {
     const pathname = usePathname();
     const router = useRouter();
     return (
@@ -35,7 +37,21 @@ const ProfileInfo = ({ back, user }: Props) => {
                 </div>
             </div>
 
-            {back ? <BiArrowBack onClick={() => router.back()} size={25} /> : <Notifi_icon />}
+            {back ? (
+                <BiArrowBack onClick={() => router.back()} size={25} />
+            ) : totalNotfications ? (
+                <Link
+                    href={"/notifications"}
+                    className="relative border-2 border-orange w-10 h-10 rounded-full flex justify-center items-center"
+                >
+                    <Notifi_icon />
+                    <span className="absolute w-4 text-xs font-artin-regular text-white flex justify-center items-center h-4 -top-2 -right-1  bg-orange rounded-full">
+                        {totalNotfications}
+                    </span>
+                </Link>
+            ) : (
+                <Notifi_icon />
+            )}
         </div>
     );
 };

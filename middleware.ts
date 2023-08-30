@@ -15,6 +15,10 @@ export function middleware(request: NextRequest) {
             return NextResponse.next();
         } else if (decodeCode.UserRole === "Customer" && path !== "/user") {
             return NextResponse.redirect(new URL("/user", request.url));
+        } else if (decodeCode.UserRole === "Admin" && path.startsWith("/admin")) {
+            return NextResponse.next();
+        } else if (decodeCode.UserRole === "Admin" && path !== "/admin/user") {
+            return NextResponse.redirect(new URL("/admin/user", request.url));
         }
         return NextResponse.next();
     }

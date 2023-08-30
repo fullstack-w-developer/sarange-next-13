@@ -4,9 +4,9 @@ import DataGridTable from "@/components/common/GridTable";
 import useAdminStore from "@/stores/admin-store";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
-import {  BiSearch } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 interface Props {
-    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any};
+    list: { data: any[]; Total: number; Headers: { Name: string }[]; operation: any };
 }
 const Transactions = ({ list }: Props) => {
     const { toggle_opration_user, operationUser } = useAdminStore();

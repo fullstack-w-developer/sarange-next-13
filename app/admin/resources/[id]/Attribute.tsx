@@ -3,10 +3,12 @@ import AttributeAction from "@/components/admin/reference/Attribute";
 import DeleteAttribute from "@/components/admin/reference/DeleteAttribute";
 import BackHeader from "@/components/common/BackHeader";
 import Table from "@/components/common/Table";
+import { Delete_icon, EditIcon } from "@/components/icons/icons";
 import { StyledTableCell, StyledTableRow } from "@/helper/utils/mui";
 import useReferanceStore from "@/stores/reference-store";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 import { BiSearch } from "react-icons/bi";
 interface Props {
     attributes: { Total: number; Attributes: any[] };
@@ -16,11 +18,11 @@ const Attribute = ({ attributes, id }: Props) => {
     const { toggleAttribute } = useReferanceStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        router.push(`/admin/resources?skip=${(value - 1) * 10}`);
+        router.push(`/admin/resources/${id}?skip=${(value - 1) * 10}`);
     };
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        router.push(`/admin/resources?q=${e.target.value}`);
+        router.push(`/admin/resources/${id}?q=${e.target.value}`);
     };
     return (
         <div className="flex-1 w-full mb-20">
@@ -50,19 +52,17 @@ const Attribute = ({ attributes, id }: Props) => {
                         <StyledTableCell align="center">
                             <span className="font-artin-regular">{item.Value}</span>
                         </StyledTableCell>
-                        <StyledTableCell align="center">
-                            <div className="">
+                        <StyledTableCell width={200} align="center">
+                            <div className=" flex gap-4 justify-center items-center">
                                 <button
                                     onClick={() => toggleAttribute({ info: item, name: "delete", open: "delete" })}
-                                    className="bg-red-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
                                 >
-                                    حذف
+                                    <Delete_icon className="text-red-500" />
                                 </button>
                                 <button
                                     onClick={() => toggleAttribute({ name: "edit", info: item, open: "edit" })}
-                                    className="bg-green-500 mx-3 text-white px-3 py-1 rounded-lg !font-artin-regular"
                                 >
-                                    ویرایش
+                                    <EditIcon className="text-[#9e9e9e]" />
                                 </button>
                             </div>
                         </StyledTableCell>

@@ -12,7 +12,7 @@ import useFcmToken from "@/hooks/common/useFcmToken";
 import useRigisterNootficationToken from "../notfication/useRigisterNootficationToken";
 
 const useVerifyCode = () => {
-    const { mutate } = useRigisterNootficationToken()
+    const { mutate } = useRigisterNootficationToken();
     const { fcmToken } = useFcmToken();
 
     const { isSignupUser } = useGlobalStore();
@@ -28,12 +28,12 @@ const useVerifyCode = () => {
                 setCookies("token", data.token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
                 try {
                     //  @ts-ignore
-                    await Android.Token(data.token)
+                    await Android.Token(data.token);
                 } catch (error) {
                     console.log(error);
                 }
                 if (fcmToken) {
-                    mutate({ toekn: fcmToken })
+                    mutate({ toekn: fcmToken });
                 }
                 // set coockies and reedirect
                 if (decoded.UserRole === "Driver") {
@@ -47,7 +47,7 @@ const useVerifyCode = () => {
                 }
             }
         },
-        onError: async function (error) { },
+        onError: async function (error) {},
     });
 };
 

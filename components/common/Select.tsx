@@ -13,6 +13,7 @@ interface Props {
     isDisabled?: boolean;
     isMulti?: boolean;
     defaultValue?: any;
+    onMenuScrollToBottom?: () => void;
 }
 const Select = ({
     options,
@@ -26,6 +27,7 @@ const Select = ({
     label,
     isLoading,
     onChange,
+    onMenuScrollToBottom,
 }: Props) => {
     const styles = {
         control: (base: any, state: any) => ({
@@ -58,6 +60,7 @@ const Select = ({
                 placeholder={<span className="!text-gray-400">انتخاب کنید</span>}
                 styles={styles}
                 options={options}
+                onMenuScrollToBottom={onMenuScrollToBottom}
                 getOptionLabel={getOptionLabel}
                 getOptionValue={getOptionValue}
                 onChange={onChange ? onChange : (value) => formik.setFieldValue(name, value)}

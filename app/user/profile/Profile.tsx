@@ -11,8 +11,9 @@ import dynamic from "next/dynamic";
 // import InfoUser from '@/components/common/InfoUser';
 import useAuthStore from "@/stores/auth-store";
 import Logout from "@/components/common/Logout";
-const InfoUser = dynamic(() => import("@/components/common/InfoUser"), { ssr: false });
-const Profile = () => {
+import { User } from "@/types/User";
+import InfoUser from "@/components/common/InfoUser";
+const Profile = ({ user }: { user: User }) => {
     const { toggleLogout } = useAuthStore();
 
     return (
@@ -22,7 +23,7 @@ const Profile = () => {
                     <Image alt="" src={Logo} />
                 </div>
                 <div className="bg-white min-h-screen px-4 rounded-t-[28px] -mt-6">
-                    <InfoUser />
+                    <InfoUser user={user} />
                     <MoreMenu list={moreMenuUser} />
                     <SocialMedia />
                     <button
