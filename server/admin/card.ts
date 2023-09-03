@@ -118,7 +118,7 @@ export const getCardsListWithPermissions = async (q: string, skip: string) => {
     }
     // @ts-ignore
     const Headers = Array.from(new Set(headerItems.map(JSON.stringify))).map(JSON.parse);
-    const check = permisstion.filter((item: any) => item.Action !== "مشاهده");
+    const check = permisstion?.filter((item: any) => item.Action !== "مشاهده");
 
     return {
         data: dataTable,

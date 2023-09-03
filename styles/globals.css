@@ -160,3 +160,17 @@ body {
   .css-axafay-MuiDataGrid-virtualScroller{
    overflow: initial !important;
   }
+
+
+  .btn_pay{
+    @apply border border-neutral-200 rounded-lg px-2 py-1 hover:bg-indigo-900 hover:text-white transition-all duration-300
+  }
+
+
+  .toastContainer{
+    @apply !z-[9999] font-artin-bold
+  }
+
+  .toastContainer .content{
+@apply !mx-2
+  }

@@ -4,6 +4,7 @@ import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes";
 import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
+import { sendRequest } from "@/server/fetch";
 
 export const getList = async (q: string, skip: string) => {
     const cookieStore = cookies();
@@ -14,7 +15,7 @@ export const getList = async (q: string, skip: string) => {
                 "x-Access-Token": token!,
             },
             next: {
-                tags: ["driver-list"],
+                tags: ["withdraw-list"],
             },
         });
         const result = await data.json();
@@ -93,4 +94,8 @@ export const getWithdrawalsPermissions = async (q: string, skip: string) => {
             names: permisstion.filter((permisstion: any) => permisstion.Action !== "مشاهده").flatMap((item: any) => item.Action),
         },
     };
+};
+export const changeStatusWithdrawByAdmin = async (body: any) => {
+    const response =  await sendRequest({ method: "POST", body, endpoint: "/withdrawals/status" });
+    return response
 };

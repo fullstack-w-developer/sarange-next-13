@@ -1,6 +1,6 @@
 import useReferanceStore from "@/stores/reference-store";
 import { Dialog } from "@mui/material";
-import React, { useTransition } from "react";
+import React, { useEffect, useTransition } from "react";
 import { addAttributeAction, editAttributeAction } from "@/server/admin/actions";
 import { successToast } from "@/helper/utils/error";
 import { useFormik } from "formik";
@@ -11,17 +11,16 @@ interface Props {
     id: string;
 }
 const AttributeAction = ({ id }: Props) => {
-    const [isPending, startTransaction] = useTransition()
+    const [isPending, startTransaction] = useTransition();
     const { attribute, toggleAttribute } = useReferanceStore();
     const formik = useFormik({
         initialValues: {
             attributeName: "",
-            value: ""
+            value: "",
         },
         validationSchema: validationSchemaAttributeAction,
         onSubmit: (values) => {
             startTransaction(async () => {
-            
                 if (attribute.name === "edit") {
                     const data = {
                         attributeName: values.attributeName,
@@ -29,6 +28,7 @@ const AttributeAction = ({ id }: Props) => {
                     };
                     await editAttributeAction(attribute.info?._id, data).finally(() => {
                         toggleAttribute({ open: undefined, info: {} });
+                        formik.resetForm();
                     });
                 } else {
                     const data = {
@@ -37,11 +37,22 @@ const AttributeAction = ({ id }: Props) => {
                     };
                     await addAttributeAction(id, data).finally(() => {
                         toggleAttribute({ open: undefined, info: {} });
+                        formik.resetForm();
                     });
                 }
-            })
+            });
+        },
+    });
+
+    useEffect(() => {
+        console.log(attribute);
+        if (attribute?.info?.Name) {
+            formik.setValues({
+                attributeName: attribute.info.Name,
+                value: attribute.info.Value,
+            });
         }
-    })
+    }, []);
 
     return (
         <Dialog maxWidth="xs" fullWidth open={attribute.open === "edit" || attribute.open === "add"}>

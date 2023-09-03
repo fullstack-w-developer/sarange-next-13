@@ -1,5 +1,6 @@
 "use client";
 import DataGridTable from "@/components/common/GridTable";
+import { errorToast } from "@/helper/utils/error";
 import useAdminStore from "@/stores/admin-store";
 import { Pagination } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -16,7 +17,6 @@ const WithdrawCom = ({ list }: Props) => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         router.push(`/admin/withdraw?q=${e.target.value}`);
     };
-
     return (
         <div className="flex-1 w-full mb-20">
             <div className="flex items-center justify-between my-10">
@@ -29,7 +29,7 @@ const WithdrawCom = ({ list }: Props) => {
                     <BiSearch size={20} />
                 </div>
             </div>
-            <DataGridTable operation={list.operation} rows={list.data} columns={list.Headers} />
+            <DataGridTable isWithdraw operation={list.operation} rows={list.data} columns={list.Headers} />
 
             <Pagination
                 onChange={handleChange}
