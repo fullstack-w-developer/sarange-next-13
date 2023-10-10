@@ -11,7 +11,7 @@ export const getList = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.transactions}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["driver-list"],
@@ -29,7 +29,7 @@ export const getPermissions = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsTransactions}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();

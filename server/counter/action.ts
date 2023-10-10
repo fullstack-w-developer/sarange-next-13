@@ -4,6 +4,7 @@ import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes";
 import axios from "@/services/utils/axios";
 import { cookies } from "next/headers";
+import { sendRequest } from "../fetch";
 
 export const getUserInfoBySerialCardCounter = async (id: string) => {
     const cookieStore = cookies();
@@ -13,7 +14,7 @@ export const getUserInfoBySerialCardCounter = async (id: string) => {
         const data: any = await fetch(`${mainUrl}${route.counter.user_userInfo_by_cardId}/${id}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const userInfo = await data.json();
@@ -29,7 +30,7 @@ export const getBalanceByCounter = async (id: string) => {
         const data: any = await fetch(`${mainUrl}${route.counter.get_balance_by_counter}/${id}/balance`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const userInfo = await data.json();
@@ -44,10 +45,18 @@ export const getCounter = async () => {
         const data: any = await fetch(`${mainUrl}${route.counter.me}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const user = await data.json();
         return { ...user.Owner, Balance: user.Balance, Address: user.Address, Name: user.Name };
     }
+};
+
+
+
+export const getTrasactions = async () => {
+    const data:any = await sendRequest({endpoint:route.user.my_transactions,method:"GET"})
+      return data
+
 };

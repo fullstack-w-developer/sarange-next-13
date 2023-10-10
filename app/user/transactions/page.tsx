@@ -1,5 +1,5 @@
 import CardTransaction from "@/components/common/CardTransaction";
-import { getTrasactions } from "@/server/common/action";
+import { getTrasactions } from "@/server/counter/action";
 import { Transaction } from "@/types/User";
 import React from "react";
 

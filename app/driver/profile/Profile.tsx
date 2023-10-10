@@ -10,8 +10,11 @@ import Image from "next/image";
 import React from "react";
 import Logo from "@/assets/images/logo_white.svg";
 import useAuthStore from "@/stores/auth-store";
-
-const Profile = () => {
+import { User } from "@/types/User";
+interface Props{
+    user:User
+}
+const Profile = ({user}:Props) => {
     const { toggleLogout } = useAuthStore();
 
     return (
@@ -21,7 +24,7 @@ const Profile = () => {
                     <Image alt="" src={Logo} />
                 </div>
                 <div className="bg-white min-h-screen px-4 rounded-t-[28px] -mt-6">
-                    <InfoUser />
+                    <InfoUser user={user} />
                     <MoreMenu list={MoreMenuDriver} />
                     <SocialMedia />
                     <button

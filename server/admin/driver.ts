@@ -11,7 +11,7 @@ export const getList = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.drivers.all}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["driver-list"],
@@ -29,7 +29,7 @@ export const getPermissions = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionDrivers}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();
@@ -99,11 +99,10 @@ export const getDriversListWithPermissions = async (q: string, skip: string) => 
 export const deleteDriverByAdmin = async (id: string) => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
-    console.log(id);
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.drivers.default}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "DELETE",
         });
@@ -119,7 +118,7 @@ export const editDriverByAdmin = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.drivers.default}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(formData!),
@@ -137,7 +136,7 @@ export const addDriverByAdmin = async (formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.drivers.add}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "POST",

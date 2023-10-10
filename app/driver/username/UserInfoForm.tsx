@@ -2,11 +2,8 @@
 import Input from "@/components/common/Input";
 import React from "react";
 import Info from "./Info";
-import ProfileInfo from "@/components/common/ProfileInfo";
-import { User } from "@/types/User";
 import Button from "@/components/common/Button";
 import { GoArrowRight } from "react-icons/go";
-import { Warr_iocn } from "@/components/icons/icons";
 import { initialValuesPayWithCode } from "@/helper/utils/initialValues";
 import { validationSchemaPayWitCode } from "@/helper/utils/validation/pay";
 import { useFormik } from "formik";

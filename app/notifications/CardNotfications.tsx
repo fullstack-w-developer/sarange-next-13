@@ -33,8 +33,8 @@ const CardNotfications = ({ notfication }: Props) => {
                         <h1 className="font-artin-bold">{notfication.Title}</h1>
                     </div>
                     <div>
-                        {/* @ts-ignore */}
                         <p className="text-xs font-artin-light text-[#626262]">
+                        {/* @ts-ignore */}
                             {new Date(notfication.createdAt).toLocaleDateString("fa-IR", options2)}
                         </p>
                     </div>

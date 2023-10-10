@@ -73,6 +73,11 @@ export const counterList = [
         icon: Wallet_icon,
         url: "/counter/transactions",
     },
+    {
+        name: "پروفایل",
+        icon: User_icon,
+        url: "/counter/profile",
+    },
 ];
 
 export const PaymentTypeEnum = {

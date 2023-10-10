@@ -17,6 +17,7 @@ export default function Sidebar({ dashboardAdmin }: Props) {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
     const access = dashboardAdmin[0]?.Attributes?.find((menu: any) => menu.Value === "access");
+
     return (
         <div className="bg-white hidden border border-gray-200  lg:py-4 px-2 h-fit rounded-lg lg:flex lg:flex-col justify-between items-center">
             <div className="w-full">
@@ -39,7 +40,7 @@ export default function Sidebar({ dashboardAdmin }: Props) {
                     </div>
                 </div>
                 <ul className="hidden w-full lg:block mt-10 space-y-3">
-                    {dashboardAdmin[0].Attributes.map((item: any, index: any) => {
+                    {dashboardAdmin[0].Attributes?.map((item: any, index: any) => {
                         if (item.Value === "access") return;
                         return (
                             <li key={index}>

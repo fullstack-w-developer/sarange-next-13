@@ -5,6 +5,7 @@ import route from "@/helper/routes/apiRoutes";
 import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
 import { GridValueGetterParams } from "@mui/x-data-grid";
+import { sendRequest } from "../fetch";
 
 export const getUserListAdmin = async (q: string, skip: string) => {
     const cookieStore = cookies();
@@ -12,7 +13,7 @@ export const getUserListAdmin = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.users}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["user-list"],
@@ -30,7 +31,7 @@ export const getPermissionsUsers = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsUsers}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();
@@ -78,35 +79,37 @@ export const getUserListWithPermissions = async (q: string, skip: string) => {
 };
 
 export const deleteUserByAdmin = async (id: string) => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.deleteUser}/${id}`, {
-            headers: {
-                "x-Access-Token": token!,
-            },
-            method: "DELETE",
-        });
-        const deleteUser = await data.json();
-        revalidateTag("user-list");
-        return deleteUser;
+    const response =  await sendRequest({ method: "DELETE", endpoint: `${route.admin.deleteUser}/${id}`});
+    if(response.status){
+        revalidateTag("user-list")
     }
+    return response
+};
+export const editUserByAdmin = async (id: string,body:any) => {
+    const response =  await sendRequest({ method: "PATCH", body, endpoint: `${route.admin.editUser}/${id}`});
+    if(response.status){
+        revalidateTag("user-list")
+    }
+    return response
 };
 
-export const editUserByAdmin = async (id: string, formData: any) => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.admin.editUser}/${id}`, {
-            headers: {
-                "x-Access-Token": token!,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData!),
-            method: "PATCH",
-        });
-        const editUser = await data.json();
-        revalidateTag("user-list");
-        return editUser;
-    }
-};
+
+
+
+// export const editUserByAdmin = async (id: string, formData: any) => {
+//     const cookieStore = cookies();
+//     const token = cookieStore.get("token")?.value;
+//     if (token) {
+//         const data: any = await fetch(`${mainUrl}${route.admin.editUser}/${id}`, {
+//             headers: {
+//                 "x-access-token": token!,
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify(formData!),
+//             method: "PATCH",
+//         });
+//         const editUser = await data.json();
+//         revalidateTag("user-list");
+//         return editUser;
+//     }
+// };

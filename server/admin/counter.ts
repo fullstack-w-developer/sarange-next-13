@@ -11,7 +11,7 @@ export const getList = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.counters.all}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["counter-list"],
@@ -29,7 +29,7 @@ export const getPermissions = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsCounter}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();
@@ -101,7 +101,7 @@ export const addCounterAction = async (formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.counters.add}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "POST",
@@ -121,7 +121,7 @@ export const editCounterAction = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.counters.edit}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "PATCH",
@@ -139,7 +139,7 @@ export const deleteCounterAction = async (id: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.counters.delete}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "DELETE",
         });

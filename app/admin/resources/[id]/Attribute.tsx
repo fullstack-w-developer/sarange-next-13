@@ -15,7 +15,7 @@ interface Props {
     id: string;
 }
 const Attribute = ({ attributes, id }: Props) => {
-    const { toggleAttribute } = useReferanceStore();
+    const { toggleAttribute, attribute } = useReferanceStore();
     const router = useRouter();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         router.push(`/admin/resources/${id}?skip=${(value - 1) * 10}`);
@@ -24,6 +24,7 @@ const Attribute = ({ attributes, id }: Props) => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         router.push(`/admin/resources/${id}?q=${e.target.value}`);
     };
+    const isOpen = attribute.open === "edit" || attribute.open === "add";
     return (
         <div className="flex-1 w-full mb-20">
             <BackHeader name="منابع" url="/admin/resources" />
@@ -54,14 +55,10 @@ const Attribute = ({ attributes, id }: Props) => {
                         </StyledTableCell>
                         <StyledTableCell width={200} align="center">
                             <div className=" flex gap-4 justify-center items-center">
-                                <button
-                                    onClick={() => toggleAttribute({ info: item, name: "delete", open: "delete" })}
-                                >
+                                <button onClick={() => toggleAttribute({ info: item, name: "delete", open: "delete" })}>
                                     <Delete_icon className="text-red-500" />
                                 </button>
-                                <button
-                                    onClick={() => toggleAttribute({ name: "edit", info: item, open: "edit" })}
-                                >
+                                <button onClick={() => toggleAttribute({ name: "edit", info: item, open: "edit" })}>
                                     <EditIcon className="text-[#9e9e9e]" />
                                 </button>
                             </div>
@@ -77,8 +74,8 @@ const Attribute = ({ attributes, id }: Props) => {
                 variant="outlined"
                 shape="rounded"
             />
-            <AttributeAction id={id} />
-            <DeleteAttribute />
+            {isOpen && <AttributeAction id={id} />}
+            {attribute.open === "delete" && <DeleteAttribute />}
         </div>
     );
 };

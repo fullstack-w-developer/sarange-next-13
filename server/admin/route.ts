@@ -11,7 +11,7 @@
 //     if (token) {
 //         const data: any = await fetch(`${mainUrl}${route.admin.routes}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
 //             headers: {
-//                 "x-Access-Token": token!,
+//                 "x-access-token": token!,
 //             },
 //             next: {
 //                 tags: ["route-list"],
@@ -29,7 +29,7 @@
 //         const decodeCode: any = jwt_decode(token);
 //         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsRoute}${decodeCode.userId}`, {
 //             headers: {
-//                 "x-Access-Token": token!,
+//                 "x-access-token": token!,
 //             },
 //         });
 //         const permissions = await data.json();
@@ -96,7 +96,7 @@ export const getList = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.routes}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["driver-list"],
@@ -114,7 +114,7 @@ export const getPermissions = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsRoute}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();
@@ -186,7 +186,7 @@ export const addRouteAction = async (formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.route.add}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "POST",
@@ -205,7 +205,7 @@ export const editRouteAction = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.route.edit}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "PATCH",
@@ -223,7 +223,7 @@ export const deleteRouteAction = async (id: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.route.delete}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "DELETE",
         });

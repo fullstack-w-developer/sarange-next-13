@@ -12,7 +12,7 @@ export const getPermissionsSidebar = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsSidebar}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();
@@ -27,7 +27,7 @@ export const getReferences = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.all}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["all-referances"],
@@ -44,7 +44,7 @@ export const deleteReferanceAction = async (id: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.delete}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "DELETE",
         });
@@ -60,7 +60,7 @@ export const addReferanceAction = async (formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.add}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "POST",
@@ -77,7 +77,7 @@ export const editReferanceAction = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.resource.edit}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "PATCH",
@@ -96,7 +96,7 @@ export const getAllAttribute = async (id: string, q?: string, skip?: string) => 
             `${mainUrl}/ac/resources/${id}/attributes?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`,
             {
                 headers: {
-                    "x-Access-Token": token!,
+                    "x-access-token": token!,
                     "Content-Type": "application/json",
                 },
                 method: "GET",
@@ -116,7 +116,7 @@ export const deleteAttributeAction = async (id: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.attribute.delete}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "DELETE",
         });
@@ -132,7 +132,7 @@ export const addAttributeAction = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.attribute.add}/${id}/attributes`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "POST",
@@ -151,7 +151,7 @@ export const editAttributeAction = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.attribute.edit}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "PATCH",
@@ -170,7 +170,7 @@ export const getAllPermissions = async (q?: string, skip?: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}/ac/allPermissions?${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}&limit=10`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "GET",
@@ -189,7 +189,7 @@ export const deletePermisstionAction = async (id: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.permission.delete}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "DELETE",
         });
@@ -206,7 +206,7 @@ export const addPermessionAction = async (formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.permission.add}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "POST",
@@ -225,7 +225,7 @@ export const editPermessionAction = async (id: string, formData: any) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.permission.edit}/${id}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
                 "Content-Type": "application/json",
             },
             method: "PATCH",

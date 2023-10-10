@@ -14,7 +14,7 @@ export const getUser = async () => {
         const data: any = await fetch(`${mainUrl}${route.user.me}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const user = await data.json();
@@ -27,7 +27,7 @@ export const getInquiry = async (code: number) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.driver.getDriverByCityNumber}/${code}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const driver = await data.json();
@@ -41,7 +41,7 @@ export const getTrip = async () => {
         const data: any = await fetch(`${mainUrl}${route.user.trip}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const trip = await data.json();
@@ -58,7 +58,7 @@ export const getCards = async () => {
             },
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const cards = await data.json();
@@ -73,7 +73,7 @@ export const deActiveCard = async (id: string) => {
         const data: any = await fetch(`${mainUrl}${route.user.deActiveCard}/${id}/status`, {
             method: "PATCH",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         revalidateTag("cards");
@@ -90,7 +90,7 @@ export const getDetaisUserBySerialCard = async (id: string) => {
             },
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const deatils = await data.json();
