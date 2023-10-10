@@ -1,7 +1,7 @@
 import CardTransaction from "@/components/common/CardTransaction";
 import Menu from "@/components/common/Menu";
 import { menuDriver } from "@/helper/utils/data";
-import { getTrasactions } from "@/server/common/action";
+import { getTrasactions } from "@/server/counter/action";
 import { Transaction } from "@/types/User";
 import React from "react";
 

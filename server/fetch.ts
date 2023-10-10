@@ -4,7 +4,7 @@ import { mainUrl } from "@/helper/constants/env-variables";
 import { redirect, notFound } from 'next/navigation'
 
 interface TypeFetch {
-    method: "GET" | "POST" | "PATCH";
+    method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
     endpoint: string;
     body?: any;
     tag?: string;
@@ -24,7 +24,7 @@ export async function sendRequest({ method, endpoint, body, tag, headers }: Type
     }
 
     if (token) {
-        requestOptions.headers["x-Access-Token"] = token;
+        requestOptions.headers["x-access-token"] = token;
     }
 
     if (tag) {
@@ -33,10 +33,9 @@ export async function sendRequest({ method, endpoint, body, tag, headers }: Type
         };
     }
     const response = await fetch(url, requestOptions);
-    const message:any = await response.json()
+    const data:any = await response.json()
 
     if(response.status === 500) return redirect("/500")
-    if(response.status === 404) return redirect("/404")
-
-    return {message:message.Message,status:response.ok}
+    if(response.status === 404) return notFound()
+    return {message:data.Message,status:response.ok,data}
 }

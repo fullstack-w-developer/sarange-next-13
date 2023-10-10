@@ -24,7 +24,6 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
     const { modal, setModal } = useAdminStore();
     const formik = useFormik({
         initialValues: initialValues,
-        // validationSchema,
         onSubmit: async (values) => {
             startTransition(async () => {
                 if (values?._id) {
@@ -36,16 +35,13 @@ const OperationModal = ({ items, initialValues, title, validationSchema, craeteF
                 }
                 if (modal.name === "ویرایش") {
                     // @ts-ignore
-                    await editFun(modal.info.AuthId ? modal.info.AuthId : modal.info._id, values)
-                        // @ts-ignore
-                        .then(() => successToast("با موفقیت ویرایش شد"))
-                        .catch(() => {
-                            errorToast("مشکلی پیش آمده است");
-                        })
-                        .finally(() => {
-                            setModal({info:{}});
-                            formik.resetForm();
-                        });
+                  const response:any =  await editFun(modal.info.AuthId ? modal.info.AuthId : modal.info._id, values)
+                  if (response.status) {
+                    successToast("کاربر با موفقیت حذف شد")
+                    setModal({})
+                } else {
+                    errorToast(response.message)
+                }
                 } else {
                     console.log(values);
                     // @ts-ignore

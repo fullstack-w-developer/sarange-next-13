@@ -14,15 +14,13 @@ const DeleteComponent = ({ title, deleteFun, name }: Props) => {
     const { modal, setModal } = useAdminStore();
     const onDelete = async () => {
         startTransition(async () => {
-            await deleteFun()
-            // @ts-ignore
-                .then(() => successToast("با موفقیت حذف شد"))
-                .catch(() => {
-                    errorToast("با موفقیت حذف شد");
-                })
-                .finally(() => {
-                    setModal({info:{}});
-                });
+            const response: any = await deleteFun()
+            if (response.status) {
+                successToast("کاربر با موفقیت حذف شد")
+                setModal({})
+            } else {
+                errorToast(response.message)
+            }
         });
     };
     return (

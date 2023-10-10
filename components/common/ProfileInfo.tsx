@@ -29,7 +29,7 @@ const ProfileInfo = ({ back, user, totalNotfications }: Props) => {
                     <div className="flex items-center">
                         {!pathname.startsWith("/driver") && (
                             <p className="font-artin-regular">
-                                موجودی : <span className="text-orange font-artin-bold">{user?.Balance.toLocaleString()}</span>{" "}
+                                موجودی : <span className="text-orange font-artin-bold">{user?.Balance?.toLocaleString()}</span>{" "}
                                 تومان
                             </p>
                         )}

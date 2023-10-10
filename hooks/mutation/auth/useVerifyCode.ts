@@ -16,7 +16,7 @@ const useVerifyCode = () => {
     const { fcmToken } = useFcmToken();
 
     const { isSignupUser } = useGlobalStore();
-    const [, setCookies] = useCookies(["token"]);
+    const [, setCookies] = useCookies(["token","jwt"]);
     const router = useRouter();
     return useMutation(async (data: CheckCode) => (isSignupUser ? checkCodeSignup(data) : checkCodeLogin(data)), {
         onSuccess: async function (data: any) {
@@ -25,7 +25,8 @@ const useVerifyCode = () => {
             } else {
                 axios.defaults.headers.common["x-access-token"] = `${data.token}`;
                 const decoded: any = await jwt_decode(data.token);
-                setCookies("token", data.token, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
+                setCookies("token", data.token, { path: "/",maxAge: 3 * 24 * 60 * 60 * 1000});
+                // setCookies("jwt", data.refreshToken, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
                 try {
                     //  @ts-ignore
                     await Android.Token(data.token);
@@ -33,7 +34,7 @@ const useVerifyCode = () => {
                     console.log(error);
                 }
                 if (fcmToken) {
-                    mutate({ toekn: fcmToken });
+                    mutate({ token: fcmToken });
                 }
                 // set coockies and reedirect
                 if (decoded.UserRole === "Driver") {
@@ -47,7 +48,8 @@ const useVerifyCode = () => {
                 }
             }
         },
-        onError: async function (error) {},
+        onError: async function (error) {
+        },
     });
 };
 

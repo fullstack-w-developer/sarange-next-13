@@ -12,7 +12,7 @@ export const getList = async (q: string, skip: string) => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.admin.withdrawals}${q ? `&q=${q}` : ""}&skip=${skip ?? "0"}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             next: {
                 tags: ["withdraw-list"],
@@ -30,7 +30,7 @@ export const getPermissions = async () => {
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsWithdrawals}${decodeCode.userId}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const permissions = await data.json();
@@ -97,5 +97,8 @@ export const getWithdrawalsPermissions = async (q: string, skip: string) => {
 };
 export const changeStatusWithdrawByAdmin = async (body: any) => {
     const response =  await sendRequest({ method: "POST", body, endpoint: "/withdrawals/status" });
+    if(response.status){
+        revalidateTag("withdraw-list")
+    }
     return response
 };

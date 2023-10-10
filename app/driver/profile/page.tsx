@@ -1,8 +1,13 @@
 import React from "react";
 import Profile from "./Profile";
+import { getDriver } from "@/services/driver";
 
-const Index = () => {
-    return <Profile />;
+
+const Index = async () => {
+    const user = await getDriver()
+    return <>
+    <Profile user={user}/>
+    </>;
 };
 
 export default Index;

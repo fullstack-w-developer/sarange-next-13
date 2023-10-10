@@ -3,22 +3,12 @@
 import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes";
 import { revalidateTag } from "next/cache";
+import { sendRenderResult } from "next/dist/server/send-payload";
 import { cookies } from "next/headers";
+import { sendRequest } from "../fetch";
+import { Transaction } from "@/types/User";
 
-export const getTrasactions = async () => {
-    const cookieStore = cookies();
-    const token = cookieStore.get("token")?.value;
-    if (token) {
-        const data: any = await fetch(`${mainUrl}${route.user.my_transactions}`, {
-            cache: "no-store",
-            headers: {
-                "x-Access-Token": token!,
-            },
-        });
-        const transaction = await data.json();
-        return transaction;
-    }
-};
+
 export const getUnreadNotifications = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
@@ -28,7 +18,7 @@ export const getUnreadNotifications = async () => {
                 tags: ["notifications"],
             },
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const result = await data.json();
@@ -44,7 +34,7 @@ export const getAllNotifications = async () => {
                 tags: ["notifications"],
             },
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const result = await data.json();
@@ -57,7 +47,7 @@ export const readAllNotifications = async () => {
     if (token) {
         const data: any = await fetch(`${mainUrl}${route.notfication.readall}`, {
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
             method: "POST",
         });

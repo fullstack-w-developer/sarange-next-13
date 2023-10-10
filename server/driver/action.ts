@@ -13,7 +13,7 @@ export const getDriver = async () => {
         const data: any = await fetch(`${mainUrl}${route.driver.me}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const userDriver = await data.json();
@@ -28,7 +28,7 @@ export const getUserInfoBySerialCard = async (id: string) => {
         const data: any = await fetch(`${mainUrl}${route.driver.user_userInfo_by_cardId}/${id}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const userInfo = await data.json();
@@ -43,7 +43,7 @@ export const getUserInfoByPhone = async (phone: string) => {
         const data: any = await fetch(`${mainUrl}${route.driver.get_userInfo_by_phone}/0${phone}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const userInfo = await data.json();
@@ -58,7 +58,7 @@ export const getHistoryCheckoutDriver = async () => {
         const data: any = await fetch(`${mainUrl}${route.driver.history_request_checkout}`, {
             cache: "no-store",
             headers: {
-                "x-Access-Token": token!,
+                "x-access-token": token!,
             },
         });
         const history = await data.json();

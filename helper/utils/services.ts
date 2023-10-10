@@ -74,7 +74,7 @@ export const setCookie = async (cookies: SetCookieProps) => {
             // const { data, status } = await refreshToken({ refresh_token });
             // if (status) {
             //     const token = data.token.original.access_token;
-            //     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+            //     axios.defaults.headers.common["x-access-token"] = `Bearer ${token}`;
             // }
         } catch (error) {
             return {
@@ -85,6 +85,6 @@ export const setCookie = async (cookies: SetCookieProps) => {
             };
         }
     } else {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        axios.defaults.headers.common["x-access-token"] = `Bearer ${token}`;
     }
 };
