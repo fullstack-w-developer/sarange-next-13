@@ -6,7 +6,6 @@ import Button from "@/components/common/Button";
 import { motion } from "framer-motion";
 import { BsQrCode } from "react-icons/bs";
 import { AiFillCar } from "react-icons/ai";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 const SectionUserPage = () => {
     return (

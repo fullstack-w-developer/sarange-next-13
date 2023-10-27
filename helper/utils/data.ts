@@ -284,3 +284,48 @@ export const columnsUsers: GridColDef[] = [
         headerName: "جنسیت",
     },
 ];
+
+
+
+
+export const header = [
+    {
+      title: "درباره ما",
+      link: "/aboutus",
+    },
+    {
+      title: "تماس با ما",
+      link: "/callus",
+    },
+    {
+      title: "خدمات",
+      link: "/servic",
+    },
+    {
+      title: "راهنما و قوانین",
+      link: "/rules",
+    },
+  ];
+  export const socialNetworks = [
+    {
+      title: "پرداخت QR",
+      icon: "",
+    },
+    {
+      title: "پرداخت تاکسی کارت",
+      icon: "",
+    },
+    {
+      title: "انتقال اعتبار",
+      icon: "",
+    },
+    {
+      title: "خرید اعتبار",
+      icon: "",
+    },
+    {
+      title: "تبلیغات",
+      icon: "",
+    },
+  ];
+  
