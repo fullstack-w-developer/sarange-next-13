@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="785" height="700.001" viewBox="0 0 785 700.001">
+  <g id="Group" transform="translate(-1084 -374.646)">
+    <rect id="BG" width="660" height="660" rx="330" transform="translate(1084 374.646)" fill="#5439ac"/>
+    <g id="Ovals" transform="translate(1289.038 520.425)">
+      <path id="Fill_1" data-name="Fill 1" d="M20.413.242A17.5,17.5,0,1,0,34.53,13.468,17.559,17.559,0,0,0,20.413.242" transform="translate(10.962 139.222)" fill="#57c5d0"/>
+      <path id="Fill_1_Copy" data-name="Fill 1 Copy" d="M23.329.276A20.005,20.005,0,1,0,39.462,15.392,20.068,20.068,0,0,0,23.329.276" transform="translate(470.962 414.222)" fill="#f58122"/>
+      <path id="Fill_4" data-name="Fill 4" d="M9.535.276a7.512,7.512,0,1,0,5.156,5.108A7.523,7.523,0,0,0,9.535.276" transform="translate(369.962 14.222)" fill="#57c5d0"/>
+      <path id="Fill_4_Copy" data-name="Fill 4 Copy" d="M6.356.184A5.008,5.008,0,1,0,9.794,3.589,5.015,5.015,0,0,0,6.356.184" transform="translate(23.962 544.222)" fill="#5439ac"/>
+      <path id="Fill_5" data-name="Fill 5" d="M5.982.111A4.987,4.987,0,1,0,4.446,9.958,4.987,4.987,0,0,0,5.982.111" transform="translate(75.962 59.221)" fill="#f58122"/>
+      <path id="Fill_5_Copy" data-name="Fill 5 Copy" d="M8.972.167a7.481,7.481,0,1,0-2.3,14.77A7.481,7.481,0,0,0,8.972.167" transform="translate(564.962 123.222)" fill="#5439ac"/>
+    </g>
+  </g>
+</svg>

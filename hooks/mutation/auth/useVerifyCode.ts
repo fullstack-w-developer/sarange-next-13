@@ -10,11 +10,11 @@ import { getMessaging, onMessage } from "firebase/messaging";
 import firebaseApp from "@/helper/utils/firebase/firebase";
 import useFcmToken from "@/hooks/common/useFcmToken";
 import useRigisterNootficationToken from "../notfication/useRigisterNootficationToken";
+import { errorToast } from "@/helper/utils/error";
 
 const useVerifyCode = () => {
     const { mutate } = useRigisterNootficationToken();
     const { fcmToken } = useFcmToken();
-
     const { isSignupUser } = useGlobalStore();
     const [, setCookies] = useCookies(["token","jwt"]);
     const router = useRouter();
@@ -49,6 +49,7 @@ const useVerifyCode = () => {
             }
         },
         onError: async function (error) {
+            errorToast("مشکلی پیش آمده است")
         },
     });
 };
