@@ -1,6 +1,6 @@
 import React from "react";
-import Login from "./Login";
-
+import dynamic from "next/dynamic";
+const Login = dynamic(()=>import("./Login"),{ssr:false})
 const Signin = () => {
     return <Login />;
 };

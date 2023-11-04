@@ -4,6 +4,7 @@ import _axios from "axios";
 
 const headers = {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin":"*"
 };
 
 const axios = _axios.create({

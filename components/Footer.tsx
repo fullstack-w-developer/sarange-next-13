@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import { FiInstagram } from 'react-icons/fi';
-import { PiTelegramLogo } from 'react-icons/pi';
 import namd from "../assets/images/81.png"
-import dgi from "../assets/images/samandehi.jpg"
+import Asnaf from "../assets/images/asnaf.png"
 import SocialNetworks from './SocialNetworks';
 import Link from 'next/link';
 import { header } from '@/helper/utils/data';
@@ -17,7 +15,7 @@ export default function Footer() {
                         {header.map((item, index) => {
                             return (
 
-                                <Link key={index} href={item.link} className='flex border-2 border-white rounded-[25px] text-white items-center justify-center py-2 px-5 w-[250px]'>
+                                <Link key={index} href={item.link} className='flex border-2 border-white rounded-[25px] font-estedad-medium text-white items-center justify-center py-2 px-5 w-[250px]'>
                                     {item.title}
                                 </Link>
 
@@ -25,20 +23,20 @@ export default function Footer() {
                         })}
                     </div>
                     <div className='w-full lg:w-[1px] h-[1px] lg:h-72 bg-[#ffffff4d]'></div>
-                    <div className='bg-white flex rounded-[25px] items-center justify-center pl-5'>
+                    <div className=' flex rounded-[25px] items-center justify-center gap-10'>
 
-                        <a className='w-32 h-[200px] flex justify-center items-center' target='_blank' href='https://trustseal.enamad.ir/u?id=389641&code=Wx3D0ZARrxXvhfKlDSmJcMJQcz3FAbuI'>
-                            <Image alt='' src={namd}/>
+                        <a target="_blank" className='w-32 h-[200px] bg-white rounded-lg flex justify-center items-center'  href='https://trustseal.enamad.ir/u?id=389641&code=Wx3D0ZARrxXvhfKlDSmJcMJQcz3FAbuI'>
+                            <Image alt='' src={namd} />
                         </a>
 
-                        {/* <a href="https://trustseal.enamad.ir/?id=115871&Code=s2cB6TWMXCw80xjimu6h">
-                            <Image src={namd} alt='' />
-                        </a> */}
-                
+                        <a target="_blank" className='w-32 h-[200px] bg-white rounded-lg flex justify-center items-center' href="https://azgharbi.irannsr.org/fa/trade_unit/2503633/swd_id/107816/%D8%A7%D8%B9%D8%B6%D8%A7%DB%8C-%D8%AD%D9%82%D9%88%D9%82%DB%8C-%D8%A8%D9%87%D8%A7%D8%B1%D8%A7%D9%86-%D9%87%D8%AF%D8%A7%DB%8C%D8%AA-%D8%A7%D8%B1%D8%AA%D8%A8%D8%A7%D8%B7-%D8%B1%D8%B3%D8%A7.html">
+                            <Image src={Asnaf} alt='' />
+                        </a>
+
                     </div>
                 </div>
                 <div className='mt-[30px]'>
-                    <p className='flex items-center justify-center pt-5 text-white text-[12px] text-left font-es_medium'>© 2023 تمام حقوق مادی و معنوی ....</p>
+                    <p className='flex items-center justify-center pt-5 text-white text-[12px] text-left font-estedad-medium'>© 2023 تمام حقوق مادی و معنوی مربوط به تیم  سارنگ می باشد</p>
                 </div>
             </div>
 

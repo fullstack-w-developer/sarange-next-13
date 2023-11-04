@@ -1,6 +1,6 @@
 import React from "react";
-import GetOtp from "./GetOtp";
-
+import dynamic from "next/dynamic";
+const GetOtp = dynamic(()=>import("./GetOtp"),{ssr:false})
 const Signup = () => {
     return <GetOtp />;
 };

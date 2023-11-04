@@ -1,6 +1,6 @@
 import React from "react";
-import Forgetpass from "./ForgetPass";
-
+import dynamic from "next/dynamic";
+const Forgetpass = dynamic(()=>import("./ForgetPass"),{ssr:false})
 const Forget = () => {
     return <Forgetpass />;
 };
