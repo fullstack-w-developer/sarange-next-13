@@ -1,4 +1,5 @@
 export type SignupUser = {
+    
     phone: string;
     password: string;
     firstName: string;

@@ -3,9 +3,6 @@ const withPWA = require("next-pwa")({
     dest: "public",
 });
 const nextConfig = withPWA({
-    experimental: {
-        serverActions: true,
-    },
     output: "standalone",
     webpack(config, options) {
         const { isServer } = options;
