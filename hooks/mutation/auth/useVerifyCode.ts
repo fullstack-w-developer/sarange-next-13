@@ -6,8 +6,6 @@ import axios from "@/services/utils/axios";
 import { useCookies } from "react-cookie";
 import useGlobalStore from "@/stores/global-store";
 import jwt_decode from "jwt-decode";
-import { getMessaging, onMessage } from "firebase/messaging";
-import firebaseApp from "@/helper/utils/firebase/firebase";
 import useFcmToken from "@/hooks/common/useFcmToken";
 import useRigisterNootficationToken from "../notfication/useRigisterNootficationToken";
 import { errorToast } from "@/helper/utils/error";
@@ -24,6 +22,7 @@ const useVerifyCode = () => {
                 router.push("/auth/signup/information");
             } else {
                 axios.defaults.headers.common["x-access-token"] = `${data.token}`;
+                // @ts-ignore
                 const decoded: any = await jwt_decode(data.token);
                 setCookies("token", data.token, { path: "/",maxAge: 3 * 24 * 60 * 60 * 1000});
                 // setCookies("jwt", data.refreshToken, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
