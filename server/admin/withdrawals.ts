@@ -27,6 +27,7 @@ export const getPermissions = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
+        // @ts-ignore
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsWithdrawals}${decodeCode.userId}`, {
             headers: {

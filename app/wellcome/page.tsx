@@ -9,7 +9,7 @@ import Logo from "@/assets/images/logo.svg";
 import useGlobalStore from "@/stores/global-store";
 import { useRouter } from "next/navigation";
 
-export default function wellcome() {
+export default function Wellcome() {
     const { setIsDriver } = useGlobalStore();
     const router = useRouter();
     const [isVisible, setIsVisible] = useState(true);

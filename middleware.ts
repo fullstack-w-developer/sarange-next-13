@@ -6,6 +6,7 @@ export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const token = request.cookies.get("token")?.value;
     if (token) {
+        // @ts-ignore
         const decodeCode: any = jwt_decode(token);
         if (decodeCode.UserRole === "Driver" && path.startsWith("/driver")) {
             return NextResponse.next();

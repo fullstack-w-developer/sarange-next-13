@@ -9,6 +9,7 @@ export const getPermissionsSidebar = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (token) {
+        // @ts-ignore
         const decodeCode: any = jwt_decode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionsSidebar}${decodeCode.userId}`, {
             headers: {
