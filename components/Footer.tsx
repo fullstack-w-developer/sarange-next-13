@@ -25,12 +25,10 @@ export default function Footer() {
                     <div className='w-full lg:w-[1px] h-[1px] lg:h-72 bg-[#ffffff4d]'></div>
                     <div className=' flex rounded-[25px] items-center justify-center gap-10'>
                         {/* @ts-ignore */}
-                        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=389641&Code=Wx3D0ZARrxXvhfKlDSmJcMJQcz3FAbuI'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=389641&Code=Wx3D0ZARrxXvhfKlDSmJcMJQcz3FAbuI' alt='' Code='Wx3D0ZARrxXvhfKlDSmJcMJQcz3FAbuI'/></a>
-
-                        <a target="_blank" className='w-32 h-[200px] bg-white rounded-lg flex justify-center items-center' href="https://azgharbi.irannsr.org/fa/trade_unit/2503633/swd_id/107816/%D8%A7%D8%B9%D8%B6%D8%A7%DB%8C-%D8%AD%D9%82%D9%88%D9%82%DB%8C-%D8%A8%D9%87%D8%A7%D8%B1%D8%A7%D9%86-%D9%87%D8%AF%D8%A7%DB%8C%D8%AA-%D8%A7%D8%B1%D8%AA%D8%A8%D8%A7%D8%B7-%D8%B1%D8%B3%D8%A7.html">
-                            <Image src={Asnaf} alt='' />
+                    <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=431633&Code=5zMxSGsoa7VZduYETMnJO8d3lWaUiK6z'>
+                        {/* @ts-ignore */}
+                            <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=431633&Code=5zMxSGsoa7VZduYETMnJO8d3lWaUiK6z' alt='' style='cursor:pointer' Code='5zMxSGsoa7VZduYETMnJO8d3lWaUiK6z' />
                         </a>
-
                     </div>
                 </div>
                 <div className='mt-[30px]'>
