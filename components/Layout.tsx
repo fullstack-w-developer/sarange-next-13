@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-export default function Layout({ children }: any) {
+const Layout = ({children}:{children:React.ReactNode}) => {
     return (
         <div className='flex flex-col justify-between min-h-screen'>
             <Header />
@@ -11,3 +11,5 @@ export default function Layout({ children }: any) {
         </div>
     )
 }
+
+export default Layout

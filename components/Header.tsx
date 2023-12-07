@@ -1,10 +1,11 @@
+"use client"
 import Image from 'next/image'
 import Logo from "../assets/images/logo.png";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import Link from 'next/link';
 import { header } from '@/helper/utils/data';
 
-export default function Header() {
+ const Header=()=> {
     return (
         <div className='w-[90%] mx-auto flex items-center justify-between gap-16 my-5'>
             <div className='hidden lg:flex gap-10 items-center'>
@@ -36,3 +37,4 @@ export default function Header() {
         </div>
     )
 }
+export default Header

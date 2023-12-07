@@ -1,8 +1,7 @@
-"use client";
 import Layout from '@/components/Layout'
 import React from 'react'
 
-export default function AboutUs() {
+const Page = () => {
     return (
         <Layout>
             <div className='text-[#000000] font-extrabold space-y-5 mt-5'>
@@ -18,3 +17,5 @@ export default function AboutUs() {
         </Layout>
     )
 }
+
+export default Page

@@ -1,10 +1,9 @@
-"use client";
-import Layout from '@/components/Layout'
 import React from 'react'
+import Layout from '@/components/Layout'
 
-export default function Callus() {
+ const Callus=()=> {
     return (
-        <Layout>
+        // <Layout>
             <div className='text-[#000000] font-extrabold space-y-5 mt-5'>
                 <h1 className='text-[17px] lg:text-[20px] mb-10 font-es_bold'>تماس با ما</h1>
                 <div className='space-y-5 font-es_medium text-[13px] lg:text-[16px]'>
@@ -20,6 +19,8 @@ export default function Callus() {
                     </p>
                 </div>
             </div>
-        </Layout>
+        // </Layout>
     )
 }
+
+export default Callus

@@ -1,5 +1,4 @@
-import { AiFillAndroid } from 'react-icons/ai';
-import { BsApple } from 'react-icons/bs';
+
 import Slider from './Slider';
 
 export default function Download() {
