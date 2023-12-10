@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "@/services/utils/axios";
 import { useCookies } from "react-cookie";
 import useGlobalStore from "@/stores/global-store";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import useFcmToken from "@/hooks/common/useFcmToken";
 import useRigisterNootficationToken from "../notfication/useRigisterNootficationToken";
 import { errorToast } from "@/helper/utils/error";
@@ -23,7 +23,7 @@ const useVerifyCode = () => {
             } else {
                 axios.defaults.headers.common["x-access-token"] = `${data.token}`;
                 // @ts-ignore
-                const decoded: any = await jwt_decode(data.token);
+                const decoded: any = await jwtDecode(data.token);
                 setCookies("token", data.token, { path: "/",maxAge: 3 * 24 * 60 * 60 * 1000});
                 // setCookies("jwt", data.refreshToken, { path: "/", maxAge: 3 * 24 * 60 * 60 * 1000 });
                 try {

@@ -1,6 +1,5 @@
 "use server";
-import jwt_decode from "jwt-decode";
-import { mainUrl } from "@/helper/constants/env-variables";
+import { jwtDecode } from "jwt-decode";import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes";
 import { cookies } from "next/headers";
 import { revalidateTag } from "next/cache";
@@ -27,7 +26,7 @@ export const getPermissions = async () => {
     const token = cookieStore.get("token")?.value;
     if (token) {
         // @ts-ignore
-        const decodeCode: any = jwt_decode(token);
+        const decodeCode: any = jwtDecode(token);
         const data: any = await fetch(`${mainUrl}${route.admin.get_permissionDrivers}${decodeCode.userId}`, {
             headers: {
                 "x-access-token": token!,
