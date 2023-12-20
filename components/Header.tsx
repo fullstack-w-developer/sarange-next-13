@@ -28,7 +28,7 @@ import { header } from '@/helper/utils/data';
                 <button className='block lg:hidden'>
                     <RxHamburgerMenu size={25} />
                 </button>
-                <Link href={"/wellcome"} className='bg-[#F67D14]  text-white rounded-[25px] w-fit px-4 py-3 font-estedad-medium text-[12px] lg:text-[14px]'>نسخه آنلاین اپلیکیشن</Link>
+                {/* <Link href={"/wellcome"} className='bg-[#F67D14]  text-white rounded-[25px] w-fit px-4 py-3 font-estedad-medium text-[12px] lg:text-[14px]'>نسخه آنلاین اپلیکیشن</Link> */}
             </div>
 
             <Link href="/" className='block lg:hidden'>
