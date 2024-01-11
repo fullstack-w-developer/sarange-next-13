@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
-import { getDriver } from "@/services/driver";
+import { getDriver } from "@/server/driver/action";
 
 
 const Index = async () => {
