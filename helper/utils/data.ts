@@ -1,6 +1,8 @@
 "use client";
-import Home from "@/app/page";
-import { Dash, Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
+import Image1 from "@/assets/images/image1.png"
+import Image2 from "@/assets/images/image2.jpg"
+import Image3 from "@/assets/images/image3.jpg"
+import {  Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { BiLogoTelegram, BiSupport } from "react-icons/bi";
 import { BsDiscord, BsFillCreditCardFill, BsTwitter } from "react-icons/bs";
@@ -99,6 +101,11 @@ export const moreMenuUser = [
         name: "انتفال وجه",
         icon: BsFillCreditCardFill,
         url: "/user/moneytransfer/1",
+    },
+    {
+        name: "شارژ حساب",
+        icon: BsFillCreditCardFill,
+        url: "/user/sharje",
     },
     {
         name: "سفر‌های من",
@@ -348,7 +355,8 @@ export const header = [
             "سیستم عضویت",
             "سیستم فرم ساز پیشرفته",
             "کلیه امکانات سایت های فروشگاهی",
-        ]
+        ],
+        src:Image1
     },
     {
         title:"   شرکتی",
@@ -363,7 +371,8 @@ export const header = [
             "سیستم عضویت",
             "سیستم فرم ساز پیشرفته",
             "کلیه امکانات سایت های شرکتی",
-        ]
+        ],
+        src:Image2
     },
     {
         title:"  خبری",
@@ -378,7 +387,8 @@ export const header = [
             "سیستم عضویت",
             "سیستم فرم ساز پیشرفته",
             "کلیه امکانات سایت های خبری",
-        ]
+        ],
+        src:Image3
     },
     {
         title:"کارت ویزیتی",
@@ -393,7 +403,8 @@ export const header = [
             "سیستم عضویت",
             "سیستم فرم ساز پیشرفته",
             "کلیه امکانات سایت های خبری",
-        ]
+        ],
+        src:Image1
     },
     {
         title:"املاکی",
@@ -408,6 +419,7 @@ export const header = [
             "سیستم عضویت",
             "سیستم فرم ساز پیشرفته",
             "کلیه امکانات سایت های املاکی",
-        ]
+        ],
+        src:Image2
     },
   ]

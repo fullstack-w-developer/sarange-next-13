@@ -31,6 +31,8 @@ export default function Application() {
                             ))}
                         </ul>
 
+                         <Image className="my-3 object-cover" src={product.src} alt=""/>
+
                         <button className="w-full bg-amber-500 text-white mt-4 transition-all font-artin-regular rounded-lg py-1 hover:bg-amber-600">خرید</button>
                     </div>
                 ))}

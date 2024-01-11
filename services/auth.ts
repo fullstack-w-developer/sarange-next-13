@@ -35,3 +35,9 @@ export const editUserInfo = async (data: EditUser) => {
     const url = getRoute({ route: `${routes.auth.edit_user}` });
     return await client<string>({ url, method: "PATCH", data });
 };
+
+
+export const sharjeAccountUser = async (amount: number) => {
+    const url = getRoute({ route: `${routes.user.balance}?Amount=${amount}` });
+    return await client<any>({ url, method: "GET" });
+};

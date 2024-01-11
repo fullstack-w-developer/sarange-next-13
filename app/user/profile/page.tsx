@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
-import { getUser } from "@/services/user";
+import { getUser } from "@/server/user/actions";
 
 const InformationUser = async () => {
     const user = await getUser();

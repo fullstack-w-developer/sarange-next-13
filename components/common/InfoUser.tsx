@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import ProfileImage from "./ProfileImage";
 import Link from "next/link";
 import { Edit_iocn, Wallet_icon } from "../icons/icons";

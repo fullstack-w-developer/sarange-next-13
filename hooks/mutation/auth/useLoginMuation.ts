@@ -8,7 +8,6 @@ const useLoginMuation = () => {
     const router = useRouter();
     return useMutation(async (data: LoginUser) => await loginUser(data), {
         onSuccess: async function (data:any) {
-            successToast(`کد ورود شما ${data.num} می باشد`)
             router.push("/auth/verify");
         },
         onError: async function (error) {},
