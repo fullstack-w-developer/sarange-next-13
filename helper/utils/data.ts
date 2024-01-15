@@ -169,27 +169,27 @@ export const withdrawalRequestStatusEnum = {
 export const linksCounter = [
     {
         name: "شارژ با اسکن",
-        url: "",
+        url: "/counter/scan",
         icon: "",
     },
     {
         name: "شارژ با شماره سریال",
-        url: "",
+        url: "/counter/inventory",
         icon: "",
     },
     {
         name: "مسدودی کارت",
-        url: "",
+        url: "/counter/cardblocking",
         icon: "",
     },
     {
         name: "موجودی کاربر",
-        url: "",
+        url: "/counter/inquiry",
         icon: "",
     },
     {
         name: "کارت جدید",
-        url: "",
+        url: "/counter/serial",
         icon: "",
     },
 ];
