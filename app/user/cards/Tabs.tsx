@@ -30,12 +30,12 @@ const Tabs = ({ cards, deActiveCard }: Props) => {
                 <div className=" mt-8 pb-10">
                     <div className="flex  gap-2 mt-2  shadow items-center p-1  bg-[#f8f8f8]">
                         {itemTabs.map((tab, index) => (
-                            <Button
+                            <button
                                 onClick={() => onSelect(index)}
                                 name={tab}
                                 key={index}
-                                className={`z-10 ${select === index ? "!bg-orange" : "!bg-transparent !text-[#222]"}`}
-                            />
+                                className={`z-10 flex-1 py-3 text-xs rounded-lg font-estedad-medium ${select === index ? "!bg-orange text-white" : "!bg-transparent !text-[#222]"}`}
+                            >{tab}</button>
                         ))}
                     </div>
                     {select === 0 ? (

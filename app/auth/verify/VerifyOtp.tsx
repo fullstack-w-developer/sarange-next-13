@@ -17,6 +17,7 @@ import useAuthStore from "@/stores/auth-store";
 import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/icons/icons";
 import Link from "next/link";
 import { useState } from "react";
+import { errorToast } from "@/helper/utils/error";
 
 const VerifyOtp = () => {
     const [code, setCode] = useState({
@@ -30,19 +31,16 @@ const VerifyOtp = () => {
     const router = useRouter();
     const formik = useFormik({
         initialValues: initialValuesCheckCode,
-        validationSchema: validationSchemaCheckCode,
         onSubmit: (values) => {
-            mutate({ Code: Number(values.Code), Phone: toEnglishNumber(user?.phone!)! });
+            const { field1, field2, field3, field4 } = code;
+            const newCode = `${field1}${field2}${field3}${field4}`;
+            if (newCode.length !== 4) return errorToast("لطفا کد ارسال شده را وارد کنید");
+            mutate({ Code: Number(newCode), Phone: toEnglishNumber(user?.phone!)! });
         },
     });
-    const handleSubmit = async () => {
-        const { field1, field2, field3, field4 } = code;
-        const newCode = `${field1}${field2}${field3}${field4}`;
-        // if (newCode.length !== 4) return errorToast("لطفا کد ارسال شده را وارد کنید");
-        // mutate({ mobile, code: Number(toEnglishNumber(newCode))!, type: "verify" });
-    };
 
-    
+
+
     return (
         <motion.div {...animationsScreens} className="flex flex-col justify-between h-screen">
             <div className="bg_header text-white rounded-b-[26px] overflow-hidden container_header_signup">
