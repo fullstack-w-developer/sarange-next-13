@@ -38,6 +38,7 @@ const InformationDriver = ({ driver, paymentType }: Props) => {
 
             setIsLoading(true)
             const response = await fares_action(driver.AuthId, data)
+            console.log(response,"fjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
             if (response?.status) {
                 router.push(`/user/result?id=${driver.AuthId}`)
             } else {
