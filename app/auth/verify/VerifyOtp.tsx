@@ -16,8 +16,15 @@ import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
 import useAuthStore from "@/stores/auth-store";
 import { Edit_icon, Phone_icon, Warr_iocn } from "@/components/icons/icons";
 import Link from "next/link";
+import { useState } from "react";
 
 const VerifyOtp = () => {
+    const [code, setCode] = useState({
+        field1: "",
+        field2: "",
+        field3: "",
+        field4: "",
+    });
     const { user } = useAuthStore();
     const { mutate, isError, error, isLoading } = useVerifyCode();
     const router = useRouter();
@@ -28,7 +35,14 @@ const VerifyOtp = () => {
             mutate({ Code: Number(values.Code), Phone: toEnglishNumber(user?.phone!)! });
         },
     });
+    const handleSubmit = async () => {
+        const { field1, field2, field3, field4 } = code;
+        const newCode = `${field1}${field2}${field3}${field4}`;
+        // if (newCode.length !== 4) return errorToast("لطفا کد ارسال شده را وارد کنید");
+        // mutate({ mobile, code: Number(toEnglishNumber(newCode))!, type: "verify" });
+    };
 
+    
     return (
         <motion.div {...animationsScreens} className="flex flex-col justify-between h-screen">
             <div className="bg_header text-white rounded-b-[26px] overflow-hidden container_header_signup">
@@ -43,13 +57,13 @@ const VerifyOtp = () => {
                 </div>
             </div>
 
-            <div className="container_verify_otp">
-                <div className="w-90">
+            <div>
+                <div className="w-full px-6">
                     <div className="flex items-center gap-2">
                         <Phone_icon size="19" fill="#464646" />
                         <p className="font-artin-regular text-lg text-black">لطفا کد ارسال شده را وارد کنید</p>
                     </div>
-                    <Otp formik={formik} />
+                    <Otp code={code} setCode={setCode} />
                     <div className="flex justify-between items-center mt-8">
                         <Timer />
                         <Link href="/auth/signin" className="flex items-center gap-1">

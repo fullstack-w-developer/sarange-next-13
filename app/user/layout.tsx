@@ -6,12 +6,12 @@ interface Props {
     children: React.ReactNode;
 }
 const Layout = async ({ children }: Props) => {
-    const user = await getUser();
-    const notfication = await getUnreadNotifications();
+    // const user = await getUser();
+    // const notfication = await getUnreadNotifications();
     return (
-        <UserLayout totalNotfications={notfication[0].Total} user={user}>
+        // <UserLayout totalNotfications={notfication[0].Total} user={user}>
             {children}
-        </UserLayout>
+        // </UserLayout>
     );
 };
 

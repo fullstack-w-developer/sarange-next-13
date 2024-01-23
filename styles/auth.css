@@ -21,3 +21,10 @@
 .ReactInputVerificationCode__container .ReactInputVerificationCode__input {
     @apply !w-0
 }
+
+
+.container_verify > input{
+    box-shadow: none !important;
+    border: 2px solid #e1e1e1 !important;
+    @apply  !h-[56px] font-artin-bold flex justify-center items-center rounded-xl relative bg-[#f7f7f7] after:w-6 after:h-[1.5px] after:bg-gray-200 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2;   
+}
