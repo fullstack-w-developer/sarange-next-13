@@ -1,5 +1,4 @@
 import CounterLayout from "@/components/counter/CounterLayout";
-import UserLayout from "@/components/user/UserLayout";
 import { getCounter } from "@/server/counter/action";
 import React from "react";
 interface Props {
