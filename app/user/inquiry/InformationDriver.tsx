@@ -14,15 +14,20 @@ import { animationsScreens } from "@/theme/animations";
 import Link from "next/link";
 import Counter from "@/components/common/Counter";
 import CostTaxiInsetMoney from "@/components/common/CostTaxiInsetMoney";
+import { fares_action } from "@/server/user/actions";
+import { errorToast, successToast } from "@/helper/utils/error";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 interface Props {
     driver: Driver;
     paymentType: string | any;
 }
 const InformationDriver = ({ driver, paymentType }: Props) => {
-    const { mutate, isLoading } = useFarePaymentMutation({ url: `/user/result?id=${driver.AuthId}` });
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
     const formik = useFormik({
         initialValues: initialValuesFare,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             const data = {
                 car: driver?.Car._id!,
                 paymentType: paymentType,
@@ -30,7 +35,15 @@ const InformationDriver = ({ driver, paymentType }: Props) => {
                     ? { amount: Number(toEnglishNumber(values.amount)) }
                     : { numberOfPassenger: Number(values.numberOfPassenger) }),
             };
-            mutate(data);
+
+            setIsLoading(true)
+            const response = await fares_action(driver.AuthId, data)
+            if (response?.status) {
+                router.push(`/user/result?id=${driver.AuthId}`)
+            } else {
+                errorToast(response?.data?.Message)
+            }
+            setIsLoading(false)
         },
     });
 

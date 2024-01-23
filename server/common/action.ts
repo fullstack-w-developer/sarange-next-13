@@ -3,10 +3,8 @@
 import { mainUrl } from "@/helper/constants/env-variables";
 import route from "@/helper/routes/apiRoutes";
 import { revalidateTag } from "next/cache";
-import { sendRenderResult } from "next/dist/server/send-payload";
 import { cookies } from "next/headers";
-import { sendRequest } from "../fetch";
-import { Transaction } from "@/types/User";
+
 
 
 export const getUnreadNotifications = async () => {
@@ -16,7 +14,9 @@ export const getUnreadNotifications = async () => {
         const data: any = await fetch(`${mainUrl}${route.notfication.unread}`, {
             next: {
                 tags: ["notifications"],
+                
             },
+            cache:"no-store",
             headers: {
                 "x-access-token": token!,
             },

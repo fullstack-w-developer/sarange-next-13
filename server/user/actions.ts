@@ -34,6 +34,23 @@ export const getInquiry = async (code: number) => {
         return driver;
     }
 };
+export const fares_action = async (AuthId: string,formData:any) => {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
+    if (token) {
+        const data: any = await fetch(`${mainUrl}/fares`, {
+            headers: {
+                "x-access-token": token!,
+                "Content-Type": "application/json" 
+            },
+            method:"POST",
+            body: JSON.stringify(formData)
+        });
+        const driver = await data.json();
+        revalidateTag("notifications")
+        return {data:driver,status:data.ok};
+    }
+};
 export const getTrip = async () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
