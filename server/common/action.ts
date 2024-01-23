@@ -53,6 +53,6 @@ export const readAllNotifications = async () => {
         });
         const result = await data.json();
         revalidateTag("notifications");
-        return result;
+        return result
     }
 };

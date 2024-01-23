@@ -6,8 +6,9 @@ import CardNotfications from "./CardNotfications";
 import { readAllNotifications } from "@/server/common/action";
 
 const Notifications = ({ notfication }: { notfication: any }) => {
-    const onClick = () => {
-        readAllNotifications();
+    const onClick = async () => {
+       const result = await readAllNotifications()
+       alert(JSON.stringify(result))
     };
     return (
         <div className="w-[90%] mx-auto">
