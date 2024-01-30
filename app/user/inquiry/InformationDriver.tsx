@@ -6,16 +6,14 @@ import Button from "@/components/common/Button";
 import { GoArrowRight } from "react-icons/go";
 import { useFormik } from "formik";
 import { initialValuesFare } from "@/helper/utils/initialValues";
-import { variantSchemaFare } from "@/helper/utils/validation/fare";
 import { toEnglishNumber } from "@/helper/utils/toFarsiNumber";
-import useFarePaymentMutation from "@/hooks/mutation/Fare/useFarePaymentMutation";
 import { motion } from "framer-motion";
 import { animationsScreens } from "@/theme/animations";
 import Link from "next/link";
 import Counter from "@/components/common/Counter";
 import CostTaxiInsetMoney from "@/components/common/CostTaxiInsetMoney";
 import { fares_action } from "@/server/user/actions";
-import { errorToast, successToast } from "@/helper/utils/error";
+import { errorToast } from "@/helper/utils/error";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 interface Props {

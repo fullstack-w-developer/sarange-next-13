@@ -1,6 +1,5 @@
 "use client";
 import BackHeader from "@/components/common/BackHeader";
-import Button from "@/components/common/Button";
 import CardBank from "@/components/common/CardBank";
 import React, { useState } from "react";
 import { motion } from "framer-motion";

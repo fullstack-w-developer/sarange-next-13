@@ -6,6 +6,20 @@ import {  Home_icons, User_icon, Wallet_icon } from "@/components/icons/icons";
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { BiLogoTelegram, BiSupport } from "react-icons/bi";
 import { BsDiscord, BsFillCreditCardFill, BsTwitter } from "react-icons/bs";
+import Telegram from "@/public/images/appIcon/telegram.png";
+import Bale from "@/public/images/appIcon/bale1.png";
+import Eita from "@/public/images/appIcon/eita1.png";
+import Instagrem from "@/public/images/appIcon/instagram.png";
+import Linkedin from "@/public/images/appIcon/linkedin.png";
+// import X from "@/public/images/appIcon/x.png";
+import Twitter from "@/public/images/appIcon/twitter.png";
+import Rubika from "@/public/images/appIcon/rubika1.png";
+//
+
+import Browser from "@/public/images/appIcon/10. Browser.png";
+import Store from "@/public/images/appIcon/6. Store.png";
+import Bank from "@/public/images/appIcon/Bank Stationery.png";
+import Funds from "@/public/images/appIcon/Top up Funds.png";
 import { FaCar } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 export const sexPerson = [
@@ -141,7 +155,7 @@ export const MoreMenuDriver = [
     },
 ];
 
-export const social_media = [
+export const social_media__ = [
     {
         icon: BiLogoTelegram,
         color: "#3390ec",
@@ -294,25 +308,6 @@ export const columnsUsers: GridColDef[] = [
 
 
 
-
-export const header = [
-    {
-      title: "درباره ما",
-      link: "/aboutus",
-    },
-    {
-      title: "تماس با ما",
-      link: "/callus",
-    },
-    {
-      title: "خدمات",
-      link: "/servic",
-    },
-    {
-      title: "راهنما و قوانین",
-      link: "/rules",
-    },
-  ];
   export const socialNetworks = [
     {
       title: "ایده و هدف خود از طراحی اپ را مشخص کنید",
@@ -423,3 +418,98 @@ export const header = [
         src:Image2
     },
   ]
+
+
+
+  export const header = [
+    {
+        name: "صحفه اصلی",
+        url: "/",
+    },
+    {
+        name: "خدمات ما",
+        url: "/service",
+    },
+
+    {
+        name: "درباره‌ی ما",
+        url: "/about",
+    },
+    {
+        name: "تماس با ما",
+        url: "/content",
+    },
+];
+
+export const social_media = [
+    {
+        url: "https://t.me/TaxiSarang",
+        src: Telegram,
+    },
+    {
+        url: "https://instagram.com/taxisarang?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D",
+        src: Instagrem,
+    },
+    {
+        url: "www.linkedin.com/in/taxisarang",
+        src: Linkedin,
+    },
+    {
+        url: "https://twitter.com/taxisarang?s=09",
+        src: Twitter,
+    },
+    {
+        url: "https://eitaa.com/TaxiSarang",
+        src: Eita,
+    },
+    {
+        url: "https://rubika.ir/taxisarang",
+        src: Rubika,
+    },
+    {
+        url: "https://ble.ir/taxisarang",
+        src: Bale,
+    },
+];
+
+export const ourServices = [
+    {
+        title: "پرداخت با QR",
+        des: "پرداخت مبلغ مسیر با QR کد",
+    },
+    {
+        title: "تاکسی کارت",
+        des: "پرداخت از طریق تاکسی کارت",
+    },
+    {
+        title: "خرید اعتبار",
+        des: "کیف پولت رو با خرید اعتبار شارژ کن",
+    },
+    {
+        title: "انتقال اعتبار",
+        des: "به کیف پول دوستت اعتبار هدیه کن",
+    },
+];
+
+export const cardInfo = [
+    {
+        title: "در دسترس",
+        src: Funds,
+        count: 1,
+    },
+    {
+        title: "امن و دقیق",
+        src: Bank,
+        count: 2,
+    },
+    {
+        title: "پرداخت راحت",
+        src: Store,
+        count: 3,
+    },
+    {
+        title: "در یک نگاه",
+        src: Browser,
+        count: 4,
+    },
+]

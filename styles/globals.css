@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* fonts */
+@font-face {
+  font-family: "bold";
+  src: url("../public/fonts/standard/base/IRANSans_Bold.ttf");
+}
+@font-face {
+  font-family: "black";
+  src: url("../public/fonts/standard/base/IRANSans_Black.ttf");
+}
+@font-face {
+  font-family: "num-bold";
+  src: url("../public/fonts/standard/base/ModamFaNum-Bold.ttf");
+}
+@font-face {
+  font-family: "num-regular";
+  src: url("../public/fonts/standard/base/ModamFaNum-Light.ttf");
+}
+@font-face {
+  font-family: "extra_num_bold";
+  src: url("../public/fonts/standard/base/ModamFaNum-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "semibold";
+  src: url("../public/fonts/standard/base/IRANSansDN-Bold.ttf");
+}
+@font-face {
+  font-family: "light";
+  src: url("../public/fonts/standard/base/IRANSans_Light.ttf");
+}
+@font-face {
+  font-family: "regular";
+  src: url("../public/fonts/standard/base/IRANSans_Medium.ttf");
+}
 
 * {
   -webkit-tap-highlight-color: transparent !important;
@@ -173,4 +206,52 @@ body {
 
   .toastContainer .content{
 @apply !mx-2
+  }
+
+
+
+  
+body {
+  direction: rtl;
+  background:#F8F8F8 ;
+  min-width: 370px;
+  } 
+  
+  .bg-header-landing{
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(51.984676361083984px);
+  }
+  
+  .bg_header{
+    background-image: url("../public/images/bg_header.svg");
+  }
+  
+  .bomb{
+    background-image: url("../public/images/bomb.png");
+    @apply bg-no-repeat bg-cover h-[450px] w-[450px] mr-auto
+  }
+  
+  .bg_cover_header{
+    @apply bg-[url('../public/images/bg_intrdice_mobile.svg')] lg:bg-[url('../public/images/bg_cover_header.png')] h-[337px] sm:w-[100%] md:w-[100%] lg:w-[460.31px] lg:h-[760px] bg-no-repeat mx-auto lg:mr-auto -mt-4 md:mx-auto flex justify-center items-center
+  }
+  
+  .bg_card_pattern{
+    background-image: url("../public/images/pattern_card.png");
+    @apply  w-[170px] h-[160px] bg-no-repeat bg-cover absolute left-0;
+  }
+  
+  .bg_our_services{
+  @apply bg-[url('../public/images/bg_our_service_mobile.svg')] lg:bg-[url('../public/images/bg_our_service.png')] bg-no-repeat -z-10 bg-cover absolute -top-[3.7rem] left-0 w-[445px] h-[565px] lg:w-[550px] lg:h-[600px]
+  }
+  
+  
+  .bg_contact_our{
+  @apply bg-[url('../public/images/bg_contactus_mobile.svg')] lg:bg-[url('../public/images/bg_contact_us.png')] bg-no-repeat  flex flex-col justify-between bg-cover absolute -top-[4rem] lg:-top-[4.6rem] -z-10 h-[500px] w-[260px] right-0 lg:w-[540px] lg:h-[880px] 
+  }
+  .bg_contact_our2{
+  @apply bg-[url('../public/images/bg_contact_us.png')] lg:bg-[url('../public/images/bg_contact_us.png')] bg-no-repeat  flex flex-col justify-between bg-cover absolute top-[4rem] md:top-[3rem] lg:-top-[4.2rem] h-[100%] w-[100%] sm:h-[100%] sm:w-[47%] right-0 md:w-[44%] md:h-[100%] lg:w-[40%] lg:h-[119%] 
+  }
+  
+  .map{
+    @apply w-[70%] mr-10 overflow-hidden  ml-auto  rounded-br-[5rem] rounded-2xl border border-inherit h-[350px]
   }
