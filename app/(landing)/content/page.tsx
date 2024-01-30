@@ -1,17 +1,17 @@
 "use client";
 import React from "react";
 
-import ContantUs from "@/../public/images/contant_us.png";
+import ContantUs from "@/public/images/contant_us.png";
 import Image from "next/image";
-import CardInfoContact from "../../../components/landing/CardInfoContact";
-import Map from "../../../../public/images/appIcon/map1.png";
-import Call from "../../../../public/images/appIcon/call.png";
-import Post from "../../../../public/images/appIcon/post.png";
-import { cardInfo, social_media } from "@/helpers/utils/data";
+import CardInfoContact from "@/components/landing/CardInfoContact";
+import Map from "@/public/images/appIcon/map1.png";
+import Call from "@/public/images/appIcon/call.png";
+import Post from "@/public/images/appIcon/post.png";
+import { cardInfo, social_media } from "@/helper/utils/data";
 import Form from "@/components/landing/Form";
 const Content = () => {
     return (
-        <div className="mt-16 md:mt-[4px] lg:mt-[40px]">
+        <div className="mt-16 md:mt-[4px] lg:mt-[40px] w-[90%] mx-auto">
             <div className="flex justify-end md:invisible">
                 <Image className="w-[30%] h-[30%]" src={ContantUs} alt="icon" />
             </div>

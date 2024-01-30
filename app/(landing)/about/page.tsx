@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
     return (
-        <div className="flex justify-center w-full mt-25 lg:mt-[135px] relative">
+        <div className="flex justify-center  mt-25 lg:mt-[135px] relative w-[90%] mx-auto">
             <div className="w-[100%] bg-[#3a3a6b] h-fit p-3 rounded-md z-0 mt-28 lg:mt-4">
                 <div className="bg_contact_our2 !right-0 -z-[1]">
                     <p className="text-right text-white text-xl lg:text-3xl font-black p-5"> درباره ما </p>

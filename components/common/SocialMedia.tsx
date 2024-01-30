@@ -12,7 +12,7 @@ const SocialMedia = () => {
                         className="rounded-full bg-gray-100/30 shadow-sm  transition-all duration-500 border-gray-100 flex justify-center items-center w-10 h-10 border"
                         key={i}
                     >
-                        <icon.icon size={24} color={icon.color} />
+                        {/* <icon.icon size={24} color={icon.color} /> */}
                     </span>
                 ))}
             </div>

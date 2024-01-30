@@ -1,5 +1,4 @@
-import Home from "@/app/page";
-import { Dash } from "@/components/icons/icons";
+import { Dash,Home } from "@/components/icons/icons";
 
 export const userDashboard = [
     {
