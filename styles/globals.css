@@ -222,7 +222,7 @@ body {
     backdrop-filter: blur(51.984676361083984px);
   }
   
-  .bg_header{
+  .bg_header__{
     background-image: url("../public/images/bg_header.svg");
   }
   

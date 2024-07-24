@@ -46,7 +46,7 @@ const Header = () => {
                         <p className="opacity-50 text-right !text-white text-[12.80px] font-normal ">پشتیبانی سریع</p>
                     </div>
                     <Link
-                        href={"/auth"}
+                        href={"/wellcome"}
                         className="w-[150px] h-[35px] lg:w-[93.80px] lg:h-[28.92px] px-[12.73px] py-[3.47px] bg-white rounded-2xl justify-center items-center gap-[5.78px] inline-flex"
                     >
                         <span className="text-center text-slate-800 text-[15px] font-semibold"> ورود / ثبت‌نام</span>
